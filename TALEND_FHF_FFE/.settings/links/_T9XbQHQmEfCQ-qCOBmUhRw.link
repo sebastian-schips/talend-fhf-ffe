@@ -1,0 +1,45 @@
+{
+  "itemId" : "_T9XbQHQmEfCQ-qCOBmUhRw",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_1kqPgHFIEfCtQ81OGVhTIg",
+    "parameterList" : [ {
+      "id" : "_1k9KcXFIEfCtQ81OGVhTIg",
+      "name" : "Staiger_Live_jdbcClass"
+    }, {
+      "id" : "_1k9KcnFIEfCtQ81OGVhTIg",
+      "name" : "Staiger_Live_jdbcUrl"
+    }, {
+      "id" : "_1k9Kc3FIEfCtQ81OGVhTIg",
+      "name" : "Staiger_Live_password"
+    }, {
+      "id" : "_1k9KdHFIEfCtQ81OGVhTIg",
+      "name" : "Staiger_Live_userId"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_qq0_MHFIEfCtQ81OGVhTIg",
+    "parameterList" : [ {
+      "id" : "_qrBMdHFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Port"
+    }, {
+      "id" : "_qrBMcnFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Login"
+    }, {
+      "id" : "_qrBMc3FIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Schema"
+    }, {
+      "id" : "_qrBMdnFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_AdditionalParams"
+    }, {
+      "id" : "_qrBMd3FIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Database"
+    }, {
+      "id" : "_qrBMcXFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Server"
+    }, {
+      "id" : "_qrBMdXFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Password"
+    } ]
+  } ]
+}

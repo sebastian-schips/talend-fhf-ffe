@@ -1,0 +1,1848 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
+  <context confirmationNeeded="false" hide="false" name="Default">
+    <contextParameter comment="" name="GR_Master_Server" prompt="GR_Master_Server?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="gr-master.database.windows.net" internalId="_YGsSYHIIEfCtQ81OGVhTIg"/>
+    <contextParameter comment="" name="GR_Master_Login" prompt="GR_Master_Login?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="gr-master-admin" internalId="_YGsSYXIIEfCtQ81OGVhTIg"/>
+    <contextParameter comment="" name="GR_Master_Schema" prompt="GR_Master_Schema?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="dbo" internalId="_YGsSYnIIEfCtQ81OGVhTIg"/>
+    <contextParameter comment="" name="GR_Master_Port" prompt="GR_Master_Port?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="1433" internalId="_YGsSY3IIEfCtQ81OGVhTIg"/>
+    <contextParameter comment="" name="GR_Master_Password" prompt="GR_Master_Password?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_Password" value="enc:system.encryption.key.v1:+peJTy3wn97TPhtrLmaeCMoYbj63lK1Nr/8zieE66CEy9qLvqJ+7wS1lCiVQrccP0T7MyF1aFGc+pJTwybogfNUrNxU9kmJokMAfBLbFjFSMR/FEdcIVa4/Iz4k=" internalId="_YGsSZHIIEfCtQ81OGVhTIg"/>
+    <contextParameter comment="" name="GR_Master_AdditionalParams" prompt="GR_Master_AdditionalParams?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="" internalId="_YGsSZXIIEfCtQ81OGVhTIg"/>
+    <contextParameter comment="" name="GR_Master_Database" prompt="GR_Master_Database?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="gr_master" internalId="_YGsSZnIIEfCtQ81OGVhTIg"/>
+    <contextParameter comment="" name="DB_Ziel" prompt="DB_Ziel?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="_S_ST_Kunden" internalId="_HmOBsBhkEfGdUvM-2w2oZg"/>
+  </context>
+  <parameters>
+    <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_X" value="0" show="false"/>
+    <elementParameter field="TEXT" name="SCREEN_OFFSET_Y" value="0" show="false"/>
+    <elementParameter field="TEXT" name="REPOSITORY_CONNECTION_ID" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_PROPERTY_TYPENAME" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_HADOOP_DISTRIBUTION" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_HADOOP_VERSION" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_ENABLE_KERBEROS" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_NAME_NODE_PRINCIPAL" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_USERNAME" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_GROUP" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_USE_KEYTAB" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_KT_PRINCIPAL" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_KEY_TAB" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_ENABLE_OO_KERBEROS" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_NAME_NODE_END_POINT" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_JOB_TRACKER_ENDPOINT" value="" show="false"/>
+    <elementParameter field="TEXT" name="OOZIE_END_POINT" value="" show="false"/>
+    <elementParameter field="CHECK" name="IMPLICITCONTEXT_USE_PROJECT_SETTINGS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="STATANDLOG_USE_PROJECT_SETTINGS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="MULTI_THREAD_EXECATION" value="false"/>
+    <elementParameter field="TEXT" name="PARALLELIZE_UNIT_SIZE" value="25000"/>
+    <elementParameter field="CHECK" name="IMPLICIT_TCONTEXTLOAD" value="false"/>
+    <elementParameter field="RADIO" name="FROM_FILE_FLAG_IMPLICIT_CONTEXT" value="false" show="false"/>
+    <elementParameter field="RADIO" name="FROM_DATABASE_FLAG_IMPLICIT_CONTEXT" value="false" show="false"/>
+    <elementParameter field="FILE" name="IMPLICIT_TCONTEXTLOAD_FILE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FIELDSEPARATOR" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="OVERRIDE_ENCODING_FLAG" value="false" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="OVERRIDE_ENCODING_IN_EXTRA" value="ISO-8859-15" show="false"/>
+    <elementParameter field="TECHNICAL" name="OVERRIDE_ENCODING_IN_EXTRA:ENCODING_TYPE" value="ISO-8859-15" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_TYPE_IMPLICIT_CONTEXT" value="" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION_IMPLICIT_CONTEXT" value="" show="false"/>
+    <elementParameter field="TEXT" name="URL_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR_IMPLICIT_CONTEXT" show="false"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="HOST_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:saBaoRtLe+vqnIxc+OjhAlE/msJ38Eygm8B+Czy3" show="false"/>
+    <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="LOAD_NEW_VARIABLE" value="Warning" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="NOT_LOAD_OLD_VARIABLE" value="Warning" show="false"/>
+    <elementParameter field="CHECK" name="PRINT_OPERATIONS" value="false" show="false"/>
+    <elementParameter field="CHECK" name="DISABLE_ERROR" value="false" show="false"/>
+    <elementParameter field="CHECK" name="DISABLE_WARNINGS" value="false" show="false"/>
+    <elementParameter field="CHECK" name="DISABLE_INFO" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ON_STATCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_LOGCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_METERCATCHER_FLAG" value="false"/>
+    <elementParameter field="CHECK" name="ON_CONSOLE_FLAG" value="false" show="false"/>
+    <elementParameter field="CHECK" name="ON_FILES_FLAG" value="false" show="false"/>
+    <elementParameter field="DIRECTORY" name="FILE_PATH" value="&quot;C:/Program Files (x86)/Talend-Studio/studio/workspace/.metadata&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_STATS" value="&quot;stats_file.txt&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_LOGS" value="&quot;logs_file.txt&quot;" show="false"/>
+    <elementParameter field="TEXT" name="FILENAME_METTER" value="&quot;meter_file.txt&quot;" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="ISO-8859-15" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15" show="false"/>
+    <elementParameter field="CHECK" name="ON_DATABASE_FLAG" value="false" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_TYPE" value="JDBCOutput" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="ORACLE_18" show="false"/>
+    <elementParameter field="TEXT" name="URL" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TABLE" name="DRIVER_JAR" show="false"/>
+    <elementParameter field="TEXT" name="DRIVER_CLASS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="DBNAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="LOCAL_SERVICE_NAME" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:NaGkCMEMiPdhr6aiAMOHhJaBAgXHPrYx8nsixV8S" show="false"/>
+    <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="DBTABLE" name="TABLE_METER" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_RUNTIME_ERRORS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_USER_ERRORS" value="true" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_USER_WARNING" value="true" show="false"/>
+    <elementParameter field="CHECK" name="CATCH_REALTIME_STATS" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HEADERFOOTER_HEADERID" value="" show="false"/>
+    <elementParameter field="CHECK" name="HEADER_ENABLED" value="false" show="false"/>
+    <elementParameter field="TEXT" name="HEADER_LIBRARY" value="" show="false"/>
+    <elementParameter field="TEXT" name="HEADER_CODE" value="" show="false"/>
+    <elementParameter field="TEXT" name="HEADER_IMPORT" value="" show="false"/>
+    <elementParameter field="TEXT" name="HEADERFOOTER_FOOTERID" value="" show="false"/>
+    <elementParameter field="CHECK" name="FOOTER_ENABLED" value="false" show="false"/>
+    <elementParameter field="TEXT" name="FOOTER_LIBRARY" value="" show="false"/>
+    <elementParameter field="TEXT" name="FOOTER_CODE" value="" show="false"/>
+    <elementParameter field="TEXT" name="FOOTER_IMPORT" value="" show="false"/>
+    <routinesParameter id="_uDi24CvPEemn7J3ssWShHg" name="r"/>
+  </parameters>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="160" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_2" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_dm714GvIEfCaypKZ6raWlg" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="context.GR_Master_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" value="MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="context.GR_Master_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.GR_Master_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.GR_Master_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.GR_Master_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="context.GR_Master_Password"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Staiger_Kunde&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_RechnungsEmpfaenger,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Zentrale,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kgr_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Wae_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Sta_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Spr_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Vle_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Pgr_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Spv_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Rkz_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Sto_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Zak_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Bun_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Tur_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Name1,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Name2,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Name3,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Strasse,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Lan_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Ort,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_PLZ,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Postfach,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_PostfachPLZ,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_PostfachOrt,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Kurzbezeichnung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_RG_Kopien,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Filiale,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Vertragsnummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_eigeneLieferantenNr,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_ILN,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_WebAdresse,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_BankKonto,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Lastschrift,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Kundenabruf_ab,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Kreditlimit,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Auftragsbestaetigung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Leergut_berechnen,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Leergut_LS,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Leergut_RG,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Rechnungsrabatt_fuer_LE,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_CFGastro,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Ablage,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Anbruchfaktor,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Preiseinheit,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.User_Anlage,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Datum_Anlage,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.User_Aenderung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Datum_Aenderung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_CFGastroLieferschein,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kar_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Pkz_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_BestellNummer_Pflicht,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Datum_Aenderung_Datev,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Inaktiv,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_keineABV,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_AutoMahnen,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_DiverseKunden,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Bea_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Rve_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_VIP,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Art_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Pgr_Nummer_LVP,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Auftraege_zusammenfassen,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_LVP_Aufschlag,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Preis_auf_Kommschein,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_LG_Saldo_pruefen,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_alt_LG_Ruecknahme,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_EMail_Rechnung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_RechnungPerEMail,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Nummer_Leergut,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Rechnung_Prefix,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_SDS,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_BasisartikelAndrucken,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_AB_ohne_Preis,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Leergut_beim_LS_Druck_zusammenfassen,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Anbruchverkauf_trotz_Artikelsperre,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Webshop,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Webshopbezeichnung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Webshopbeschreibung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Rueckmeldung_durch_Buchhaltung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Edeka_Betreffzeile,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_XRechnung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_XR_Leitweg_ID,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_XR_InnenauftragsNummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_XR_RahmenvertragsNummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_Rechnung_per_ePost,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde.Kun_KommScheine_zusammenfassen&quot;&#xA;+&quot;&#xA;FROM&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kunde&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="id_MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.GR_Master_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="ENABLE_ALWAYS_ENCRYPTED" value="false"/>
+    <elementParameter field="TEXT" name="KEYSTORE_PRINCIPAL_ID" value="" show="false"/>
+    <elementParameter field="PASSWORD" name="KEYSTORE_SECRET" value="" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Nummer" id="0"/>
+      <elementValue elementRef="TRIM" value="false" id="1"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_RechnungsEmpfaenger" id="2"/>
+      <elementValue elementRef="TRIM" value="false" id="3"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Zentrale" id="4"/>
+      <elementValue elementRef="TRIM" value="false" id="5"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kgr_Nummer" id="6"/>
+      <elementValue elementRef="TRIM" value="false" id="7"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Wae_Nummer" id="8"/>
+      <elementValue elementRef="TRIM" value="false" id="9"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sta_Nummer" id="10"/>
+      <elementValue elementRef="TRIM" value="false" id="11"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Spr_Nummer" id="12"/>
+      <elementValue elementRef="TRIM" value="false" id="13"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Vle_Nummer" id="14"/>
+      <elementValue elementRef="TRIM" value="false" id="15"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Pgr_Nummer" id="16"/>
+      <elementValue elementRef="TRIM" value="false" id="17"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Spv_Nummer" id="18"/>
+      <elementValue elementRef="TRIM" value="false" id="19"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Rkz_Nummer" id="20"/>
+      <elementValue elementRef="TRIM" value="false" id="21"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sto_Nummer" id="22"/>
+      <elementValue elementRef="TRIM" value="false" id="23"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zak_Nummer" id="24"/>
+      <elementValue elementRef="TRIM" value="false" id="25"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Bun_Nummer" id="26"/>
+      <elementValue elementRef="TRIM" value="false" id="27"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Tur_Nummer" id="28"/>
+      <elementValue elementRef="TRIM" value="false" id="29"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Name1" id="30"/>
+      <elementValue elementRef="TRIM" value="false" id="31"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Name2" id="32"/>
+      <elementValue elementRef="TRIM" value="false" id="33"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Name3" id="34"/>
+      <elementValue elementRef="TRIM" value="false" id="35"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Strasse" id="36"/>
+      <elementValue elementRef="TRIM" value="false" id="37"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Lan_Nummer" id="38"/>
+      <elementValue elementRef="TRIM" value="false" id="39"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Ort" id="40"/>
+      <elementValue elementRef="TRIM" value="false" id="41"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_PLZ" id="42"/>
+      <elementValue elementRef="TRIM" value="false" id="43"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Postfach" id="44"/>
+      <elementValue elementRef="TRIM" value="false" id="45"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_PostfachPLZ" id="46"/>
+      <elementValue elementRef="TRIM" value="false" id="47"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_PostfachOrt" id="48"/>
+      <elementValue elementRef="TRIM" value="false" id="49"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Kurzbezeichnung" id="50"/>
+      <elementValue elementRef="TRIM" value="false" id="51"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_RG_Kopien" id="52"/>
+      <elementValue elementRef="TRIM" value="false" id="53"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Filiale" id="54"/>
+      <elementValue elementRef="TRIM" value="false" id="55"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Vertragsnummer" id="56"/>
+      <elementValue elementRef="TRIM" value="false" id="57"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_eigeneLieferantenNr" id="58"/>
+      <elementValue elementRef="TRIM" value="false" id="59"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_ILN" id="60"/>
+      <elementValue elementRef="TRIM" value="false" id="61"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_WebAdresse" id="62"/>
+      <elementValue elementRef="TRIM" value="false" id="63"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_BankKonto" id="64"/>
+      <elementValue elementRef="TRIM" value="false" id="65"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Lastschrift" id="66"/>
+      <elementValue elementRef="TRIM" value="false" id="67"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Kundenabruf_ab" id="68"/>
+      <elementValue elementRef="TRIM" value="false" id="69"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Kreditlimit" id="70"/>
+      <elementValue elementRef="TRIM" value="false" id="71"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Auftragsbestaetigung" id="72"/>
+      <elementValue elementRef="TRIM" value="false" id="73"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Leergut_berechnen" id="74"/>
+      <elementValue elementRef="TRIM" value="false" id="75"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Leergut_LS" id="76"/>
+      <elementValue elementRef="TRIM" value="false" id="77"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Leergut_RG" id="78"/>
+      <elementValue elementRef="TRIM" value="false" id="79"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Rechnungsrabatt_fuer_LE" id="80"/>
+      <elementValue elementRef="TRIM" value="false" id="81"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_CFGastro" id="82"/>
+      <elementValue elementRef="TRIM" value="false" id="83"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Ablage" id="84"/>
+      <elementValue elementRef="TRIM" value="false" id="85"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Anbruchfaktor" id="86"/>
+      <elementValue elementRef="TRIM" value="false" id="87"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Preiseinheit" id="88"/>
+      <elementValue elementRef="TRIM" value="false" id="89"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="User_Anlage" id="90"/>
+      <elementValue elementRef="TRIM" value="false" id="91"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Datum_Anlage" id="92"/>
+      <elementValue elementRef="TRIM" value="false" id="93"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="User_Aenderung" id="94"/>
+      <elementValue elementRef="TRIM" value="false" id="95"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Datum_Aenderung" id="96"/>
+      <elementValue elementRef="TRIM" value="false" id="97"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_CFGastroLieferschein" id="98"/>
+      <elementValue elementRef="TRIM" value="false" id="99"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kar_Nummer" id="100"/>
+      <elementValue elementRef="TRIM" value="false" id="101"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Pkz_Nummer" id="102"/>
+      <elementValue elementRef="TRIM" value="false" id="103"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_BestellNummer_Pflicht" id="104"/>
+      <elementValue elementRef="TRIM" value="false" id="105"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Datum_Aenderung_Datev" id="106"/>
+      <elementValue elementRef="TRIM" value="false" id="107"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Inaktiv" id="108"/>
+      <elementValue elementRef="TRIM" value="false" id="109"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_keineABV" id="110"/>
+      <elementValue elementRef="TRIM" value="false" id="111"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_AutoMahnen" id="112"/>
+      <elementValue elementRef="TRIM" value="false" id="113"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_DiverseKunden" id="114"/>
+      <elementValue elementRef="TRIM" value="false" id="115"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Bea_Nummer" id="116"/>
+      <elementValue elementRef="TRIM" value="false" id="117"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Rve_Nummer" id="118"/>
+      <elementValue elementRef="TRIM" value="false" id="119"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_VIP" id="120"/>
+      <elementValue elementRef="TRIM" value="false" id="121"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Art_Nummer" id="122"/>
+      <elementValue elementRef="TRIM" value="false" id="123"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Pgr_Nummer_LVP" id="124"/>
+      <elementValue elementRef="TRIM" value="false" id="125"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Auftraege_zusammenfassen" id="126"/>
+      <elementValue elementRef="TRIM" value="false" id="127"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_LVP_Aufschlag" id="128"/>
+      <elementValue elementRef="TRIM" value="false" id="129"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Preis_auf_Kommschein" id="130"/>
+      <elementValue elementRef="TRIM" value="false" id="131"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_LG_Saldo_pruefen" id="132"/>
+      <elementValue elementRef="TRIM" value="false" id="133"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_alt_LG_Ruecknahme" id="134"/>
+      <elementValue elementRef="TRIM" value="false" id="135"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_EMail_Rechnung" id="136"/>
+      <elementValue elementRef="TRIM" value="false" id="137"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_RechnungPerEMail" id="138"/>
+      <elementValue elementRef="TRIM" value="false" id="139"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Nummer_Leergut" id="140"/>
+      <elementValue elementRef="TRIM" value="false" id="141"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Rechnung_Prefix" id="142"/>
+      <elementValue elementRef="TRIM" value="false" id="143"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_SDS" id="144"/>
+      <elementValue elementRef="TRIM" value="false" id="145"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_BasisartikelAndrucken" id="146"/>
+      <elementValue elementRef="TRIM" value="false" id="147"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_AB_ohne_Preis" id="148"/>
+      <elementValue elementRef="TRIM" value="false" id="149"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Leergut_beim_LS_Druck_zusammenfassen" id="150"/>
+      <elementValue elementRef="TRIM" value="false" id="151"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Anbruchverkauf_trotz_Artikelsperre" id="152"/>
+      <elementValue elementRef="TRIM" value="false" id="153"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Webshop" id="154"/>
+      <elementValue elementRef="TRIM" value="false" id="155"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Webshopbezeichnung" id="156"/>
+      <elementValue elementRef="TRIM" value="false" id="157"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Webshopbeschreibung" id="158"/>
+      <elementValue elementRef="TRIM" value="false" id="159"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Rueckmeldung_durch_Buchhaltung" id="160"/>
+      <elementValue elementRef="TRIM" value="false" id="161"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Edeka_Betreffzeile" id="162"/>
+      <elementValue elementRef="TRIM" value="false" id="163"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_XRechnung" id="164"/>
+      <elementValue elementRef="TRIM" value="false" id="165"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_XR_Leitweg_ID" id="166"/>
+      <elementValue elementRef="TRIM" value="false" id="167"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_XR_InnenauftragsNummer" id="168"/>
+      <elementValue elementRef="TRIM" value="false" id="169"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_XR_RahmenvertragsNummer" id="170"/>
+      <elementValue elementRef="TRIM" value="false" id="171"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Rechnung_per_ePost" id="172"/>
+      <elementValue elementRef="TRIM" value="false" id="173"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_KommScheine_zusammenfassen" id="174"/>
+      <elementValue elementRef="TRIM" value="false" id="175"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" value="30" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="Staiger_Kunde" name="tDBInput_2">
+      <column comment="" defaultValue="(NULL)" key="true" length="10" name="Kun_Nummer" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_RechnungsEmpfaenger" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Zentrale" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kgr_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Wae_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Sta_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Spr_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Vle_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Pgr_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Spv_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Rkz_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Sto_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Zak_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Bun_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Tur_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Kun_Name1" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Kun_Name2" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Kun_Name3" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Kun_Strasse" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Lan_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Kun_Ort" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="10" name="Kun_PLZ" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="10" name="Kun_Postfach" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="10" name="Kun_PostfachPLZ" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Kun_PostfachOrt" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Kun_Kurzbezeichnung" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_RG_Kopien" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="10" name="Kun_Filiale" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="15" name="Kun_Vertragsnummer" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="15" name="Kun_eigeneLieferantenNr" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="15" name="Kun_ILN" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Kun_WebAdresse" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="14" name="Kun_BankKonto" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Lastschrift" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="10" name="Kun_Kundenabruf_ab" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="DATE" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Kreditlimit" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Auftragsbestaetigung" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Leergut_berechnen" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Leergut_LS" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Leergut_RG" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_Rechnungsrabatt_fuer_LE" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="5" name="Kun_CFGastro" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="20" name="Kun_Ablage" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'1'" key="false" length="5" name="Kun_Anbruchfaktor" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Preiseinheit" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'current user'" key="false" length="50" name="User_Anlage" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'current timestamp'" key="false" length="26" name="Datum_Anlage" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="DATETIME2" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'last user'" key="false" length="50" name="User_Aenderung" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'timestamp'" key="false" length="26" name="Datum_Aenderung" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="DATETIME2" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_CFGastroLieferschein" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kar_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Pkz_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_BestellNummer_Pflicht" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'current timestamp'" key="false" length="26" name="Kun_Datum_Aenderung_Datev" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="DATETIME2" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_Inaktiv" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_keineABV" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((1))" key="false" length="10" name="Kun_AutoMahnen" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_DiverseKunden" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Bea_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Rve_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_VIP" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Art_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Pgr_Nummer_LVP" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((1))" key="false" length="10" name="Kun_Auftraege_zusammenfassen" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="NULL" key="false" length="255" name="Kun_LVP_Aufschlag" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((1))" key="false" length="10" name="Kun_Preis_auf_Kommschein" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_LG_Saldo_pruefen" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_alt_LG_Ruecknahme" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="NULL" key="false" length="256" name="Kun_EMail_Rechnung" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_RechnungPerEMail" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Nummer_Leergut" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="NULL" key="false" length="50" name="Kun_Rechnung_Prefix" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_SDS" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_BasisartikelAndrucken" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_AB_ohne_Preis" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_Leergut_beim_LS_Druck_zusammenfassen" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_Anbruchverkauf_trotz_Artikelsperre" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_Webshop" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="NULL" key="false" length="150" name="Kun_Webshopbezeichnung" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="NULL" key="false" length="1000" name="Kun_Webshopbeschreibung" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_Rueckmeldung_durch_Buchhaltung" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_Edeka_Betreffzeile" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_XRechnung" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="NULL" key="false" length="42" name="Kun_XR_Leitweg_ID" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="NULL" key="false" length="14" name="Kun_XR_InnenauftragsNummer" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="NULL" key="false" length="20" name="Kun_XR_RahmenvertragsNummer" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_Rechnung_per_ePost" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="((0))" key="false" length="10" name="Kun_KommScheine_zusammenfassen" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+    </metadata>
+  </node>
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="360" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_2" show="false"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_hHEWcHH3EfCtQ81OGVhTIg-tMap_2-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true" show="false"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="LEVENSHTEIN" value="100" show="false"/>
+    <elementParameter field="TEXT" name="JACCARD" value="0" show="false"/>
+    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" value="true" show="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata comment="" connector="FLOW" label="metadata" name="out12">
+      <column comment="" key="true" length="255" name="GR_KundenID" nullable="false" pattern="" precision="-1" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="Kundennummer" nullable="false" pattern="" precision="-1" sourceType="DECIMAL" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="KontaktID" nullable="true" pattern="" precision="-1" sourceType="DECIMAL" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="GR_Betrieb" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="GR_KundenartID" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="KundenartID" nullable="true" pattern="" precision="-1" sourceType="" type="id_Long" originalLength="-1" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name1" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name2" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name3" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Strasse" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="PLZ" nullable="true" pattern="" precision="-1" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Ort" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="Land" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Telefon1" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Telefon2" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Fax" nullable="true" pattern="" precision="-1" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Email" nullable="true" pattern="" precision="-1" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="50" name="UmsatzsteuerID" nullable="true" pattern="" precision="-1" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="Preisgruppe" nullable="true" pattern="" precision="-1" sourceType="DECIMAL" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="-1" name="ZentraleKundennummer" nullable="true" pattern="" precision="-1" sourceType="DECIMAL" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="Bemerkung" nullable="true" pattern="" precision="-1" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="LetzteAenderung" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="ErstelltAm" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Mo" nullable="true" pattern="" precision="-1" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Di" nullable="true" pattern="" precision="-1" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Mi" nullable="true" pattern="" precision="-1" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Do" nullable="true" pattern="" precision="-1" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Fr" nullable="true" pattern="" precision="-1" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Sa" nullable="true" pattern="" precision="-1" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_So" nullable="true" pattern="" precision="-1" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_MO" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Di" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Mi" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Do" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Fr" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Sa" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_So" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Mo" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Di" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Mi" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Do" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Fr" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Sa" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_So" nullable="true" pattern="" precision="-1" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mo_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mo_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Di_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Di_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mi_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mi_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Do_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Do_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Fr_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Fr_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Sa_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Sa_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_So_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_So_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="-1" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="-1" name="newColumn" nullable="true" pattern="" precision="-1" sourceType="" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+    <nodeData xsi:type="TalendMapper:MapperData">
+      <uiProperties/>
+      <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="out12" activateCondensedTool="true">
+        <mapperTableEntries name="GR_KundenID" expression="&quot;ST-&quot; +  kunde.Kun_Nummer " type="id_String"/>
+        <mapperTableEntries name="Kundennummer" expression="kunde.Kun_Nummer " type="id_Long"/>
+        <mapperTableEntries name="KontaktID" expression="0L" type="id_Long" nullable="true"/>
+        <mapperTableEntries name="GR_Betrieb" expression="&quot;Staiger&quot;" type="id_String" nullable="true"/>
+        <mapperTableEntries name="GR_KundenartID" expression="&quot;ST-&quot; + kunde.Kar_Nummer " type="id_String" nullable="true"/>
+        <mapperTableEntries name="KundenartID" expression="kunde.Kar_Nummer " type="id_Long" nullable="true"/>
+        <mapperTableEntries name="Name1" expression="kunde.Kun_Name1" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Name2" expression="kunde.Kun_Name2" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Name3" expression="kunde.Kun_Name3" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Strasse" expression="kunde.Kun_Strasse" type="id_String" nullable="true"/>
+        <mapperTableEntries name="PLZ" expression="kunde.Kun_PLZ" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Ort" expression="kunde.Kun_Ort" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Land" expression="land_staiger.Lan_Kennzeichen " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Telefon1" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Telefon2" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Fax" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Email" expression="kunde.Kun_EMail_Rechnung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="UmsatzsteuerID" expression="kunde.Sta_Nummer " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Preisgruppe" expression="kunde.Pgr_Nummer " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="ZentraleKundennummer" expression="kunde.Kun_Nummer" type="id_Long" nullable="true"/>
+        <mapperTableEntries name="Bemerkung" expression="kunde.User_Aenderung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="LetzteAenderung" expression="anlieferzeit.Datum_Aenderung" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="ErstelltAm" expression="kunde.Datum_Anlage " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Mo" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 0 &amp;&amp; anlieferzeit.Tur_Nummer == null &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) ? false : true " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Di" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 1 &amp;&amp; anlieferzeit.Tur_Nummer == null &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) ? false : true " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Mi" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 2 &amp;&amp; anlieferzeit.Tur_Nummer == null &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) ? false : true " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Do" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 3 &amp;&amp; anlieferzeit.Tur_Nummer == null &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) ? false : true " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Fr" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 4 &amp;&amp; anlieferzeit.Tur_Nummer == null &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) ? false : true " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Sa" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 5 &amp;&amp; anlieferzeit.Tur_Nummer == null &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) ? false : true " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_So" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 6 &amp;&amp; anlieferzeit.Tur_Nummer == null &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) ? false : true " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Tour_MO" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 0 &amp;&amp; anlieferzeit.Tur_Nummer == null ? null : anlieferzeit.Tur_Nummer " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Di" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 1 &amp;&amp; anlieferzeit.Tur_Nummer == null ? null : anlieferzeit.Tur_Nummer " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Mi" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 2 &amp;&amp; anlieferzeit.Tur_Nummer == null ? null : anlieferzeit.Tur_Nummer " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Do" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 3 &amp;&amp; anlieferzeit.Tur_Nummer == null ? null : anlieferzeit.Tur_Nummer " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Fr" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 4 &amp;&amp; anlieferzeit.Tur_Nummer == null ? null : anlieferzeit.Tur_Nummer " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Sa" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 5 &amp;&amp; anlieferzeit.Tur_Nummer == null ? null : anlieferzeit.Tur_Nummer " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_So" expression="anlieferzeit.Kal_Liefertag != null &amp;&amp; anlieferzeit.Kal_Liefertag == 6 &amp;&amp; anlieferzeit.Tur_Nummer == null ? null : anlieferzeit.Tur_Nummer " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Mo" expression="" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Di" expression="" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Mi" expression="" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Do" expression="" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Fr" expression="" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Sa" expression="" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_So" expression="" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mo_von" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 0) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_von == null ) ? null :&#xD;&#xA;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_von.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_von) &#xD;&#xA;&#x9;&#xD;&#xA;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mo_bis" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 0) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_bis == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_bis.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_bis) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Di_von" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 1) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_von == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_von.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_von) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Di_bis" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 1) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_bis == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_bis.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_bis) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mi_von" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 2) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_von == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_von.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_von) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mi_bis" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 2) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_bis == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_bis.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_bis) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Do_von" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 3) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_von == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_von.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_von) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Do_bis" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 3) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_bis == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_bis.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_bis) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Fr_von" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 4) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_von == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_von.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_von) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Fr_bis" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 4) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_bis == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_bis.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_bis) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Sa_von" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 5) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_von == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_von.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_von) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Sa_bis" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 5) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_bis == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_bis.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_bis) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_So_von" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 6) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_von) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_von == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_von.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_von) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_So_bis" expression="(anlieferzeit.Kal_Liefertag == null) || (anlieferzeit.Kal_Liefertag == 6) &amp;&amp; &quot;&quot;.equals( anlieferzeit.Kal_Anlieferzeit_bis) &amp;&amp; (anlieferzeit.Kal_Anlieferzeit_bis == null ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;(&quot;&quot;.equals(anlieferzeit.Kal_Anlieferzeit_bis.trim() ) ? null :&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;TalendDate.parseDate(&quot;HH:mm&quot;,anlieferzeit.Kal_Anlieferzeit_bis) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;) " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="newColumn" type="id_String" nullable="true"/>
+      </outputTables>
+      <inputTables sizeState="INTERMEDIATE" name="kunde" columnNameFilter="pgr" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="Kun_Nummer" type="id_Integer"/>
+        <mapperTableEntries name="Kun_RechnungsEmpfaenger" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Zentrale" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kgr_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Wae_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Sta_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Spr_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Vle_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Pgr_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Spv_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Rkz_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Sto_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Zak_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Bun_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tur_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Name1" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Name2" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Name3" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Strasse" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Lan_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Ort" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_PLZ" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Postfach" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_PostfachPLZ" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_PostfachOrt" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Kurzbezeichnung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_RG_Kopien" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Filiale" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Vertragsnummer" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_eigeneLieferantenNr" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_ILN" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_WebAdresse" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_BankKonto" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Lastschrift" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Kundenabruf_ab" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Kun_Kreditlimit" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Auftragsbestaetigung" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Leergut_berechnen" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Leergut_LS" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Leergut_RG" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Rechnungsrabatt_fuer_LE" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_CFGastro" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Ablage" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Anbruchfaktor" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Preiseinheit" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="User_Anlage" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Datum_Anlage" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="User_Aenderung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Datum_Aenderung" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Kun_CFGastroLieferschein" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kar_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Pkz_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_BestellNummer_Pflicht" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Datum_Aenderung_Datev" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Kun_Inaktiv" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_keineABV" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_AutoMahnen" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_DiverseKunden" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Bea_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Rve_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_VIP" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Art_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Pgr_Nummer_LVP" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Auftraege_zusammenfassen" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_LVP_Aufschlag" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Preis_auf_Kommschein" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_LG_Saldo_pruefen" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_alt_LG_Ruecknahme" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_EMail_Rechnung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_RechnungPerEMail" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Nummer_Leergut" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Rechnung_Prefix" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_SDS" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_BasisartikelAndrucken" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_AB_ohne_Preis" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Leergut_beim_LS_Druck_zusammenfassen" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Anbruchverkauf_trotz_Artikelsperre" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Webshop" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Webshopbezeichnung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Webshopbeschreibung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Rueckmeldung_durch_Buchhaltung" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_Edeka_Betreffzeile" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_XRechnung" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_XR_Leitweg_ID" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_XR_InnenauftragsNummer" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_XR_RahmenvertragsNummer" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kun_Rechnung_per_ePost" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kun_KommScheine_zusammenfassen" type="id_Integer" nullable="true"/>
+      </inputTables>
+      <inputTables sizeState="INTERMEDIATE" name="anlieferzeit" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="Kal_Nummer" type="id_Integer"/>
+        <mapperTableEntries name="Kun_Nummer" expression="kunde.Kun_Nummer " type="id_Integer" nullable="true" operator="="/>
+        <mapperTableEntries name="Tur_Nummer" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kal_Liefertag" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Kal_Anlieferzeit_von" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kal_Anlieferzeit_bis" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kal_Logistikkosten" type="id_String" nullable="true"/>
+        <mapperTableEntries name="User_Anlage" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Datum_Anlage" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="User_Aenderung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Datum_Aenderung" type="id_Date" nullable="true"/>
+      </inputTables>
+      <inputTables sizeState="INTERMEDIATE" name="land_staiger" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="Lan_Nummer" expression="kunde.Lan_Nummer " type="id_Integer" operator="="/>
+        <mapperTableEntries name="Lan_Bezeichnung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Lan_Kennzeichen" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Lan_KzPostalisch" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Lan_Telefon" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Lan_EU" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Sort" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="User_Anlage" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Datum_Anlage" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="User_Aenderung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Datum_Aenderung" type="id_Date" nullable="true"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="240" posY="280">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_4" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_dm714GvIEfCaypKZ6raWlg" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="context.GR_Master_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" value="MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="context.GR_Master_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.GR_Master_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.GR_Master_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.GR_Master_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="context.GR_Master_Password"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Staiger_KundeAnlieferzeit&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.Kal_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.Kun_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.Tur_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.Kal_Liefertag,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.Kal_Anlieferzeit_von,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.Kal_Anlieferzeit_bis,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.Kal_Logistikkosten,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.User_Anlage,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.Datum_Anlage,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.User_Aenderung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit.Datum_Aenderung&quot;&#xA;+&quot;&#xA;FROM&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_KundeAnlieferzeit&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="id_MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.GR_Master_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="ENABLE_ALWAYS_ENCRYPTED" value="false"/>
+    <elementParameter field="TEXT" name="KEYSTORE_PRINCIPAL_ID" value="" show="false"/>
+    <elementParameter field="PASSWORD" name="KEYSTORE_SECRET" value="" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kal_Nummer" id="0"/>
+      <elementValue elementRef="TRIM" value="false" id="1"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kun_Nummer" id="2"/>
+      <elementValue elementRef="TRIM" value="false" id="3"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Tur_Nummer" id="4"/>
+      <elementValue elementRef="TRIM" value="false" id="5"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kal_Liefertag" id="6"/>
+      <elementValue elementRef="TRIM" value="false" id="7"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kal_Anlieferzeit_von" id="8"/>
+      <elementValue elementRef="TRIM" value="false" id="9"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kal_Anlieferzeit_bis" id="10"/>
+      <elementValue elementRef="TRIM" value="false" id="11"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kal_Logistikkosten" id="12"/>
+      <elementValue elementRef="TRIM" value="false" id="13"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="User_Anlage" id="14"/>
+      <elementValue elementRef="TRIM" value="false" id="15"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Datum_Anlage" id="16"/>
+      <elementValue elementRef="TRIM" value="false" id="17"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="User_Aenderung" id="18"/>
+      <elementValue elementRef="TRIM" value="false" id="19"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Datum_Aenderung" id="20"/>
+      <elementValue elementRef="TRIM" value="false" id="21"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" value="30" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="Staiger_KundeAnlieferzeit" name="tDBInput_4">
+      <column comment="" defaultValue="(NULL)" key="true" length="10" name="Kal_Nummer" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kun_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Tur_Nummer" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Kal_Liefertag" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="5" name="Kal_Anlieferzeit_von" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="5" name="Kal_Anlieferzeit_bis" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="18" name="Kal_Logistikkosten" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'current user'" key="false" length="50" name="User_Anlage" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'current timestamp'" key="false" length="23" name="Datum_Anlage" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="3" sourceType="DATETIME" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'last user'" key="false" length="50" name="User_Aenderung" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'timestamp'" key="false" length="23" name="Datum_Aenderung" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="3" sourceType="DATETIME" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+    </metadata>
+  </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="280">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_6" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_dm714GvIEfCaypKZ6raWlg" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="context.GR_Master_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" value="MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="context.GR_Master_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.GR_Master_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.GR_Master_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.GR_Master_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="context.GR_Master_Password"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Staiger_Land&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.Lan_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.Lan_Bezeichnung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.Lan_Kennzeichen,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.Lan_KzPostalisch,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.Lan_Telefon,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.Lan_EU,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.Sort,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.User_Anlage,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.Datum_Anlage,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.User_Aenderung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land.Datum_Aenderung&quot;&#xA;+&quot;&#xA;FROM&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Land&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="id_MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.GR_Master_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="ENABLE_ALWAYS_ENCRYPTED" value="false"/>
+    <elementParameter field="TEXT" name="KEYSTORE_PRINCIPAL_ID" value="" show="false"/>
+    <elementParameter field="PASSWORD" name="KEYSTORE_SECRET" value="" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Lan_Nummer" id="0"/>
+      <elementValue elementRef="TRIM" value="false" id="1"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Lan_Bezeichnung" id="2"/>
+      <elementValue elementRef="TRIM" value="false" id="3"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Lan_Kennzeichen" id="4"/>
+      <elementValue elementRef="TRIM" value="false" id="5"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Lan_KzPostalisch" id="6"/>
+      <elementValue elementRef="TRIM" value="false" id="7"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Lan_Telefon" id="8"/>
+      <elementValue elementRef="TRIM" value="false" id="9"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Lan_EU" id="10"/>
+      <elementValue elementRef="TRIM" value="false" id="11"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sort" id="12"/>
+      <elementValue elementRef="TRIM" value="false" id="13"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="User_Anlage" id="14"/>
+      <elementValue elementRef="TRIM" value="false" id="15"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Datum_Anlage" id="16"/>
+      <elementValue elementRef="TRIM" value="false" id="17"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="User_Aenderung" id="18"/>
+      <elementValue elementRef="TRIM" value="false" id="19"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Datum_Aenderung" id="20"/>
+      <elementValue elementRef="TRIM" value="false" id="21"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" value="30" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="Staiger_Land" name="tDBInput_6">
+      <column comment="" defaultValue="(NULL)" key="true" length="10" name="Lan_Nummer" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Lan_Bezeichnung" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="5" name="Lan_Kennzeichen" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Lan_KzPostalisch" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="5" name="Lan_Telefon" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Lan_EU" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Sort" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'current user'" key="false" length="50" name="User_Anlage" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'current timestamp'" key="false" length="23" name="Datum_Anlage" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="3" sourceType="DATETIME" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'last user'" key="false" length="50" name="User_Aenderung" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'timestamp'" key="false" length="23" name="Datum_Aenderung" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="3" sourceType="DATETIME" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+    </metadata>
+  </node>
+  <node componentName="tMap" componentVersion="2.1" offsetLabelX="0" offsetLabelY="0" posX="720" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tMap_3" show="false"/>
+    <elementParameter field="EXTERNAL" name="MAP" value=""/>
+    <elementParameter field="CLOSED_LIST" name="LINK_STYLE" value="AUTO"/>
+    <elementParameter field="DIRECTORY" name="TEMPORARY_DATA_DIRECTORY" value=""/>
+    <elementParameter field="IMAGE" name="PREVIEW" value="_hHEWcHH3EfCtQ81OGVhTIg-tMap_3-PREVIEW.bmp"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="true" show="false"/>
+    <elementParameter field="CHECK" name="LKUP_PARALLELIZE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="LEVENSHTEIN" value="0" show="false"/>
+    <elementParameter field="TEXT" name="JACCARD" value="0" show="false"/>
+    <elementParameter field="CHECK" name="ENABLE_AUTO_CONVERT_TYPE" value="false" show="false"/>
+    <elementParameter field="TEXT" name="ROWS_BUFFER_SIZE" value="2000000"/>
+    <elementParameter field="CHECK" name="CHANGE_HASH_AND_EQUALS_FOR_BIGDECIMAL" value="true"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="out2">
+      <column comment="" key="true" length="255" name="GR_KundenID" nullable="false" pattern="" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="Kundennummer" nullable="false" pattern="" precision="0" sourceType="DECIMAL" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="KontaktID" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="GR_Betrieb" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="GR_KundenartID" nullable="true" pattern="" precision="0" sourceType="" type="id_String" originalLength="255" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="KundenartID" nullable="true" pattern="" precision="0" sourceType="" type="id_Long" originalLength="30" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name1" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name2" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name3" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Strasse" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="PLZ" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Ort" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="Land" nullable="true" pattern="" precision="0" sourceType="INT" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Telefon1" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Telefon2" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Fax" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Email" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="50" name="UmsatzsteuerID" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="Preisgruppe" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="ZentraleKundennummer" nullable="true" pattern="" precision="0" sourceType="DECIMAL" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="Bemerkung" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="LetzteAenderung" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="ErstelltAm" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Mo" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Di" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Mi" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Do" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Fr" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Sa" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_So" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_MO" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Di" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Mi" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Do" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Fr" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Sa" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_So" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Mo" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Di" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Mi" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Do" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Fr" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Sa" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_So" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mo_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mo_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Di_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Di_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mi_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mi_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Do_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Do_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Fr_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Fr_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Sa_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Sa_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_So_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_So_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Kundengruppe" nullable="true" pattern="" precision="0" sourceType="" type="id_String" originalLength="255" usefulColumn="true"/>
+    </metadata>
+    <nodeData xsi:type="TalendMapper:MapperData">
+      <uiProperties/>
+      <varTables sizeState="INTERMEDIATE" name="Var" minimized="true"/>
+      <outputTables sizeState="INTERMEDIATE" name="out2">
+        <mapperTableEntries name="GR_KundenID" expression="out12.GR_KundenID " type="id_String"/>
+        <mapperTableEntries name="Kundennummer" expression="out12.Kundennummer " type="id_Long"/>
+        <mapperTableEntries name="KontaktID" expression="out12.KontaktID " type="id_Long" nullable="true"/>
+        <mapperTableEntries name="GR_Betrieb" expression="out12.GR_Betrieb " type="id_String" nullable="true"/>
+        <mapperTableEntries name="GR_KundenartID" expression="out12.GR_KundenartID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="KundenartID" expression="out12.KundenartID " type="id_Long" nullable="true"/>
+        <mapperTableEntries name="Name1" expression="out12.Name1 " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Name2" expression="out12.Name2 " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Name3" expression="out12.Name3 " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Strasse" expression="out12.Strasse " type="id_String" nullable="true"/>
+        <mapperTableEntries name="PLZ" expression="out12.PLZ " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Ort" expression="out12.Ort " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Land" expression="out12.Land " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Telefon1" expression="out12.Telefon1 " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Telefon2" expression="out12.Telefon2 " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Fax" expression="out12.Fax " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Email" expression="out12.Email " type="id_String" nullable="true"/>
+        <mapperTableEntries name="UmsatzsteuerID" expression="out12.UmsatzsteuerID " type="id_String" nullable="true"/>
+        <mapperTableEntries name="Preisgruppe" expression="out12.Preisgruppe " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="ZentraleKundennummer" expression="out12.ZentraleKundennummer " type="id_Long" nullable="true"/>
+        <mapperTableEntries name="Bemerkung" expression="out12.Bemerkung " type="id_String" nullable="true"/>
+        <mapperTableEntries name="LetzteAenderung" expression="out12.LetzteAenderung " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="ErstelltAm" expression="out12.ErstelltAm " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Mo" expression="out12.Liefertag_Mo " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Di" expression="out12.Liefertag_Di " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Mi" expression="out12.Liefertag_Mi " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Do" expression="out12.Liefertag_Do " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Fr" expression="out12.Liefertag_Fr " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Sa" expression="out12.Liefertag_Sa " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_So" expression="out12.Liefertag_So " type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Tour_MO" expression="out12.Tour_MO " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Di" expression="out12.Tour_Di " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Mi" expression="out12.Tour_Mi " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Do" expression="out12.Tour_Do " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Fr" expression="out12.Tour_Fr " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Sa" expression="out12.Tour_Sa " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_So" expression="out12.Tour_So " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Mo" expression="out12.Stat_Mo " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Di" expression="out12.Stat_Di " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Mi" expression="out12.Stat_Mi " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Do" expression="out12.Stat_Do " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Fr" expression="out12.Stat_Fr " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Sa" expression="out12.Stat_Sa " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_So" expression="out12.Stat_So " type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mo_von" expression="out12.Zeit_Mo_von " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mo_bis" expression="out12.Zeit_Mo_bis " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Di_von" expression="out12.Zeit_Di_von " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Di_bis" expression="out12.Zeit_Di_bis " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mi_von" expression="out12.Zeit_Mi_von " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mi_bis" expression="out12.Zeit_Mi_bis " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Do_von" expression="out12.Zeit_Do_von " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Do_bis" expression="out12.Zeit_Do_bis " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Fr_von" expression="out12.Zeit_Fr_von " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Fr_bis" expression="out12.Zeit_Fr_bis " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Sa_von" expression="out12.Zeit_Sa_von " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Sa_bis" expression="out12.Zeit_Sa_bis " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_So_von" expression="out12.Zeit_So_von " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_So_bis" expression="out12.Zeit_So_bis " type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Kundengruppe" expression="KunArt.Kar_Bezeichnung " type="id_String" nullable="true"/>
+      </outputTables>
+      <inputTables sizeState="INTERMEDIATE" name="out12" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="GR_KundenID" type="id_String"/>
+        <mapperTableEntries name="Kundennummer" type="id_Long"/>
+        <mapperTableEntries name="KontaktID" type="id_Long" nullable="true"/>
+        <mapperTableEntries name="GR_Betrieb" type="id_String" nullable="true"/>
+        <mapperTableEntries name="GR_KundenartID" type="id_String" nullable="true"/>
+        <mapperTableEntries name="KundenartID" type="id_Long" nullable="true"/>
+        <mapperTableEntries name="Name1" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Name2" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Name3" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Strasse" type="id_String" nullable="true"/>
+        <mapperTableEntries name="PLZ" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Ort" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Land" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Telefon1" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Telefon2" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Fax" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Email" type="id_String" nullable="true"/>
+        <mapperTableEntries name="UmsatzsteuerID" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Preisgruppe" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="ZentraleKundennummer" type="id_Long" nullable="true"/>
+        <mapperTableEntries name="Bemerkung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="LetzteAenderung" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="ErstelltAm" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Mo" type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Di" type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Mi" type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Do" type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Fr" type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_Sa" type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Liefertag_So" type="id_Boolean" nullable="true"/>
+        <mapperTableEntries name="Tour_MO" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Di" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Mi" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Do" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Fr" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_Sa" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Tour_So" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Mo" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Di" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Mi" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Do" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Fr" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_Sa" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Stat_So" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mo_von" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mo_bis" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Di_von" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Di_bis" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mi_von" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Mi_bis" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Do_von" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Do_bis" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Fr_von" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Fr_bis" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Sa_von" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_Sa_bis" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_So_von" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="Zeit_So_bis" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="newColumn" type="id_String" nullable="true"/>
+      </inputTables>
+      <inputTables sizeState="INTERMEDIATE" name="KunArt" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
+        <mapperTableEntries name="Kar_Nummer" expression="out12.KundenartID " type="id_Long" operator="="/>
+        <mapperTableEntries name="Kar_Sortierung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kar_Bezeichnung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Sort" type="id_Integer" nullable="true"/>
+        <mapperTableEntries name="User_Anlage" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Datum_Anlage" type="id_Date" nullable="true"/>
+        <mapperTableEntries name="User_Aenderung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Datum_Aenderung" type="id_Date" nullable="true"/>
+      </inputTables>
+    </nodeData>
+  </node>
+  <node componentName="tMSSqlInput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="680" posY="280">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_7" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_dm714GvIEfCaypKZ6raWlg" show="false"/>
+    <elementParameter field="TEXT" name="HOST" value="context.GR_Master_Server"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="TYPE" value="MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="PORT" value="context.GR_Master_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.GR_Master_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.GR_Master_Database"/>
+    <elementParameter field="TEXT" name="USER" value="context.GR_Master_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="context.GR_Master_Password"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="&quot;Staiger_Kundenart&quot;"/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
+    <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
+    <elementParameter field="GUESS_SCHEMA" name="GUESS_SCHEMA" value="&quot;&quot;"/>
+    <elementParameter field="MEMO_SQL" name="QUERY" value="&quot;SELECT \&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kundenart.Kar_Nummer,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kundenart.Kar_Sortierung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kundenart.Kar_Bezeichnung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kundenart.Sort,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kundenart.User_Anlage,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kundenart.Datum_Anlage,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kundenart.User_Aenderung,&#xA;&#x9;&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kundenart.Datum_Aenderung&quot;&#xA;+&quot;&#xA;FROM&#x9;\&quot;&quot;+context.GR_Master_Schema+&quot;\&quot;.Staiger_Kundenart&quot;"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="id_MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.GR_Master_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="CHECK" name="ENABLE_ALWAYS_ENCRYPTED" value="false"/>
+    <elementParameter field="TEXT" name="KEYSTORE_PRINCIPAL_ID" value="" show="false"/>
+    <elementParameter field="PASSWORD" name="KEYSTORE_SECRET" value="" show="false"/>
+    <elementParameter field="CHECK" name="TRIM_ALL_COLUMN" value="false"/>
+    <elementParameter field="TABLE" name="TRIM_COLUMN">
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kar_Nummer" id="0"/>
+      <elementValue elementRef="TRIM" value="false" id="1"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kar_Sortierung" id="2"/>
+      <elementValue elementRef="TRIM" value="false" id="3"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kar_Bezeichnung" id="4"/>
+      <elementValue elementRef="TRIM" value="false" id="5"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Sort" id="6"/>
+      <elementValue elementRef="TRIM" value="false" id="7"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="User_Anlage" id="8"/>
+      <elementValue elementRef="TRIM" value="false" id="9"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Datum_Anlage" id="10"/>
+      <elementValue elementRef="TRIM" value="false" id="11"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="User_Aenderung" id="12"/>
+      <elementValue elementRef="TRIM" value="false" id="13"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Datum_Aenderung" id="14"/>
+      <elementValue elementRef="TRIM" value="false" id="15"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" value="30" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="__TABLE__"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" label="Staiger_Kundenart" name="tDBInput_7">
+      <column comment="" key="true" length="10" name="Kar_Nummer" nullable="false" pattern="" precision="0" sourceType="INT" type="id_Long" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="12" name="Kar_Sortierung" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="null" key="false" length="50" name="Kar_Bezeichnung" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="(NULL)" key="false" length="10" name="Sort" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'current user'" key="false" length="50" name="User_Anlage" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'current timestamp'" key="false" length="23" name="Datum_Anlage" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="3" sourceType="DATETIME" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'last user'" key="false" length="50" name="User_Aenderung" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+      <column comment="" defaultValue="'timestamp'" key="false" length="23" name="Datum_Aenderung" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="3" sourceType="DATETIME" type="id_Date" usefulColumn="true">
+        <additionalField key="Comment" value=""/>
+      </column>
+    </metadata>
+  </node>
+  <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="880" posY="400">
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBOutput_1" show="false"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
+    <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_dm714GvIEfCaypKZ6raWlg" show="false"/>
+    <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
+    <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
+    <elementParameter field="CLOSED_LIST" name="DRIVER" value="MSSQL_PROP"/>
+    <elementParameter field="TEXT" name="HOST" value="context.GR_Master_Server"/>
+    <elementParameter field="TEXT" name="PORT" value="context.GR_Master_Port"/>
+    <elementParameter field="TEXT" name="DB_SCHEMA" value="context.GR_Master_Schema"/>
+    <elementParameter field="TEXT" name="DBNAME" value="context.GR_Master_Database"/>
+    <elementParameter field="TEXT" name="TYPE" value="MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="USER" value="context.GR_Master_Login"/>
+    <elementParameter field="PASSWORD" name="PASS" value="context.GR_Master_Password"/>
+    <elementParameter field="DBTABLE" name="TABLE" value="context.DB_Ziel"/>
+    <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="DROP_IF_EXISTS_AND_CREATE"/>
+    <elementParameter field="CHECK" name="IDENTITY_INSERT" value="false"/>
+    <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
+    <elementParameter field="LABEL" name="NOTE" value="NOTE: batch size must be less than or equal to total number of parameter markers divided by number of columns" show="false"/>
+    <elementParameter field="CHECK" name="SPECIFY_IDENTITY_FIELD" value="false"/>
+    <elementParameter field="COLUMN_LIST" name="IDENTITY_FIELD" value="Kundennummer" show="false"/>
+    <elementParameter field="TEXT" name="START_VALUE" value="1" show="false"/>
+    <elementParameter field="TEXT" name="STEP" value="1" show="false"/>
+    <elementParameter field="LABEL" name="NOTE" value="This option only applies when deploying and running in the Talend Runtime"/>
+    <elementParameter field="CHECK" name="SPECIFY_DATASOURCE_ALIAS" value="false"/>
+    <elementParameter field="TEXT" name="DATASOURCE_ALIAS" value="&quot;&quot;" show="false"/>
+    <elementParameter field="CHECK" name="DIE_ON_ERROR" value="false"/>
+    <elementParameter field="MAPPING_TYPE" name="MAPPING" value="id_MSSQL" show="false"/>
+    <elementParameter field="TEXT" name="PROPERTIES" value="context.GR_Master_AdditionalParams"/>
+    <elementParameter field="CHECK" name="ACTIVE_DIR_AUTH" value="false"/>
+    <elementParameter field="CHECK" name="ENABLE_ALWAYS_ENCRYPTED" value="false"/>
+    <elementParameter field="TEXT" name="KEYSTORE_PRINCIPAL_ID" value="" show="false"/>
+    <elementParameter field="PASSWORD" name="KEYSTORE_SECRET" value="" show="false"/>
+    <elementParameter field="CHECK" name="USE_ALTERNATE_SCHEMA" value="false" show="false"/>
+    <elementParameter field="TEXT" name="ALTERNATE_SCHEMA" value="&quot;&quot;" show="false"/>
+    <elementParameter field="ENCODING_TYPE" name="ENCODING" value="&quot;ISO-8859-15&quot;" show="false"/>
+    <elementParameter field="TECHNICAL" name="ENCODING:ENCODING_TYPE" value="ISO-8859-15"/>
+    <elementParameter field="TEXT" name="COMMIT_EVERY" value="10000"/>
+    <elementParameter field="TABLE" name="ADD_COLS"/>
+    <elementParameter field="CHECK" name="USE_FIELD_OPTIONS" value="false"/>
+    <elementParameter field="TABLE" name="FIELD_OPTIONS" show="false">
+      <elementValue elementRef="SCHEMA_COLUMN" value="GR_KundenID" id="0"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="1"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="2"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="3"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="4"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kundennummer" id="5"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="6"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="7"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="8"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="9"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="KontaktID" id="10"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="11"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="12"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="13"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="14"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GR_Betrieb" id="15"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="16"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="17"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="18"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="19"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="GR_KundenartID" id="20"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="21"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="22"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="23"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="24"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="KundenartID" id="25"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="26"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="27"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="28"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="29"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Name1" id="30"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="31"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="32"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="33"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="34"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Name2" id="35"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="36"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="37"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="38"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="39"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Name3" id="40"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="41"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="42"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="43"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="44"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Strasse" id="45"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="46"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="47"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="48"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="49"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="PLZ" id="50"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="51"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="52"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="53"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="54"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Ort" id="55"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="56"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="57"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="58"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="59"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Land" id="60"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="61"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="62"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="63"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="64"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Telefon1" id="65"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="66"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="67"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="68"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="69"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Telefon2" id="70"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="71"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="72"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="73"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="74"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Fax" id="75"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="76"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="77"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="78"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="79"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Email" id="80"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="81"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="82"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="83"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="84"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="UmsatzsteuerID" id="85"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="86"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="87"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="88"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="89"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Preisgruppe" id="90"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="91"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="92"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="93"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="94"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ZentraleKundennummer" id="95"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="96"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="97"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="98"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="99"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Bemerkung" id="100"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="101"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="102"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="103"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="104"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="LetzteAenderung" id="105"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="106"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="107"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="108"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="109"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="ErstelltAm" id="110"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="111"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="112"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="113"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="114"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Liefertag_Mo" id="115"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="116"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="117"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="118"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="119"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Liefertag_Di" id="120"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="121"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="122"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="123"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="124"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Liefertag_Mi" id="125"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="126"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="127"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="128"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="129"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Liefertag_Do" id="130"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="131"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="132"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="133"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="134"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Liefertag_Fr" id="135"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="136"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="137"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="138"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="139"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Liefertag_Sa" id="140"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="141"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="142"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="143"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="144"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Liefertag_So" id="145"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="146"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="147"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="148"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="149"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Tour_MO" id="150"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="151"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="152"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="153"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="154"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Tour_Di" id="155"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="156"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="157"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="158"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="159"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Tour_Mi" id="160"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="161"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="162"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="163"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="164"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Tour_Do" id="165"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="166"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="167"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="168"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="169"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Tour_Fr" id="170"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="171"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="172"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="173"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="174"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Tour_Sa" id="175"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="176"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="177"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="178"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="179"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Tour_So" id="180"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="181"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="182"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="183"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="184"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Stat_Mo" id="185"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="186"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="187"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="188"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="189"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Stat_Di" id="190"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="191"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="192"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="193"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="194"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Stat_Mi" id="195"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="196"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="197"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="198"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="199"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Stat_Do" id="200"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="201"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="202"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="203"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="204"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Stat_Fr" id="205"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="206"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="207"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="208"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="209"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Stat_Sa" id="210"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="211"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="212"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="213"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="214"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Stat_So" id="215"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="216"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="217"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="218"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="219"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Mo_von" id="220"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="221"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="222"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="223"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="224"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Mo_bis" id="225"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="226"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="227"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="228"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="229"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Di_von" id="230"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="231"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="232"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="233"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="234"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Di_bis" id="235"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="236"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="237"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="238"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="239"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Mi_von" id="240"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="241"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="242"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="243"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="244"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Mi_bis" id="245"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="246"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="247"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="248"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="249"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Do_von" id="250"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="251"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="252"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="253"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="254"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Do_bis" id="255"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="256"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="257"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="258"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="259"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Fr_von" id="260"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="261"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="262"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="263"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="264"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Fr_bis" id="265"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="266"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="267"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="268"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="269"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Sa_von" id="270"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="271"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="272"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="273"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="274"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_Sa_bis" id="275"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="276"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="277"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="278"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="279"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_So_von" id="280"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="281"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="282"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="283"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="284"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Zeit_So_bis" id="285"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="286"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="287"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="288"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="289"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Kundengruppe" id="290"/>
+      <elementValue elementRef="UPDATE_KEY" value="false" id="291"/>
+      <elementValue elementRef="DELETE_KEY" value="false" id="292"/>
+      <elementValue elementRef="UPDATABLE" value="true" id="293"/>
+      <elementValue elementRef="INSERTABLE" value="true" id="294"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="IGNORE_DATE_OUTOF_RANGE" value="false"/>
+    <elementParameter field="CHECK" name="ENABLE_DEBUG_MODE" value="false"/>
+    <elementParameter field="CHECK" name="SUPPORT_NULL_WHERE" value="false"/>
+    <elementParameter field="CHECK" name="USE_BATCH_SIZE" value="true"/>
+    <elementParameter field="TEXT" name="BATCH_SIZE" value="10000"/>
+    <elementParameter field="CHECK" name="SET_QUERY_TIMEOUT" value="false"/>
+    <elementParameter field="TEXT" name="QUERY_TIMEOUT_IN_SECONDS" value="30" show="false"/>
+    <elementParameter field="TEXT" name="LABEL" value="&quot;Kunden&quot;"/>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
+    <metadata connector="FLOW" name="tDBOutput_1">
+      <column comment="" key="true" length="255" name="GR_KundenID" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="Kundennummer" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="KontaktID" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="GR_Betrieb" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="GR_KundenartID" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="255" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="KundenartID" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" originalLength="30" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name1" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name2" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name3" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Strasse" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="PLZ" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Ort" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="Land" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Telefon1" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Telefon2" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Fax" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Email" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="50" name="UmsatzsteuerID" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="Preisgruppe" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="ZentraleKundennummer" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="Bemerkung" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="LetzteAenderung" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="ErstelltAm" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Mo" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Di" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Mi" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Do" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Fr" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Sa" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_So" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_MO" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Di" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Mi" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Do" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Fr" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Sa" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_So" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Mo" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Di" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Mi" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Do" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Fr" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Sa" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_So" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mo_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mo_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Di_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Di_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mi_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mi_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Do_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Do_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Fr_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Fr_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Sa_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Sa_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_So_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_So_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Kundengruppe" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="255" usefulColumn="true"/>
+    </metadata>
+    <metadata connector="REJECT" name="REJECT">
+      <column comment="" key="true" length="255" name="GR_KundenID" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="Kundennummer" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="KontaktID" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="GR_Betrieb" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="GR_KundenartID" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="255" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="KundenartID" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" originalLength="30" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name1" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name2" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Name3" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Strasse" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="PLZ" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Ort" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="Land" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Telefon1" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Telefon2" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Fax" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Email" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="50" name="UmsatzsteuerID" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="Preisgruppe" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" defaultValue="" key="false" length="30" name="ZentraleKundennummer" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true"/>
+      <column comment="" key="false" length="1000" name="Bemerkung" nullable="true" pattern="" precision="0" sourceType="NVARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="LetzteAenderung" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="30" name="ErstelltAm" nullable="true" pattern="&quot;yyyy-MM-dd HH:mm:ss&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Mo" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Di" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Mi" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Do" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Fr" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_Sa" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="1" name="Liefertag_So" nullable="true" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_MO" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Di" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Mi" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Do" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Fr" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_Sa" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Tour_So" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Mo" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Di" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Mi" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Do" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Fr" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_Sa" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="10" name="Stat_So" nullable="true" pattern="" precision="0" sourceType="INT" type="id_Integer" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mo_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mo_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Di_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Di_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mi_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Mi_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Do_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Do_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Fr_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Fr_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Sa_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_Sa_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_So_von" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Zeit_So_bis" nullable="true" pattern="&quot;HH:mm&quot;" precision="0" sourceType="DATETIME" type="id_Date" usefulColumn="true"/>
+      <column comment="" key="false" length="255" name="Kundengruppe" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" originalLength="255" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+      <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
+    </metadata>
+  </node>
+  <connection connectorName="FLOW" label="kunde" lineStyle="0" metaname="tDBInput_2" offsetLabelX="0" offsetLabelY="0" source="tDBInput_2" target="tMap_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="kunde" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="out12" lineStyle="0" metaname="out12" offsetLabelX="0" offsetLabelY="0" source="tMap_2" target="tMap_3">
+    <elementParameter field="TABLE" name="TRACES_CONNECTION_FILTER" show="false">
+      <elementValue elementRef="TRACE_COLUMN" value="KundenartID" id="0"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="1"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="2"/>
+      <elementValue elementRef="TRACE_COLUMN" value="GR_KundenartID" id="3"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="4"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="5"/>
+      <elementValue elementRef="TRACE_COLUMN" value="newColumn" id="6"/>
+      <elementValue elementRef="TRACE_COLUMN_CHECKED" value="true" id="7"/>
+      <elementValue elementRef="TRACE_COLUMN_CONDITION" value="" id="8"/>
+    </elementParameter>
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="out12" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="anlieferzeit" lineStyle="8" metaname="tDBInput_4" offsetLabelX="0" offsetLabelY="0" source="tDBInput_4" target="tMap_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="anlieferzeit" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="land_staiger" lineStyle="8" metaname="tDBInput_6" offsetLabelX="0" offsetLabelY="0" source="tDBInput_6" target="tMap_2">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="land_staiger" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="out2" lineStyle="0" metaname="out2" offsetLabelX="0" offsetLabelY="0" source="tMap_3" target="tDBOutput_1">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="out2" show="false"/>
+  </connection>
+  <connection connectorName="FLOW" label="KunArt" lineStyle="8" metaname="tDBInput_7" offsetLabelX="0" offsetLabelY="0" source="tDBInput_7" target="tMap_3">
+    <elementParameter field="CHECK" name="MONITOR_CONNECTION" value="false"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="KunArt" show="false"/>
+  </connection>
+  <subjob>
+    <elementParameter field="CHECK" name="SHOW_SUBJOB_TITLE" value="true"/>
+    <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_2" show="false"/>
+    <elementParameter field="TEXT" name="SUBJOB_TITLE" value="STAIGER"/>
+    <elementParameter field="COLOR" name="SUBJOB_TITLE_COLOR" value="0;93;185"/>
+    <elementParameter field="COLOR" name="SUBJOB_COLOR" value="0;255;0"/>
+  </subjob>
+</talendfile:ProcessType>

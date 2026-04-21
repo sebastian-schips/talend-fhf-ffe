@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TalendMetadata:DatabaseConnection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmi:id="_e9h68O1lEfCnRKm5BKE3Xg" name="Leitart_Data+" id="_o_MfEO1jEfCnRKm5BKE3Xg" label="Leitart_Data+" DatabaseType="PostgreSQL" DriverClass="org.postgresql.Driver" URL="jdbc:postgresql://dataplus-cluster.cluster-cj6su4ocamxs.eu-central-1.rds.amazonaws.com:5432/_dp_db_mqasjwzpio?sslmode=verify-full&amp;sslrootcert=C:/Talend/certificates/aws_ca.pem" dbVersionString="V9_X" Port="5432" Username="_dp_reader_mqasjwzpio" Password="enc:system.encryption.key.v1:f5JClUWxA8VnoXCvhn5wnO3rmsfOoBBTQShvzAjcHPACkq0yRcjfpgdp2BqMQcLcZuhKw2D/hOY8xLh0" ServerName="dataplus-cluster.cluster-cj6su4ocamxs.eu-central-1.rds.amazonaws.com" DatasourceName="" FileFieldName="" SID="_dp_db_mqasjwzpio" SqlSynthax="" StringQuote="" NullChar="" DbmsId="postgres_id" ProductId="POSTGRESQL" AdditionalParams="sslmode=verify-full&amp;sslrootcert=C:/Talend/certificates/aws_ca.pem" StandardSQL="true" SQLMode="false" UiSchema="" supportNLS="false">
+  <taggedValue xmi:id="_e9h68e1lEfCnRKm5BKE3Xg" tag="Is Conn Need Reload" value="false"/>
+  <taggedValue xmi:id="_e-e9MO1lEfCnRKm5BKE3Xg" tag="package filter" value=""/>
+  <taggedValue xmi:id="_e-kcwO1lEfCnRKm5BKE3Xg" tag="Status" value=""/>
+  <taggedValue xmi:id="_e-kcwe1lEfCnRKm5BKE3Xg" tag="Version" value="0.1"/>
+  <taggedValue xmi:id="_e-kcwu1lEfCnRKm5BKE3Xg" tag="Purpose" value=""/>
+  <taggedValue xmi:id="_e-kcw-1lEfCnRKm5BKE3Xg" tag="Description" value=""/>
+  <taggedValue xmi:id="_e-kcxO1lEfCnRKm5BKE3Xg" tag="Author" value=""/>
+  <taggedValue xmi:id="_e-kcxe1lEfCnRKm5BKE3Xg" tag="otherParameter"/>
+  <parameters xmi:id="_e9h68u1lEfCnRKm5BKE3Xg" key="CONN_PARA_KEY_USERNAME" value="_dp_reader_mqasjwzpio"/>
+  <parameters xmi:id="_oujzUO1pEfCnRKm5BKE3Xg" key="CONN_PARA_KEY_MAPRDB_TABLE_NS_MAPPING" value=""/>
+</TalendMetadata:DatabaseConnection>

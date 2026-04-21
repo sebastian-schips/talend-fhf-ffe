@@ -1,0 +1,465 @@
+package routines;
+
+//=============================================================================
+// Routine: ArtikelParser
+// Parsing-Flow Schritte 1–22 (Rohware / Schnittware / Convenience)
+// Version: 1.4
+//=============================================================================
+public class ArtikelParser {
+
+ // =========================================================================
+ // Inner-Class: ArtikelParseResult
+ // =========================================================================
+ public static class ArtikelParseResult {
+     public String art                   = null;
+     public String sorte                 = null;
+     public String merkmale              = null;
+     public String schnittart            = null;
+     public String schnittgroesse        = null;
+     public String farbe                 = null;
+     public String land                  = null;
+     public boolean bio                  = false;
+     public String siegel                = "";
+     public String mhd                   = "";
+     public String zustand               = "";
+     public String verband               = "";
+     public String prozent               = "";
+     public String kaliber               = "";
+     public String gewicht               = "";
+     public String stueck                = "";
+     public String satz                  = "";
+     public String laenge                = "";
+     public String rest                  = "";
+     public String bezeichnungKorrigiert = "";
+     public String dqWarengruppeVerdacht = "false";
+ }
+
+ @SuppressWarnings("unchecked")
+ public static ArtikelParseResult parse(
+         String bezeichnung1,
+         String unterwarengruppe,
+         String artikelfamilie,
+         String grBetrieb,
+         String artikelnummer,
+         java.util.Map<String, Object> globalMap) {
+
+     ArtikelParseResult out = new ArtikelParseResult();
+
+     // =====================================================================
+     // Referenz-Listen aus globalMap holen
+     // =====================================================================
+     java.util.Map<String,String> _mapKorrektur =
+         (java.util.Map<String,String>) globalMap.get("KORREKTUR");
+     java.util.Map<String,String> _mapPlural =
+         (java.util.Map<String,String>) globalMap.get("PLURAL");
+     java.util.Set<String> _setArt =
+         (java.util.Set<String>) globalMap.get("ART");
+     java.util.Set<String> _setSort =
+         (java.util.Set<String>) globalMap.get("SORTE");
+     java.util.Set<String> _setMerkmal =
+         (java.util.Set<String>) globalMap.get("MERKMAL");
+     java.util.Set<String> _setSchnittart =
+         (java.util.Set<String>) globalMap.get("SCHNITTART");
+     java.util.Set<String> _setFarben =
+         (java.util.Set<String>) globalMap.get("FARBEN");
+     java.util.HashMap<String,String> _mapLand =
+         (java.util.HashMap<String,String>) globalMap.get("LAND");
+     java.util.Set<String> _setZustand =
+         (java.util.Set<String>) globalMap.get("ZUSTAND");
+     java.util.Set<String> _setVerbaende =
+         (java.util.Set<String>) globalMap.get("VERBAENDE");
+     java.util.Map<String,String> _mapSiegel =
+         (java.util.Map<String,String>) globalMap.get("SIEGEL");
+     java.util.Map<String, java.util.List<java.util.Map<String,String>>> _artSorteMap =
+         (java.util.Map<String, java.util.List<java.util.Map<String,String>>>) globalMap.get("ART_SORTE_MAP");
+     java.util.Map<String,String> _festeGroesseMap =
+         (java.util.Map<String,String>) globalMap.get("FESTE_GROESSE_MAP");
+     java.util.Map<String,String> _schnittart1dMap =
+         (java.util.Map<String,String>) globalMap.get("SCHNITTART_1D_MAP");
+     java.util.Map<String,String> _schnittart2dMap =
+         (java.util.Map<String,String>) globalMap.get("SCHNITTART_2D_MAP");
+     java.util.List<java.util.Map<String,String>> _korrekturSchnittartListe =
+         (java.util.List<java.util.Map<String,String>>) globalMap.get("KORREKTUR_SCHNITTART_LISTE");
+     java.util.Map<String,String> _manuellArt =
+         (java.util.Map<String,String>) globalMap.get("MANUELL_ART");
+     java.util.Map<String,String> _manuellSorte =
+         (java.util.Map<String,String>) globalMap.get("MANUELL_SORTE");
+     java.util.Map<String,String> _manuellSchnittart =
+         (java.util.Map<String,String>) globalMap.get("MANUELL_SCHNITTART");
+     java.util.Map<String,String> _manuellSchnittgroesse =
+         (java.util.Map<String,String>) globalMap.get("MANUELL_SCHNITTGROESSE");
+     java.util.Map<String, java.util.Map<String,String>> _kaliberMap =
+         (java.util.Map<String, java.util.Map<String,String>>) globalMap.get("KALIBER_MAP");
+
+     // =====================================================================
+     // KATEGORIE BESTIMMEN
+     // =====================================================================
+     int _kategorie = 0;
+     if ("Obst (Rohware)".equals(unterwarengruppe)
+             || "Gemüse (Rohware)".equals(unterwarengruppe)) {
+         _kategorie = 1;
+     } else if ("Obst (Schnittware)".equals(unterwarengruppe)
+             || "Gemüse (Schnittware)".equals(unterwarengruppe)) {
+         _kategorie = 2;
+     }
+
+     // =====================================================================
+     // SCHRITT 1: NORMALISIERUNG
+     // =====================================================================
+     String _inhalt = tmp_parser.normalize(bezeichnung1);
+
+     // Nur-normalisierten Text VOR Schreibweise-Korrektur sichern
+     String _inhaltNurNormalisiert = _inhalt;
+
+     // =====================================================================
+     // SCHRITT 2: SCHREIBFEHLER-KORREKTUR
+     // =====================================================================
+     _inhalt = tmp_parser.wordToAlternativeCached("KORREKTUR", _mapKorrektur, _inhalt);
+     out.bezeichnungKorrigiert = _inhalt;
+
+     // =====================================================================
+     // SCHRITT 3: PLURAL → SINGULAR
+     // =====================================================================
+     _inhalt = tmp_parser.wordToAlternativeCached("PLURAL", _mapPlural, _inhalt);
+
+     String[] _result;
+     String _restText = _inhalt;
+     String _gefundeneArt   = "";
+     String _gefundeneSorte = "";
+
+     // =====================================================================
+     // SCHRITTE 4–8: NUR bei Rohware (_kategorie==1) oder Schnittware (_kategorie==2)
+     // =====================================================================
+     if (_kategorie > 0) {
+
+         // =================================================================
+         // SCHRITT 3b: EINDEUTIGE SORTE (VOR Art-Extraktion)
+         // =================================================================
+         if (_artSorteMap != null) {
+             String _textFuerEindeutig = " " + _restText.toLowerCase() + " ";
+             outer:
+             for (java.util.Map.Entry<String, java.util.List<java.util.Map<String,String>>> artEntry
+                     : _artSorteMap.entrySet()) {
+                 for (java.util.Map<String,String> entry : artEntry.getValue()) {
+                     String _sorteKandidat = entry.get("sorte");
+                     String _eindeutig     = entry.get("sorte_eindeutig");
+
+                     if (_sorteKandidat == null || _sorteKandidat.isEmpty()) continue;
+
+                     String _eindeutigTrimmed = (_eindeutig != null) ? _eindeutig.trim() : "";
+                     boolean _istEindeutig = "true".equalsIgnoreCase(_eindeutigTrimmed)
+                             || "1".equals(_eindeutigTrimmed)
+                             || "WAHR".equalsIgnoreCase(_eindeutigTrimmed)
+                             || "ja".equalsIgnoreCase(_eindeutigTrimmed);
+
+                     String _sorteKandidatTrimmed = _sorteKandidat.trim().toLowerCase();
+                     boolean _textMatch = _textFuerEindeutig.contains(" " + _sorteKandidatTrimmed + " ");
+
+                     if (_istEindeutig && _textMatch) {
+                         _gefundeneSorte = _sorteKandidat.trim();
+                         _gefundeneArt   = entry.getOrDefault("art_original", artEntry.getKey());
+                         _restText = _restText.replaceAll(
+                             "(?i)\\b" + java.util.regex.Pattern.quote(_sorteKandidatTrimmed) + "\\b",
+                             " ").replaceAll("\\s+", " ").trim();
+                         break outer;
+                     }
+                 }
+             }
+         }
+
+         // =================================================================
+         // SCHRITT 4: ART
+         // =================================================================
+         if (_gefundeneArt.isEmpty()) {
+             _result = tmp_parser.extrahiereArtMitWortgrenzen(_restText, _setArt);
+             _gefundeneArt = tmp_parser.nz(_result[0]);
+             _restText = tmp_parser.restEmpty(_result, 1);
+
+             if (_gefundeneArt.isEmpty() && artikelfamilie != null
+                     && !artikelfamilie.trim().isEmpty()) {
+                 String _famNorm = tmp_parser.normalize(artikelfamilie);
+                 _famNorm = tmp_parser.wordToAlternativeCached("KORREKTUR", _mapKorrektur, _famNorm);
+                 _famNorm = tmp_parser.wordToAlternativeCached("PLURAL", _mapPlural, _famNorm);
+                 String[] _famResult = tmp_parser.extrahiereArtMitWortgrenzen(_famNorm, _setArt);
+                 String _artAusArtikelfamilie = tmp_parser.nz(_famResult[0]);
+                 if (!_artAusArtikelfamilie.isEmpty()) {
+                     _gefundeneArt = _artAusArtikelfamilie;
+                 }
+             }
+         }
+
+         // =================================================================
+         // SCHRITT 5: SORTE
+         // =================================================================
+         if (_gefundeneSorte.isEmpty()) {
+             _result = tmp_parser.extrahiereSorteKontextabhaengig(
+                 _restText, _gefundeneArt, _artSorteMap);
+             _gefundeneSorte = tmp_parser.nz(_result[0]);
+             String _artAusSorte = (_result.length > 2) ? tmp_parser.nz(_result[2]) : "";
+             _restText = tmp_parser.restEmpty(_result, 1);
+
+             if (_gefundeneArt.isEmpty() && !_artAusSorte.isEmpty()) {
+                 _gefundeneArt = _artAusSorte;
+             }
+
+             if (_gefundeneSorte.isEmpty() && !_gefundeneArt.isEmpty()
+                     && _artSorteMap != null) {
+                 String _stdSorte = tmp_parser.getStandardSorte(_gefundeneArt, _artSorteMap);
+                 if (_stdSorte != null && !_stdSorte.isEmpty()) {
+                     _gefundeneSorte = _stdSorte;
+                 }
+             }
+         }
+
+         out.art   = _gefundeneArt.isEmpty()   ? null : _gefundeneArt;
+         out.sorte = _gefundeneSorte.isEmpty() ? null : _gefundeneSorte;
+
+         // =================================================================
+         // SCHRITT 5b: KALIBER (NUR Rohware, _kategorie==1)
+         // =================================================================
+         if (_kategorie == 1) {
+             String _artFuerKaliber = (out.art != null)
+                 ? out.art.toLowerCase().trim() : "";
+
+             java.util.Map<String,String> _artKaliberMap = null;
+             if (_kaliberMap != null) {
+                 _artKaliberMap = _kaliberMap.get(_artFuerKaliber);
+                 if (_artKaliberMap == null) {
+                     _artKaliberMap = _kaliberMap.get("");
+                 }
+             }
+
+             if (_artKaliberMap != null && !_artKaliberMap.isEmpty()) {
+
+                 // Stufe 1: Scan gegen _restText (korrigierter Text)
+                 String[] _kaliberResult =
+                     ParserInit.extrahiereKaliberMehrtoken(_restText, _artKaliberMap);
+                 String _kaliberGefunden = _kaliberResult[0];
+
+                 if (_kaliberGefunden != null && !_kaliberGefunden.isEmpty()) {
+                     out.kaliber = _kaliberGefunden;
+                     _restText   = _kaliberResult[1];
+
+                 } else {
+                     // Stufe 2: Fallback gegen _inhaltNurNormalisiert
+                     String[] _kaliberResultFallback =
+                         ParserInit.extrahiereKaliberMehrtoken(
+                             _inhaltNurNormalisiert, _artKaliberMap);
+                     String _kaliberGefundenFallback = _kaliberResultFallback[0];
+
+                     if (_kaliberGefundenFallback != null
+                             && !_kaliberGefundenFallback.isEmpty()) {
+                         out.kaliber = _kaliberGefundenFallback;
+
+                         // Korrigierten Kaliber-Begriff aus _restText entfernen
+                         if (_mapKorrektur != null) {
+                             String _kaliberRohNorm = _kaliberResultFallback[0].toLowerCase().trim();
+                             String _kaliberKorrigiert = _mapKorrektur.get(_kaliberRohNorm);
+                             if (_kaliberKorrigiert != null && !_kaliberKorrigiert.isEmpty()) {
+                                 _restText = _restText
+                                     .replaceAll("(?i)\\b"
+                                         + java.util.regex.Pattern.quote(_kaliberKorrigiert)
+                                         + "\\b", " ")
+                                     .replaceAll("\\s+", " ").trim();
+                             }
+                         }
+                         // "cal" aus _restText entfernen falls noch vorhanden
+                         _restText = _restText
+                             .replaceAll("(?i)\\bcal\\b", " ")
+                             .replaceAll("\\s+", " ").trim();
+                     }
+                 }
+             }
+         } // Ende KALIBER
+
+         // =================================================================
+         // SCHRITT 6: MERKMALE
+         // =================================================================
+         _result = tmp_parser.extrahiereMerkmaleCached("MERKMAL", _restText, _setMerkmal);
+         out.merkmale = tmp_parser.nz(_result[0]);
+         _restText = tmp_parser.restEmpty(_result, 1);
+
+         // =================================================================
+         // SCHRITT 7+8: SCHNITTART + SCHNITTGRÖSSE (NUR Schnittware)
+         // =================================================================
+         if (_kategorie == 2) {
+             String _inhaltFuerSchnitt = _restText;
+             if (!_gefundeneArt.isEmpty() && _korrekturSchnittartListe != null) {
+                 _inhaltFuerSchnitt = tmp_parser.korrigiereSchnittartNachArt(
+                     _inhaltFuerSchnitt, _gefundeneArt, _korrekturSchnittartListe);
+             }
+
+             _result = tmp_parser.extrahiereSchnittartenCached(
+                 "SCHNITTART", _inhaltFuerSchnitt, _setSchnittart);
+             String _gefundeneSchnittart = tmp_parser.nz(_result[0]);
+             _restText = tmp_parser.restEmpty(_result, 1);
+
+             String _gefundeneSchnittgroesse = tmp_parser.extrahiereSchnittgroesse(_restText);
+             if (!_gefundeneSchnittgroesse.isEmpty()) {
+                 _restText = tmp_parser.SCHNITTGROESSE_2D.matcher(_restText).replaceFirst(" ");
+                 _restText = tmp_parser.SCHNITTGROESSE_1D.matcher(_restText).replaceFirst(" ");
+                 _restText = _restText.replaceAll("\\s+", " ").trim();
+             }
+
+             if (!_gefundeneSchnittart.isEmpty() && _gefundeneSchnittgroesse.isEmpty()
+                     && _festeGroesseMap != null) {
+                 String _feste = _festeGroesseMap.get(_gefundeneSchnittart.toLowerCase());
+                 if (_feste != null && !_feste.isEmpty()) {
+                     _gefundeneSchnittgroesse = _feste;
+                 }
+             }
+
+             if (!_gefundeneSchnittgroesse.isEmpty()
+                     && _gefundeneSchnittart.toLowerCase().contains("würfel")
+                     && !_gefundeneSchnittgroesse.contains("x")
+                     && !_gefundeneSchnittgroesse.contains("-")) {
+                 String _zahl = _gefundeneSchnittgroesse.replace("mm", "").trim();
+                 _gefundeneSchnittgroesse = _zahl + "x" + _zahl + "mm";
+             }
+
+             if (_gefundeneSchnittart.isEmpty() && !_gefundeneSchnittgroesse.isEmpty()
+                     && !_gefundeneArt.isEmpty()) {
+                 if (_gefundeneSchnittgroesse.contains("x")) {
+                     if (_schnittart2dMap != null) {
+                         String _std2d = _schnittart2dMap.get(_gefundeneArt.toLowerCase());
+                         if (_std2d != null) _gefundeneSchnittart = _std2d;
+                     }
+                 } else {
+                     if (_schnittart1dMap != null) {
+                         String _std1d = _schnittart1dMap.get(_gefundeneArt.toLowerCase());
+                         if (_std1d != null) _gefundeneSchnittart = _std1d;
+                     }
+                 }
+             }
+
+             out.schnittart     = _gefundeneSchnittart.isEmpty()    ? null : _gefundeneSchnittart;
+             out.schnittgroesse = _gefundeneSchnittgroesse.isEmpty() ? null : _gefundeneSchnittgroesse;
+
+         } else {
+             // === ROHWARE: DQ-Check ===
+             out.schnittart     = null;
+             out.schnittgroesse = null;
+
+             if (_setSchnittart != null && !_setSchnittart.isEmpty()) {
+                 boolean _verdacht = tmp_parser.enthaeltSchnittbegriff(_restText, _setSchnittart);
+                 out.dqWarengruppeVerdacht = _verdacht ? "true" : "false";
+                 if (_verdacht) {
+                     System.out.println("[DQ-WARNUNG] Rohware enthält Schnitt-Begriff: "
+                         + artikelnummer + " | " + bezeichnung1
+                         + " | Unterwarengruppe: " + unterwarengruppe);
+                 }
+             }
+         }
+
+     } // Ende if (_kategorie > 0)
+
+     // =====================================================================
+     // AB HIER: UNIVERSELLE SCHRITTE – laufen IMMER
+     // =====================================================================
+
+     // SCHRITT 9: FARBE
+     _result = tmp_parser.extrahiereFarbeMitWortgrenzen(_restText, _setFarben);
+     out.farbe = tmp_parser.nz(_result[0]);
+     _restText = tmp_parser.restKeep(_result, 1, _restText);
+
+     // SCHRITT 10: LAND
+     _result = tmp_parser.extrahiereWordSynonymCached("LAND", _restText, _mapLand);
+     out.land = tmp_parser.nz(_result[1]);
+     _restText = tmp_parser.restEmpty(_result, 2);
+
+	  // SCHRITT 11: BIO
+	  // Sicherheitsnetz: contains()-Check auf normalisiertem Text (case-insensitive)
+	  String _restTextLower = _restText.toLowerCase();
+	  boolean _hasBio = tmp_parser.BIO_SPACE.matcher(_restText).find()
+	      || tmp_parser.BIO_DASH.matcher(_restText).find()
+	      || _restTextLower.contains("bio-")
+	      || _restTextLower.startsWith("bio ");
+	  if (_hasBio) {
+	      out.bio = true;
+	      _restText = tmp_parser.BIO_SPACE.matcher(_restText).replaceAll(" ");
+	      _restText = tmp_parser.BIO_DASH.matcher(_restText).replaceAll(" ");
+	      _restText = _restText.replaceAll("\\s+", " ").trim();
+	  } else {
+	      out.bio = false;
+	  }
+
+     // SCHRITT 12: SIEGEL
+     _result = tmp_parser.extrahiereSiegelCached(_restText, _mapSiegel);
+     out.siegel = tmp_parser.nz(_result[0]);
+     _restText = tmp_parser.restEmpty(_result, 1);
+
+     // SCHRITT 13: MHD
+     _result = tmp_parser.extractMhdDate(_restText);
+     out.mhd = tmp_parser.nz(_result[0]);
+     _restText = tmp_parser.restEmpty(_result, 1);
+
+     // SCHRITT 14: ZUSTAND
+     _result = tmp_parser.extrahiereReferenz(_restText, _setZustand);
+     out.zustand = tmp_parser.nz(_result[0]);
+     _restText = tmp_parser.restEmpty(_result, 1);
+
+     // SCHRITT 15: VERBAND
+     _result = tmp_parser.extrahiereReferenz(_restText, _setVerbaende);
+     out.verband = tmp_parser.nz(_result[0]);
+     _restText = tmp_parser.restKeep(_result, 1, _restText);
+
+     // SCHRITT 16: PROZENT
+     _result = tmp_parser.extractFirstPercentage(_restText);
+     out.prozent = tmp_parser.nz(_result[0]);
+     _restText = tmp_parser.restEmpty(_result, 1);
+
+     // SCHRITT 17: GEWICHT
+     _result = tmp_parser.extractWeightAndPiecesWithRest(_restText);
+     out.gewicht = _result[1] != null
+         ? _result[1] + "x" + _result[0]
+         : (_result[0] != null ? _result[0] : "");
+     _restText = tmp_parser.restEmpty(_result, 2);
+
+     // SCHRITT 18: STÜCK
+     _result = tmp_parser.extractPieces(_restText);
+     out.stueck = _result[0] != null
+         ? _result[0] + " " + _result[1] : "";
+     _restText = tmp_parser.restEmpty(_result, 2);
+
+     // SCHRITT 19: SATZ
+     _result = tmp_parser.extractErNumbers(_restText);
+     out.satz = tmp_parser.nz(_result[0]);
+     _restText = tmp_parser.restEmpty(_result, 1);
+
+     // SCHRITT 20: LÄNGE
+     _result = tmp_parser.extractLength(_restText);
+     out.laenge = tmp_parser.nz(_result[0]);
+     _restText = tmp_parser.restEmpty(_result, 1);
+
+     // =====================================================================
+     // SCHRITT 21: MANUELLE KORREKTUREN (überschreiben alles)
+     // =====================================================================
+     if (_manuellArt != null || _manuellSorte != null
+             || _manuellSchnittart != null || _manuellSchnittgroesse != null) {
+         String _manuellKey = (grBetrieb != null ? grBetrieb.toLowerCase() : "")
+             + "_" + artikelnummer;
+
+         if (_manuellArt != null && _manuellArt.containsKey(_manuellKey)) {
+             out.art = _manuellArt.get(_manuellKey);
+         }
+         if (_manuellSorte != null && _manuellSorte.containsKey(_manuellKey)) {
+             out.sorte = _manuellSorte.get(_manuellKey);
+         }
+         if (_kategorie == 2) {
+             if (_manuellSchnittart != null && _manuellSchnittart.containsKey(_manuellKey)) {
+                 out.schnittart = _manuellSchnittart.get(_manuellKey);
+             }
+             if (_manuellSchnittgroesse != null && _manuellSchnittgroesse.containsKey(_manuellKey)) {
+                 out.schnittgroesse = _manuellSchnittgroesse.get(_manuellKey);
+             }
+         }
+     }
+
+     // =====================================================================
+     // SCHRITT 22: REST
+     // =====================================================================
+     out.rest = _restText != null ? _restText.trim() : "";
+
+     return out;
+ }
+}

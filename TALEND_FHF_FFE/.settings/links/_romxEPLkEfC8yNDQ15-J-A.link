@@ -1,0 +1,104 @@
+{
+  "itemId" : "_romxEPLkEfC8yNDQ15-J-A",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_qq0_MHFIEfCtQ81OGVhTIg",
+    "parameterList" : [ {
+      "id" : "_qrBMcXFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Server"
+    }, {
+      "id" : "_qrBMcnFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Login"
+    }, {
+      "id" : "_qrBMc3FIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Schema"
+    }, {
+      "id" : "_qrBMdHFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Port"
+    }, {
+      "id" : "_qrBMdXFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Password"
+    }, {
+      "id" : "_qrBMdnFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_AdditionalParams"
+    }, {
+      "id" : "_qrBMd3FIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Database"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_1ZkjEPtvEfC2zcvz01DSew",
+    "parameterList" : [ {
+      "id" : "_lwXBQPtpEfC2zcvz01DSew",
+      "name" : "Bronze_Insert_Batches"
+    }, {
+      "id" : "_lwXBQftpEfC2zcvz01DSew",
+      "name" : "Bronze_Insert_Batch_Size"
+    }, {
+      "id" : "_lwXBQvtpEfC2zcvz01DSew",
+      "name" : "Bronze_CDC_Insert_Current_Update_SQL"
+    }, {
+      "id" : "_dBfvgPtwEfC2zcvz01DSew",
+      "name" : "Bronze_Processed_At"
+    }, {
+      "id" : "_lMhYAB0hEfG4DIJ9n7tpXw",
+      "name" : "tabele_name"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_mfOu4PtoEfC2zcvz01DSew",
+    "parameterList" : [ {
+      "id" : "_lwXBQftpEfC2zcvz01DSew",
+      "name" : "Silver_Insert_Batches"
+    }, {
+      "id" : "_lwXBQPtpEfC2zcvz01DSew",
+      "name" : "Silver_Insert_Batch_Size"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_EP8E8PtxEfC2zcvz01DSew",
+    "parameterList" : [ {
+      "id" : "_lwXBQPtpEfC2zcvz01DSew",
+      "name" : "Bronze_Update_Batches"
+    }, {
+      "id" : "_lwXBQftpEfC2zcvz01DSew",
+      "name" : "Bronze_Update_Batch_Size"
+    }, {
+      "id" : "_lwXBQvtpEfC2zcvz01DSew",
+      "name" : "Bronze_CDC_Update_Current_Update_SQL"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_qKi4IPtqEfC2zcvz01DSew",
+    "parameterList" : [ {
+      "id" : "_lwXBQPtpEfC2zcvz01DSew",
+      "name" : "Silver_Update_Batches"
+    }, {
+      "id" : "_lwXBQftpEfC2zcvz01DSew",
+      "name" : "Silver_Update_Batch_Size"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_XlggkPtzEfC2zcvz01DSew",
+    "parameterList" : [ {
+      "id" : "_lwXBQPtpEfC2zcvz01DSew",
+      "name" : "Bronze_Delete_Batches"
+    }, {
+      "id" : "_lwXBQftpEfC2zcvz01DSew",
+      "name" : "Bronze_Delete_Batch_Size"
+    }, {
+      "id" : "_lwXBQvtpEfC2zcvz01DSew",
+      "name" : "Bronze_CDC_Delete_Current_Update_SQL"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_a7__cPtsEfC2zcvz01DSew",
+    "parameterList" : [ {
+      "id" : "_lwXBQftpEfC2zcvz01DSew",
+      "name" : "Silver_Delete_Batches"
+    }, {
+      "id" : "_lwXBQPtpEfC2zcvz01DSew",
+      "name" : "Silver_Delete_Batch_Size"
+    } ]
+  } ]
+}

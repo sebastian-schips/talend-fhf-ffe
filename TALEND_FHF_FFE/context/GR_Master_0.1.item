@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_qrBMcHFIEfCtQ81OGVhTIg" confirmationNeeded="false" hide="false" name="Default">
+  <contextParameter xmi:id="_qrBMcXFIEfCtQ81OGVhTIg" comment="" name="GR_Master_Server" prompt="GR_Master_Server?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="gr-master.database.windows.net"/>
+  <contextParameter xmi:id="_qrBMcnFIEfCtQ81OGVhTIg" comment="" name="GR_Master_Login" prompt="GR_Master_Login?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="gr-master-admin"/>
+  <contextParameter xmi:id="_qrBMc3FIEfCtQ81OGVhTIg" comment="" name="GR_Master_Schema" prompt="GR_Master_Schema?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="dbo"/>
+  <contextParameter xmi:id="_qrBMdHFIEfCtQ81OGVhTIg" comment="" name="GR_Master_Port" prompt="GR_Master_Port?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="1433"/>
+  <contextParameter xmi:id="_qrBMdXFIEfCtQ81OGVhTIg" comment="" name="GR_Master_Password" prompt="GR_Master_Password?" promptNeeded="false" repositoryContextId="built-in" type="id_Password" value="enc:system.encryption.key.v1:KCxU0Ramd/WJNWjDm0XoRlJVzf/Ok170yWz/S6rzEjdEk2BZfACeUfERvuXMIy7BWkU0U0Aj3qb/RZx4jk3MdCld6YqOzUOnMTb4lBHWPbHmrKfL1bRv16O1dmY="/>
+  <contextParameter xmi:id="_qrBMdnFIEfCtQ81OGVhTIg" comment="" name="GR_Master_AdditionalParams" prompt="GR_Master_AdditionalParams?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value=""/>
+  <contextParameter xmi:id="_qrBMd3FIEfCtQ81OGVhTIg" comment="" name="GR_Master_Database" prompt="GR_Master_Database?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="gr_master"/>
+</talendfile:ContextType>

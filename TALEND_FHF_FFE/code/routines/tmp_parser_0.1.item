@@ -1,0 +1,1026 @@
+package routines;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * tmp_parser v0.5 – Kaliber-Bereich-Fix
+ * RAM-effizienter und GC-freundlicher Parser für Artikelbezeichnungen
+ * Gemüsering / Data+ (PostgreSQL) → Talend Studio
+ *
+ * Changelog v0.5 (gegenüber v0.4):
+ * - KALIBER_NUMBER_PATTERN: um \d+-\d+-Format erweitert
+ *   → extrahiereKaliber() erkennt jetzt auch "50-60", "60-70" etc.
+ * - normalize(): result.replace("-", " ") ersetzt durch DASH_NON_DIGIT-Pattern
+ *   → "-" zwischen zwei Ziffern bleibt erhalten (z.B. "50-60", "60-70")
+ *   → "-" außerhalb von Ziffern wird weiterhin durch Leerzeichen ersetzt
+ *
+ * Changelog v0.4 (gegenüber v0.3):
+ * - normalize(): result.replace("/", " ") ersetzt durch SLASH_NON_DIGIT-Pattern
+ *   → "/" zwischen zwei Ziffern bleibt erhalten (z.B. "55/60", "3/4", "5/6")
+ *   → "/" außerhalb von Ziffern wird weiterhin durch Leerzeichen ersetzt
+ * - KALIBER_NUMBER_PATTERN: um \d+/\d+-Format erweitert
+ *   → extrahiereKaliber() erkennt jetzt "55/60", "3/4", "5/6" etc.
+ * - SPECIAL_CHARS / SLASH_BETWEEN_DIGITS: fehlerhafte/ungenutzte Deklarationen entfernt
+ *
+ * Beibehaltene Features aus v0.3:
+ * - wordToAlternativeCached: Ein-Pass-Regex
+ * - extrahiereMerkmaleCached: Ein-Pass-Regex
+ * - extrahiereSchnittartenCached: Ein-Pass-Regex
+ * - extrahiereWordSynonymCached: Ein-Pass-Regex
+ * - Pattern-Cache (PATTERN_CACHE)
+ * - extrahiereArtMitWortgrenzen() – Mehrwort-fähige Art-Suche
+ * - extrahiereSorteKontextabhaengig() – Art-Sorte-Beziehung
+ * - extrahiereSchnittgroesse() – cm→mm, Würfel-Korrektur
+ * - korrigiereSchnittartNachArt() – artspezifische Schnittart-Korrektur
+ * - extrahiereFarbeMitWortgrenzen() – Farbe mit Wortgrenzen
+ * - enthaeltSchnittbegriff() – DQ-Check für Rohware
+ * - getStandardSorte() – Fallback Standard-Sorte
+ * - extrahiereSiegelCached() – Siegel-Erkennung referenzdaten-basiert
+ */
+public class tmp_parser {
+
+    // === KONSTANTEN FÜR EINHEITEN ===
+    private static final String WEIGHT_UNITS = "kg|g|mg|µg|ng|t|oz|lb|pfund";
+    private static final String LIQUID_UNITS = "l|ltr|ml|cl|dl|µl|gal|qt|pt";
+    private static final String LENGTH_UNITS = "mm|cm|dm|m|km|µm|nm|in|ft|yd";
+    private static final String ALL_UNITS = WEIGHT_UNITS + "|" + LIQUID_UNITS + "|" + LENGTH_UNITS;
+    private static final String PIECE_UNITS = "stk|st|pcs|stück|pack|pkg|box|karton|dose|flasche|beutel|tüte|rolle|blatt|blätter";
+
+    // === KOMPILIERTE REGEX PATTERNS ===
+    private static final Pattern UNIT_PATTERN = Pattern.compile(
+        "(\\d+(?:\\.\\d+)?)\\s*(" + ALL_UNITS + ")\\b", Pattern.CASE_INSENSITIVE);
+    private static final Pattern MULTIPLICATION_PATTERN = Pattern.compile(
+        "(\\d+)\\s*[xX×]\\s*(\\d+(?:\\.\\d+)?)\\s*(" + ALL_UNITS + ")\\b", Pattern.CASE_INSENSITIVE);
+    private static final Pattern PIECES_PATTERN = Pattern.compile(
+        "(\\d+(?:\\.\\d+)?)\\s*(" + PIECE_UNITS + ")\\b", Pattern.CASE_INSENSITIVE);
+    private static final Pattern MULTIPLICATION_PIECES_PATTERN = Pattern.compile(
+        "(\\d+)\\s*[xX×]\\s*(\\d+(?:\\.\\d+)?)\\s*(" + PIECE_UNITS + ")\\b", Pattern.CASE_INSENSITIVE);
+    private static final Pattern RANGE_PIECES_PATTERN = Pattern.compile(
+        "(\\d+\\s*[-–]\\s*\\d+)\\s*(" + PIECE_UNITS + ")\\b", Pattern.CASE_INSENSITIVE);
+    private static final Pattern MULTIPLICATION_RANGE_PIECES_PATTERN = Pattern.compile(
+        "(\\d+)\\s*[xX×]\\s*(\\d+\\s*[-–]\\s*\\d+)\\s*(" + PIECE_UNITS + ")\\b", Pattern.CASE_INSENSITIVE);
+
+    private static final Pattern PARENTHESES_DIMENSION_PATTERN = Pattern.compile(
+        "\\((\\d+)\\s*[xX×]\\s*(\\d+)\\)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern DIMENSION_NO_UNIT_PATTERN = Pattern.compile(
+        "\\b(\\d+)\\s*[xX×]\\s*(\\d+)\\b(?!\\s*(cm|mm|m|kg|g|mg|l|ml))", Pattern.CASE_INSENSITIVE);
+
+    // NORMALISIERUNG
+    private static final Pattern CONTROL_CHARS     = Pattern.compile("[\\r\\n]+");
+    private static final Pattern SLASH_NUMBERS     = Pattern.compile("(\\d)\\s*/\\s*(\\d)");
+    private static final Pattern DASH_NUMBERS      = Pattern.compile("(\\d)\\s*-\\s*(\\d)");
+    // v0.4: "/" nur entfernen wenn NICHT zwischen zwei Ziffern
+    private static final Pattern SLASH_NON_DIGIT   = Pattern.compile("(?<!\\d)/(?!\\d)");
+    // v0.5: "-" nur entfernen wenn NICHT zwischen zwei Ziffern
+    private static final Pattern DASH_NON_DIGIT    = Pattern.compile("(?<!\\d)-(?!\\d)");
+    private static final Pattern QUOTES_CLEAN      = Pattern.compile("['\"]");
+    private static final Pattern PARENTHESES_CLEAN = Pattern.compile("[()]");
+    private static final Pattern MULTIPLE_SPACES   = Pattern.compile("\\s{2,}");
+    private static final Pattern DOT_SPACE         = Pattern.compile("\\.\\s*");
+    private static final Pattern UNITS_SPACING     = Pattern.compile(
+        "(\\d)\\s+(?=kg\\b|g\\b|mg\\b|t\\b|oz\\b|lb\\b|mm\\b|cm\\b|m\\b|km\\b|ml\\b|l\\b|ltr\\b|dl\\b|cl\\b|\\+)");
+    private static final Pattern X_NUMBERS         = Pattern.compile("(\\d)\\s*[xX]\\s*(\\d)");
+    private static final Pattern COMMA_NON_DIGIT = Pattern.compile("(?<!\\d),|,(?!\\d)");
+
+    // WEITERE PATTERNS
+    private static final Pattern WORD_PATTERN       = Pattern.compile("\\b\\w+\\b");
+    private static final Pattern PERCENTAGE_PATTERN = Pattern.compile("\\(?\\d+[.,]?\\d*%\\)?");
+    private static final Pattern MHD_PATTERN        = Pattern.compile(
+        "(.*?)\\s*mhd[:\\s]*((\\d{1,2})[.\\s/-]+(\\d{1,2})[.\\s/-]+(\\d{4})|(\\d{4})[.\\s/-]+(\\d{1,2})[.\\s/-]+(\\d{1,2}))\\s*(.*)",
+        Pattern.CASE_INSENSITIVE);
+    private static final Pattern WEIGHT_EXTRACTION_PATTERN = Pattern.compile(
+        "(\\d+[.,]?\\d*)\\s*(kg|g|mg)");
+    private static final Pattern PIECES_WEIGHT_PATTERN = Pattern.compile(
+        "(\\d+)\\s*[x×]\\s*\\d+[.,]?\\d*\\s*(kg|g|mg)");
+    private static final Pattern LENGTH_DIMENSION_PATTERN = Pattern.compile(
+        "(\\d+)\\s*[xX]\\s*(\\d+)\\s*(cm|mm|m)\\b");
+    private static final Pattern LENGTH_SINGLE_PATTERN = Pattern.compile(
+        "(\\d+(?:[.,]\\d+)?)\\s*(cm|mm|m)\\b");
+    private static final Pattern ER_NUMBER_PATTERN    = Pattern.compile("\\d+er(-\\d+er)?");
+    private static final Pattern SLASH_NUMBER_PATTERN = Pattern.compile("\\b\\d+\\s*/\\s*\\d+\\b");
+
+    // v0.5: KALIBER – erkennt alle drei Formate:
+    //   "60+"      → Plus-Format
+    //   "55/60"    → Slash-Format  (v0.4)
+    //   "50-60"    → Bereich-Format (v0.5)
+    public static final Pattern KALIBER_NUMBER_PATTERN = Pattern.compile(
+        "\\b(\\d+(?:[.,]\\d+)?(?:g|kg|mg|mm|cm|m|l|ml)*\\+|\\d+/\\d+|\\d+-\\d+)\\b");
+
+	 // BIO/SIEGEL Patterns – öffentlich, damit tJavaRow sie nutzen kann
+	
+	 // \bbio\b mit Negativ-Lookahead (schließt Komposita wie "biogas" aus)
+     public static final Pattern BIO_SPACE = Pattern.compile("(?i)(?:\\*bio\\*|\\bbio\\b)(?!land|dynamic|top|gas|masse|sph\u00e4re|diversit\u00e4t|kraft)");
+	
+	 // bio- am Wortanfang (z.B. "bio-kiste" → nach normalize() schon "bio kiste", aber sicher ist sicher)
+	 public static final Pattern BIO_DASH  = Pattern.compile("(?i)\\bbio-");
+	
+	 // (bio) im Rohtext – Klammern bleiben bis normalize() → Pattern als Backup für nicht-normalisierte Texte
+	 public static final Pattern BIO_PAREN = Pattern.compile("(?i)\\(bio\\)");
+	
+	 // Explizite Bio-Kennzeichner die KEIN Siegel sind, aber Bio implizieren
+	 public static final Pattern BIO_WORDS = Pattern.compile(
+	     "(?i)\\b(bioland|demeter|biozertifiziert|biozertifiert|biozbw|naturland|de-öko|deöko|deoeko)\\b");
+	
+	 public static final Pattern XBIO      = Pattern.compile("(?i)xbio");
+	 public static final Pattern BW_PAREN  = Pattern.compile("\\(bw\\)");
+	 public static final Pattern BW_TOKEN  = Pattern.compile("(?i)(?<=^|\\W)bw(?=\\W)|\\*\\*\\*bw\\*\\*\\*");
+	 public static final Pattern QZBW      = Pattern.compile("(?i)qzbw");
+
+    // SCHNITTGRÖSSE Patterns – öffentlich, damit tJavaRow sie zum Entfernen nutzen kann
+    public static final Pattern SCHNITTGROESSE_2D = Pattern.compile(
+        "\\b(\\d+(?:[.,]\\d+)?)\\s*[xX]\\s*(\\d+(?:[.,]\\d+)?)\\s*(mm|cm)\\b");
+    public static final Pattern SCHNITTGROESSE_1D = Pattern.compile(
+        "\\b(\\d+(?:[.,]\\d+)?)\\s*(mm|cm)\\b");
+
+    // === GC/ALLOC-Minderer: ThreadLocal Ergebnis-Arrays ===
+    private static final ThreadLocal<String[]> TL_RES2 = ThreadLocal.withInitial(() -> new String[2]);
+    private static final ThreadLocal<String[]> TL_RES3 = ThreadLocal.withInitial(() -> new String[3]);
+
+    private static String[] res2(String a0, String a1) {
+        String[] r = TL_RES2.get();
+        r[0] = a0;
+        r[1] = a1;
+        return r;
+    }
+
+    private static String[] res3(String a0, String a1, String a2) {
+        String[] r = TL_RES3.get();
+        r[0] = a0;
+        r[1] = a1;
+        r[2] = a2;
+        return r;
+    }
+
+    // === Caches für sortierte Keys ===
+    private static final ConcurrentHashMap<String, List<String>> SORT_CACHE = new ConcurrentHashMap<>();
+
+    private static List<String> getSortedKeysCached(String cacheKey, java.util.Collection<String> keys) {
+        return SORT_CACHE.computeIfAbsent(cacheKey, k -> {
+            List<String> list = new ArrayList<>(keys);
+            list.sort((a, b) -> {
+                int wa = a.split("\\s+").length, wb = b.split("\\s+").length;
+                if (wa != wb) return Integer.compare(wb, wa);
+                return Integer.compare(b.length(), a.length());
+            });
+            return list;
+        });
+    }
+
+    // === v0.3: Pattern-Cache für kompilierte Alternation-Patterns ===
+    private static final ConcurrentHashMap<String, Pattern> PATTERN_CACHE = new ConcurrentHashMap<>();
+
+    private static Pattern buildAlternationPattern(String cacheKey, List<String> sortedKeys) {
+        return PATTERN_CACHE.computeIfAbsent(cacheKey, k -> {
+            StringBuilder sb = new StringBuilder("\\b(?:");
+            for (int i = 0; i < sortedKeys.size(); i++) {
+                if (i > 0) sb.append("|");
+                sb.append(Pattern.quote(sortedKeys.get(i).toLowerCase()));
+            }
+            sb.append(")\\b");
+            return Pattern.compile(sb.toString(), Pattern.CASE_INSENSITIVE);
+        });
+    }
+
+    private static final ConcurrentHashMap<String, Map<String, String>> LOWER_MAP_CACHE = new ConcurrentHashMap<>();
+
+    private static Map<String, String> buildLowerCaseMap(String cacheKey, Map<String, String> originalMap) {
+        return LOWER_MAP_CACHE.computeIfAbsent(cacheKey, k -> {
+            Map<String, String> lower = new HashMap<>(originalMap.size());
+            for (Map.Entry<String, String> entry : originalMap.entrySet()) {
+                lower.put(entry.getKey().toLowerCase(), entry.getValue());
+            }
+            return lower;
+        });
+    }
+
+    public static void invalidateCaches() {
+        SORT_CACHE.clear();
+        PATTERN_CACHE.clear();
+        LOWER_MAP_CACHE.clear();
+    }
+
+
+    //=========================================================================
+    // ÖFFENTLICHE HILFSMETHODEN FÜR tJavaRow
+    //=========================================================================
+
+    public static String nz(String v) {
+        return v == null ? "" : v;
+    }
+
+    public static String restEmpty(String[] arr, int idx) {
+        return (arr != null && arr.length > idx && arr[idx] != null) ? arr[idx] : "";
+    }
+
+    public static String restKeep(String[] arr, int idx, String keep) {
+        return (arr != null && arr.length > idx && arr[idx] != null) ? arr[idx] : keep;
+    }
+
+
+    //=========================================================================
+    // NORMALISIERUNG
+    //=========================================================================
+
+    public static String normalize(String input) {
+        if (input == null || input.trim().isEmpty()) return "";
+        String result = input.toLowerCase().replace("\\x0d", " ").replace("\\x0a", " ");
+        result = CONTROL_CHARS.matcher(result).replaceAll(" ");
+        // Leerzeichen um "/" und "-" zwischen Ziffern entfernen → "55 / 60" → "55/60", "50 - 60" → "50-60"
+        result = SLASH_NUMBERS.matcher(result).replaceAll("$1/$2");
+        result = DASH_NUMBERS.matcher(result).replaceAll("$1-$2");
+        result = PARENTHESES_CLEAN.matcher(result).replaceAll(" ");  // Klammern → Leerzeichen
+        result = QUOTES_CLEAN.matcher(result).replaceAll(" ");       // Apostrophe → Leerzeichen
+        result = DOT_SPACE.matcher(result).replaceAll(". ");
+        result = UNITS_SPACING.matcher(result).replaceAll("$1");
+        result = X_NUMBERS.matcher(result).replaceAll("$1x$2");
+        result = result.replace("-r-", " -r- ").replace("-t-", " -t- ").replace("-s-", " -s- ");
+        result = result.replace("*", " ");
+        result = result.replace(".", " ");
+        result = COMMA_NON_DIGIT.matcher(result).replaceAll(" "); // Entfernt "," wenn davor oder dannach ein Buchstabe kommt
+        result = result.replace("gm ", "");
+        result = result.replace("mc ", "");
+        // v0.5: "-" nur entfernen wenn NICHT zwischen zwei Ziffern → "50-60" bleibt, "bio-kiste" → "bio kiste"
+        result = DASH_NON_DIGIT.matcher(result).replaceAll(" ");
+        // v0.4: "/" nur entfernen wenn NICHT zwischen zwei Ziffern → "55/60" bleibt, "bio/demeter" → "bio demeter"
+        result = SLASH_NON_DIGIT.matcher(result).replaceAll(" ");
+        result = result.replace("`", " ");
+        return MULTIPLE_SPACES.matcher(result.trim()).replaceAll(" ");
+    }
+
+    public static String normalizeAndCorrect(String input, String cacheKey, Map<String,String> schreibweiseMap) {
+        String normalized = normalize(input);
+        if (normalized.isEmpty()) return "";
+        return wordToAlternativeCached(cacheKey, schreibweiseMap, normalized);
+    }
+
+
+    //=========================================================================
+    // v0.3: WORT-ERSATZ MIT EIN-PASS-REGEX (Korrektur, Plural)
+    //=========================================================================
+
+    public static String wordToAlternativeCached(String cacheKey, Map<String, String> map, String input) {
+        if (input == null || input.isEmpty() || map == null || map.isEmpty()) return input;
+
+        List<String> sortedKeys = getSortedKeysCached("WTA_" + cacheKey, map.keySet());
+        Pattern pattern = buildAlternationPattern("WTA_PAT_" + cacheKey, sortedKeys);
+        Map<String, String> lowerMap = buildLowerCaseMap("WTA_MAP_" + cacheKey, map);
+
+        Matcher m = pattern.matcher(input);
+        StringBuffer sb = new StringBuffer();
+        while (m.find()) {
+            String matchLower = m.group().toLowerCase();
+            String replacement = lowerMap.get(matchLower);
+            if (replacement != null) {
+                m.appendReplacement(sb, Matcher.quoteReplacement(replacement));
+            } else {
+                m.appendReplacement(sb, Matcher.quoteReplacement(m.group()));
+            }
+        }
+        m.appendTail(sb);
+        return sb.toString();
+    }
+
+
+    //=========================================================================
+    // TOKENIZER
+    //=========================================================================
+
+    public static String[] tokenizeBySpace(String input) {
+        if (input == null) return new String[0];
+        return input.trim().split("\\s+|''");
+    }
+
+    public static int countSpaces(String input) {
+        if (input == null) return 0;
+        int c = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == ' ') c++;
+        }
+        return c;
+    }
+
+    public static Set<String> extractMatchingWords(String text, Set<String> referenceWords) {
+        Set<String> found = new HashSet<>();
+        if (text == null || referenceWords == null || referenceWords.isEmpty()) return found;
+        Matcher m = WORD_PATTERN.matcher(text);
+        while (m.find()) {
+            String w = m.group();
+            if (referenceWords.contains(w)) found.add(w);
+        }
+        return found;
+    }
+
+
+    //=========================================================================
+    // REFERENZ-EXTRAKTION (v0.1 Legacy – wird noch für Zustand/Verband genutzt)
+    //=========================================================================
+
+    public static String[] extrahiereReferenz(String eingabe, Set<String> referenzliste) {
+        if (eingabe == null || referenzliste == null || referenzliste.isEmpty())
+            return new String[]{"", ""};
+        String[] woerter = eingabe.split("\\s+");
+        for (int i = 0; i < woerter.length; i++) {
+            if (referenzliste.contains(woerter[i]))
+                return buildReferenceResult(woerter, i);
+        }
+        return new String[]{"", eingabe};
+    }
+
+
+    //=========================================================================
+    // v0.2: ART MIT WORTGRENZEN (Mehrwort-fähig)
+    //=========================================================================
+
+    public static String[] extrahiereArtMitWortgrenzen(String eingabe, Set<String> artListe) {
+        if (eingabe == null || artListe == null || artListe.isEmpty())
+            return new String[]{"", eingabe != null ? eingabe : ""};
+
+        List<String> sorted = getSortedKeysCached("ART_WG", artListe);
+        String text = " " + eingabe.replace("-", " ").toLowerCase() + " ";
+
+        for (String art : sorted) {
+            String suchBegriff = " " + art.toLowerCase() + " ";
+            if (text.contains(suchBegriff)) {
+                String rest = entferneBegriff(eingabe, art);
+                return new String[]{art, rest};
+            }
+        }
+        return new String[]{"", eingabe};
+    }
+
+
+    //=========================================================================
+    // v0.2: SORTE KONTEXTABHÄNGIG (Art-Sorte-Beziehung)
+    //=========================================================================
+
+    public static String[] extrahiereSorteKontextabhaengig(
+            String eingabe, String gefundeneArt,
+            Map<String, List<Map<String, String>>> artSorteMap) {
+
+        if (eingabe == null || artSorteMap == null || artSorteMap.isEmpty())
+            return new String[]{"", eingabe != null ? eingabe : "", ""};
+
+        String text = " " + eingabe.replace("-", " ").toLowerCase() + " ";
+
+        if (gefundeneArt != null && !gefundeneArt.isEmpty()) {
+            List<Map<String, String>> sorten = artSorteMap.get(gefundeneArt.toLowerCase());
+            if (sorten != null) {
+                List<Map<String, String>> sortenSorted = new ArrayList<>(sorten);
+                sortenSorted.sort((a, b) ->
+                    b.get("sorte").length() - a.get("sorte").length());
+                for (Map<String, String> entry : sortenSorted) {
+                    String sorte = entry.get("sorte");
+                    if (text.contains(" " + sorte.toLowerCase() + " ")) {
+                        String rest = entferneBegriff(eingabe, sorte);
+                        return new String[]{sorte, rest, ""};
+                    }
+                }
+            }
+            return new String[]{"", eingabe, ""};
+        }
+
+        for (Map.Entry<String, List<Map<String, String>>> artEntry : artSorteMap.entrySet()) {
+            for (Map<String, String> entry : artEntry.getValue()) {
+                String sorte = entry.get("sorte");
+                String eindeutig = entry.get("sorte_eindeutig");
+                if ("true".equalsIgnoreCase(eindeutig) || "1".equals(eindeutig)
+                        || "WAHR".equalsIgnoreCase(eindeutig)
+                        || "ja".equalsIgnoreCase(eindeutig)) {
+                    if (text.contains(" " + sorte.toLowerCase() + " ")) {
+                        String rest = entferneBegriff(eingabe, sorte);
+                        String artOriginal = entry.getOrDefault("art_original", artEntry.getKey());
+                        return new String[]{sorte, rest, artOriginal};
+                    }
+                }
+            }
+        }
+
+        return new String[]{"", eingabe, ""};
+    }
+
+
+    //=========================================================================
+    // v0.2: STANDARD-SORTE FALLBACK
+    //=========================================================================
+
+    public static String getStandardSorte(String art,
+            Map<String, List<Map<String, String>>> artSorteMap) {
+        if (art == null || artSorteMap == null) return null;
+        List<Map<String, String>> sorten = artSorteMap.get(art.toLowerCase());
+        if (sorten == null) return null;
+        for (Map<String, String> entry : sorten) {
+            String standard = entry.get("sorte_standard");
+            if ("true".equalsIgnoreCase(standard) || "1".equals(standard)
+                    || "WAHR".equalsIgnoreCase(standard)) {
+                return entry.get("sorte");
+            }
+        }
+        return null;
+    }
+
+
+    //=========================================================================
+    // v0.3: MERKMALE – Ein-Pass-Regex
+    //=========================================================================
+
+    public static String[] extrahiereMerkmaleCached(String cacheKey, String eingabe, Set<String> merkmalliste) {
+        if (eingabe == null || merkmalliste == null || merkmalliste.isEmpty())
+            return res2("", "");
+
+        List<String> sorted = getSortedKeysCached("MERK_" + cacheKey, merkmalliste);
+        Pattern pattern = buildAlternationPattern("MERK_PAT_" + cacheKey, sorted);
+
+        Set<String> lowerSet = new HashSet<>(merkmalliste.size());
+        for (String m : merkmalliste) {
+            lowerSet.add(m.toLowerCase());
+        }
+
+        List<String> found = new ArrayList<>();
+        Matcher m = pattern.matcher(eingabe);
+        StringBuffer sb = new StringBuffer();
+        while (m.find()) {
+            String matchLower = m.group().toLowerCase();
+            if (lowerSet.contains(matchLower)) {
+                String originalCase = findOriginalCase(merkmalliste, matchLower);
+                found.add(originalCase != null ? originalCase : m.group());
+                m.appendReplacement(sb, " ");
+            } else {
+                m.appendReplacement(sb, Matcher.quoteReplacement(m.group()));
+            }
+        }
+        m.appendTail(sb);
+
+        String restClean = sb.toString().replaceAll("\\s+", " ").trim();
+        return res2(String.join(", ", found), restClean);
+    }
+
+
+    //=========================================================================
+    // v0.3: SCHNITTART – Ein-Pass-Regex
+    //=========================================================================
+
+    public static String[] extrahiereSchnittartenCached(String cacheKey, String eingabe, Set<String> schnittliste) {
+        if (eingabe == null || schnittliste == null || schnittliste.isEmpty())
+            return res2("", "");
+
+        List<String> sorted = getSortedKeysCached("SCHNITT_" + cacheKey, schnittliste);
+        Pattern pattern = buildAlternationPattern("SCHNITT_PAT_" + cacheKey, sorted);
+
+        Set<String> lowerSet = new HashSet<>(schnittliste.size());
+        for (String s : schnittliste) {
+            lowerSet.add(s.toLowerCase());
+        }
+
+        List<String> found = new ArrayList<>();
+        Matcher m = pattern.matcher(eingabe);
+        StringBuffer sb = new StringBuffer();
+        while (m.find()) {
+            String matchLower = m.group().toLowerCase();
+            if (lowerSet.contains(matchLower)) {
+                String originalCase = findOriginalCase(schnittliste, matchLower);
+                found.add(originalCase != null ? originalCase : m.group());
+                m.appendReplacement(sb, " ");
+            } else {
+                m.appendReplacement(sb, Matcher.quoteReplacement(m.group()));
+            }
+        }
+        m.appendTail(sb);
+
+        String restClean = sb.toString().replaceAll("\\s+", " ").trim();
+        return res2(String.join(", ", found), restClean);
+    }
+
+
+    //=========================================================================
+    // v0.2: SCHNITTGRÖSSE EXTRAHIEREN
+    //=========================================================================
+
+    public static String extrahiereSchnittgroesse(String eingabe) {
+        if (eingabe == null || eingabe.trim().isEmpty()) return "";
+
+        Matcher m2d = SCHNITTGROESSE_2D.matcher(eingabe);
+        if (m2d.find()) {
+            double v1 = parseDoubleSafe(m2d.group(1));
+            double v2 = parseDoubleSafe(m2d.group(2));
+            String unit = m2d.group(3);
+            if ("cm".equalsIgnoreCase(unit)) {
+                v1 *= 10;
+                v2 *= 10;
+            }
+            return formatIntSafe(v1) + "x" + formatIntSafe(v2) + "mm";
+        }
+
+        Matcher m1d = SCHNITTGROESSE_1D.matcher(eingabe);
+        if (m1d.find()) {
+            double v = parseDoubleSafe(m1d.group(1));
+            String unit = m1d.group(2);
+            if ("cm".equalsIgnoreCase(unit)) {
+                v *= 10;
+            }
+            return formatIntSafe(v) + "mm";
+        }
+
+        return "";
+    }
+
+
+    //=========================================================================
+    // v0.2: SCHNITTART KORREKTUR NACH ART
+    //=========================================================================
+
+    public static String korrigiereSchnittartNachArt(
+            String eingabe, String art,
+            List<Map<String, String>> korrekturListe) {
+        if (eingabe == null || art == null || korrekturListe == null) return eingabe;
+        String result = eingabe;
+        for (Map<String, String> korrektur : korrekturListe) {
+            String kArt = korrektur.get("art");
+            String kAlt = korrektur.get("schnittart_alt");
+            String kNeu = korrektur.get("schnittart_neu");
+            if (kArt != null && art.equalsIgnoreCase(kArt)
+                    && kAlt != null && kNeu != null) {
+                result = result.replace(kAlt.toLowerCase(), kNeu.toLowerCase());
+            }
+        }
+        return result;
+    }
+
+
+    //=========================================================================
+    // v0.2: FARBE MIT WORTGRENZEN
+    //=========================================================================
+
+    public static String[] extrahiereFarbeMitWortgrenzen(String eingabe, Set<String> farbListe) {
+        if (eingabe == null || farbListe == null || farbListe.isEmpty())
+            return new String[]{"", eingabe != null ? eingabe : ""};
+
+        List<String> sorted = getSortedKeysCached("FARBE_WG", farbListe);
+        String text = " " + eingabe.toLowerCase() + " ";
+
+        for (String farbe : sorted) {
+            if (text.contains(" " + farbe.toLowerCase() + " ")) {
+                return new String[]{farbe, eingabe};
+            }
+        }
+        return new String[]{"", eingabe};
+    }
+
+
+    //=========================================================================
+    // v0.2: DQ-CHECK – ENTHÄLT ROHWARE SCHNITT-BEGRIFFE?
+    //=========================================================================
+
+    public static boolean enthaeltSchnittbegriff(String eingabe, Set<String> schnittartListe) {
+        if (eingabe == null || schnittartListe == null || schnittartListe.isEmpty())
+            return false;
+        String text = " " + eingabe.toLowerCase() + " ";
+        for (String schnittart : schnittartListe) {
+            if (text.contains(" " + schnittart.toLowerCase() + " ")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    //=========================================================================
+    // v0.3: LAND – Ein-Pass-Regex (Synonym-Mapping)
+    //=========================================================================
+
+    public static String[] extrahiereWordSynonymCached(String cacheKey, String eingabe, HashMap<String, String> mapParam) {
+        if (eingabe == null || mapParam == null || mapParam.isEmpty())
+            return res3("", "", nz(eingabe));
+
+        List<String> sortedKeys = getSortedKeysCached("LAND_" + cacheKey, mapParam.keySet());
+        Pattern pattern = buildAlternationPattern("LAND_PAT_" + cacheKey, sortedKeys);
+        Map<String, String> lowerMap = buildLowerCaseMap("LAND_MAP_" + cacheKey, mapParam);
+
+        Matcher m = pattern.matcher(eingabe);
+        if (m.find()) {
+            String matchOriginal = m.group();
+            String matchLower = matchOriginal.toLowerCase();
+            String iso = lowerMap.get(matchLower);
+
+            String rest = (eingabe.substring(0, m.start()) + eingabe.substring(m.end()))
+                .replaceAll("\\s+", " ").trim();
+
+            return res3(matchOriginal, iso != null ? iso : "", rest);
+        }
+
+        return res3("", "", eingabe.trim());
+    }
+
+
+    //=========================================================================
+    // UNIT EXTRACTION
+    //=========================================================================
+
+    public static String[] extractUnit(String input) {
+        if (input == null || input.trim().isEmpty()) return res2(null, "");
+        Matcher multiMatcher = MULTIPLICATION_PATTERN.matcher(input);
+        if (multiMatcher.find()) {
+            return processMultiplicationMatch(multiMatcher, input);
+        }
+        Matcher unitMatcher = UNIT_PATTERN.matcher(input);
+        if (unitMatcher.find()) {
+            return processUnitMatch(unitMatcher, input);
+        }
+        return res2(null, input);
+    }
+
+    public static String[] extractWeightAndPiecesWithRest(String input) {
+        if (input == null || input.isEmpty())
+            return res3(null, null, input);
+
+        String weight = null;
+        String pieces = null;
+        String restText = input;
+
+        Matcher piecesMatcher = PIECES_WEIGHT_PATTERN.matcher(input);
+        if (piecesMatcher.find()) {
+            pieces = piecesMatcher.group(1);
+            Matcher w = WEIGHT_EXTRACTION_PATTERN.matcher(piecesMatcher.group());
+            if (w.find()) {
+                weight = w.group(1).replace(",", ".") + w.group(2);
+            }
+            restText = removeMatchFromInput(input, piecesMatcher).replaceAll("\\s+", " ").trim();
+            return res3(weight, pieces, restText);
+        }
+        Matcher weightMatcher = WEIGHT_EXTRACTION_PATTERN.matcher(input);
+        if (weightMatcher.find()) {
+            weight = weightMatcher.group(1).replace(",", ".") + weightMatcher.group(2);
+            restText = removeMatchFromInput(input, weightMatcher).replaceAll("\\s+", " ").trim();
+        }
+        return res3(weight, pieces, restText);
+    }
+
+    public static String[] extractPieces(String input) {
+        if (input == null || input.trim().isEmpty()) return res3(null, null, "");
+        Matcher multiRangeMatcher = MULTIPLICATION_RANGE_PIECES_PATTERN.matcher(input);
+        if (multiRangeMatcher.find())
+            return processMultiplicationRangePiecesMatch(multiRangeMatcher, input);
+        Matcher rangeMatcher = RANGE_PIECES_PATTERN.matcher(input);
+        if (rangeMatcher.find())
+            return processRangePiecesMatch(rangeMatcher, input);
+        Matcher multiMatcher = MULTIPLICATION_PIECES_PATTERN.matcher(input);
+        if (multiMatcher.find())
+            return processPiecesMultiplicationMatch(multiMatcher, input);
+        Matcher pieceMatcher = PIECES_PATTERN.matcher(input);
+        if (pieceMatcher.find())
+            return processPiecesMatch(pieceMatcher, input);
+        return res3(null, null, input);
+    }
+
+
+    //=========================================================================
+    // PERCENTAGE, MHD, WEIGHT, LENGTH, ER-NUMBERS, SLASH, KALIBER
+    //=========================================================================
+
+    public static String removeOuterSingleQuotes(String input) {
+        if (input == null || input.isEmpty()) return input;
+        String r = input;
+        if (r.startsWith("'")) r = r.substring(1);
+        if (r.endsWith("'")) r = r.substring(0, r.length() - 1);
+        return r;
+    }
+
+    public static String[] extractFirstPercentage(String input) {
+        if (input == null || input.isEmpty()) return res2("", "");
+        Matcher m = PERCENTAGE_PATTERN.matcher(input);
+        if (m.find()) return extractAndRemove(input, m);
+        return res2("", input.trim());
+    }
+
+    public static String[] extractMhdDate(String input) {
+        if (input == null || input.isEmpty()) return res2("", "");
+        Matcher matcher = MHD_PATTERN.matcher(input);
+        if (matcher.find()) {
+            String before = matcher.group(1).trim();
+            String after = matcher.group(9) != null ? matcher.group(9).trim() : "";
+            String remaining = (before + " " + after).trim();
+            String dateStr = formatMhdDate(matcher);
+            return res2(dateStr, remaining);
+        }
+        return res2("", input.trim());
+    }
+
+    public static String extractFirstWeight(String input) {
+        if (input == null || input.isEmpty()) return "";
+        Matcher matcher = WEIGHT_EXTRACTION_PATTERN.matcher(input);
+        if (matcher.find())
+            return matcher.group(1).replace(",", ".") + matcher.group(2);
+        return "";
+    }
+
+    public static String[] extractLength(String input) {
+        if (input == null || input.isEmpty()) return res2("", "");
+        Matcher pm = PARENTHESES_DIMENSION_PATTERN.matcher(input);
+        if (pm.find())
+            return extractAndRemove(input, pm, "(" + pm.group(1) + "x" + pm.group(2) + ")");
+        Matcher dm = LENGTH_DIMENSION_PATTERN.matcher(input);
+        if (dm.find())
+            return extractAndRemove(input, dm, dm.group(1) + "x" + dm.group(2) + dm.group(3));
+        Matcher nu = DIMENSION_NO_UNIT_PATTERN.matcher(input);
+        if (nu.find()) {
+            String after = input.substring(nu.end());
+            if (!after.trim().matches("^(kg|g|mg|l|ml|cl|dl).*")) {
+                return extractAndRemove(input, nu, nu.group(1) + "x" + nu.group(2));
+            }
+        }
+        Matcher sm = LENGTH_SINGLE_PATTERN.matcher(input);
+        if (sm.find())
+            return extractAndRemove(input, sm, sm.group(1).replace(",", ".") + sm.group(2));
+        return res2("", input.trim());
+    }
+
+    public static String[] extractErNumbers(String input) {
+        if (input == null || input.isEmpty()) return res2("", "");
+        Matcher m = ER_NUMBER_PATTERN.matcher(input);
+        if (m.find()) return extractAndRemove(input, m);
+        return res2("", input.trim());
+    }
+
+    public static String[] extractFirstSlashNumber(String input) {
+        if (input == null || input.isEmpty()) return res2("", "");
+        Matcher m = SLASH_NUMBER_PATTERN.matcher(input);
+        if (m.find()) {
+            String slash = m.group().replaceAll("\\s*", "");
+            return extractAndRemove(input, m, slash);
+        }
+        return res2("", input.trim());
+    }
+
+    /**
+     * v0.5: Erkennt Kaliber in drei Formaten:
+     *   - "60+", "80+", "47mm+" etc.  (Plus-Format)
+     *   - "55/60", "3/4", "5/6" etc.  (Slash-Format,  v0.4)
+     *   - "50-60", "60-70" etc.        (Bereich-Format, v0.5)
+     * Voraussetzung: normalize() hat "/" und "-" zwischen Ziffern erhalten.
+     */
+    public static String[] extrahiereKaliber(String input) {
+        if (input == null || input.trim().isEmpty()) return res2("", "");
+        String clean = input.trim();
+        Matcher matcher = KALIBER_NUMBER_PATTERN.matcher(clean);
+        if (matcher.find()) {
+            String kaliber = matcher.group(1);
+            String rest = clean.substring(0, matcher.start()) + clean.substring(matcher.end());
+            rest = rest.replaceAll("\\s+", " ").trim();
+            return res2(kaliber, rest);
+        }
+        return res2("", clean);
+    }
+
+
+    //=========================================================================
+    // PRIVATE HILFSMETHODEN
+    //=========================================================================
+
+    private static String[] processMultiplicationMatch(Matcher matcher, String input) {
+        int multiplier = Integer.parseInt(matcher.group(1));
+        double value = Double.parseDouble(matcher.group(2));
+        String unit = matcher.group(3);
+        double totalValue = multiplier * value;
+        String rest = removeMatchFromInput(input, matcher);
+        return res2(formatValue(totalValue), unit + "|" + (rest.isEmpty() ? null : rest));
+    }
+
+    private static String[] processUnitMatch(Matcher matcher, String input) {
+        String valueStr = matcher.group(1);
+        String unit = matcher.group(2);
+        String rest = removeMatchFromInput(input, matcher);
+        return res2(valueStr + "|" + unit, rest.isEmpty() ? null : rest);
+    }
+
+    private static String[] processPiecesMultiplicationMatch(Matcher matcher, String input) {
+        int multiplier = Integer.parseInt(matcher.group(1));
+        double pieces = Double.parseDouble(matcher.group(2));
+        String unit = matcher.group(3);
+        double totalPieces = multiplier * pieces;
+        String rest = removeMatchFromInput(input, matcher);
+        return res3(formatValue(totalPieces), unit, rest.isEmpty() ? null : rest);
+    }
+
+    private static String[] processPiecesMatch(Matcher matcher, String input) {
+        String piecesStr = matcher.group(1);
+        String unit = matcher.group(2);
+        String rest = removeMatchFromInput(input, matcher);
+        return res3(piecesStr, unit, rest.isEmpty() ? null : rest);
+    }
+
+    private static String[] processRangePiecesMatch(Matcher matcher, String input) {
+        String range = matcher.group(1).replaceAll("\\s*[-–]\\s*", "-");
+        String unit = matcher.group(2);
+        String rest = removeMatchFromInput(input, matcher);
+        return res3(range, unit, rest.isEmpty() ? null : rest);
+    }
+
+    private static String[] processMultiplicationRangePiecesMatch(Matcher matcher, String input) {
+        int multiplier = Integer.parseInt(matcher.group(1));
+        String range = matcher.group(2).replaceAll("\\s*[-–]\\s*", "-");
+        String unit = matcher.group(3);
+        String[] parts = range.split("-");
+        String rest = removeMatchFromInput(input, matcher);
+        if (parts.length == 2) {
+            try {
+                int min = Integer.parseInt(parts[0].trim());
+                int max = Integer.parseInt(parts[1].trim());
+                String total = (multiplier * min) + "-" + (multiplier * max);
+                return res3(total, unit, rest.isEmpty() ? null : rest);
+            } catch (NumberFormatException ignored) {
+            }
+        }
+        return res3(multiplier + "x" + range, unit, rest.isEmpty() ? null : rest);
+    }
+
+    private static String removeMatchFromInput(String input, Matcher matcher) {
+        String rest = input.substring(0, matcher.start()) + input.substring(matcher.end());
+        return rest.trim().replaceAll("\\s+", " ");
+    }
+
+    private static String[] buildReferenceResult(String[] woerter, int foundIndex) {
+        StringBuilder restBuilder = new StringBuilder();
+        for (int j = 0; j < woerter.length; j++) {
+            if (j != foundIndex) {
+                if (restBuilder.length() > 0) restBuilder.append(" ");
+                restBuilder.append(woerter[j]);
+            }
+        }
+        return new String[]{woerter[foundIndex], restBuilder.toString()};
+    }
+
+    private static String[] extractAndRemove(String input, Matcher matcher) {
+        String extracted = matcher.group();
+        String remaining = removeMatchFromInput(input, matcher);
+        return res2(extracted, remaining);
+    }
+
+    private static String[] extractAndRemove(String input, Matcher matcher, String customExtracted) {
+        String remaining = removeMatchFromInput(input, matcher);
+        return res2(customExtracted, remaining);
+    }
+
+    private static String formatMhdDate(Matcher matcher) {
+        if (matcher.group(3) != null) {
+            String day = matcher.group(3);
+            String month = matcher.group(4);
+            String year = matcher.group(5);
+            return String.format("%s-%02d-%02d", year, Integer.parseInt(month), Integer.parseInt(day));
+        } else {
+            String year = matcher.group(6);
+            String month = matcher.group(7);
+            String day = matcher.group(8);
+            return String.format("%s-%02d-%02d", year, Integer.parseInt(month), Integer.parseInt(day));
+        }
+    }
+
+    private static String formatValue(double value) {
+        if (value == (long) value) return String.valueOf((long) value);
+        return String.valueOf(value);
+    }
+
+    @SuppressWarnings("unused")
+    private static String formatWeight(double weight) {
+        return formatValue(weight);
+    }
+
+    private static String entferneBegriff(String text, String begriff) {
+        if (text == null || begriff == null) return text;
+
+        if (begriff.contains(" ")) {
+            Pattern p = Pattern.compile(
+                "\\b" + Pattern.quote(begriff).replace("\\ ", "[-\\\\s]+") + "\\b",
+                Pattern.CASE_INSENSITIVE);
+            Matcher m = p.matcher(text);
+            if (m.find()) {
+                return m.replaceFirst(" ").replaceAll("\\s+", " ").trim();
+            }
+            Pattern p2 = Pattern.compile("\\b" + Pattern.quote(begriff) + "\\b",
+                Pattern.CASE_INSENSITIVE);
+            return p2.matcher(text).replaceFirst(" ").replaceAll("\\s+", " ").trim();
+        } else {
+            String[] woerter = text.split("\\s+");
+            StringBuilder sb = new StringBuilder();
+            boolean removed = false;
+            for (String w : woerter) {
+                if (!removed && w.replace("-", " ").toLowerCase().contains(begriff.toLowerCase())) {
+                    String wNorm = w.replace("-", " ").toLowerCase().trim();
+                    if (wNorm.equals(begriff.toLowerCase())) {
+                        removed = true;
+                        continue;
+                    }
+                    if (w.contains("-")) {
+                        String[] parts = w.split("-");
+                        StringBuilder partResult = new StringBuilder();
+                        boolean partRemoved = false;
+                        for (String part : parts) {
+                            if (!partRemoved && part.equalsIgnoreCase(begriff)) {
+                                partRemoved = true;
+                                removed = true;
+                            } else {
+                                if (partResult.length() > 0) partResult.append("-");
+                                partResult.append(part);
+                            }
+                        }
+                        if (partResult.length() > 0) {
+                            if (sb.length() > 0) sb.append(" ");
+                            sb.append(partResult);
+                        }
+                        continue;
+                    }
+                }
+                if (!removed && w.equalsIgnoreCase(begriff)) {
+                    removed = true;
+                } else {
+                    if (sb.length() > 0) sb.append(" ");
+                    sb.append(w);
+                }
+            }
+            return sb.toString();
+        }
+    }
+
+    private static String findOriginalCase(Set<String> set, String lowerKey) {
+        for (String s : set) {
+            if (s.toLowerCase().equals(lowerKey)) return s;
+        }
+        return null;
+    }
+
+    private static double parseDoubleSafe(String s) {
+        if (s == null) return 0;
+        return Double.parseDouble(s.replace(",", "."));
+    }
+
+    private static String formatIntSafe(double v) {
+        if (v == (long) v) return String.valueOf((long) v);
+        return String.valueOf(v);
+    }
+
+
+    //=========================================================================
+    // SIEGEL-ERKENNUNG (referenzdaten-basiert, mehrfach-fähig)
+    //=========================================================================
+
+    public static String[] extrahiereSiegelCached(String text, Map<String, String> siegelMap) {
+        if (text == null || text.isEmpty() || siegelMap == null || siegelMap.isEmpty()) {
+            return res2("", text == null ? "" : text);
+        }
+
+        List<String> sortedKeys = getSortedKeysCached("SIEGEL", siegelMap.keySet());
+
+        List<String> gefundeneSiegel = new ArrayList<>();
+        String rest = text;
+
+        for (String suchWort : sortedKeys) {
+            String siegelWert = siegelMap.get(suchWort);
+            if (siegelWert == null || siegelWert.isEmpty()) continue;
+            if (suchWort.contains("*")) continue;
+            if (gefundeneSiegel.contains(siegelWert.toLowerCase())) continue;
+
+            boolean gefunden = false;
+
+            if (suchWort.endsWith("-")) {
+                String prefix = Pattern.quote(suchWort);
+                Pattern p = Pattern.compile("\\b" + prefix, Pattern.CASE_INSENSITIVE);
+                Matcher m = p.matcher(rest);
+                if (m.find()) {
+                    rest = m.replaceAll(" ").replaceAll("\\s+", " ").trim();
+                    gefunden = true;
+                }
+            } else if (suchWort.startsWith("(") && suchWort.endsWith(")")) {
+                String inner = suchWort.substring(1, suchWort.length() - 1);
+                String escaped = Pattern.quote(inner);
+                Pattern p = Pattern.compile("\\b" + escaped + "\\b", Pattern.CASE_INSENSITIVE);
+                Matcher m = p.matcher(rest);
+                if (m.find()) {
+                    rest = m.replaceAll(" ").replaceAll("\\s+", " ").trim();
+                    gefunden = true;
+                }
+            } else {
+                String escaped = Pattern.quote(suchWort);
+                Pattern p = Pattern.compile("\\b" + escaped + "\\b", Pattern.CASE_INSENSITIVE);
+                Matcher m = p.matcher(rest);
+                if (m.find()) {
+                    rest = m.replaceAll(" ").replaceAll("\\s+", " ").trim();
+                    gefunden = true;
+                }
+            }
+
+            if (gefunden) {
+                gefundeneSiegel.add(siegelWert.toLowerCase());
+            }
+        }
+
+        String siegelResult = String.join(",", gefundeneSiegel);
+        return res2(siegelResult, rest);
+    }
+
+}

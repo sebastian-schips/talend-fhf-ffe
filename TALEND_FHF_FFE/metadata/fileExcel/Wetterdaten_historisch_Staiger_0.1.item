@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:FileExcelConnection xmi:id="_X7f2UHLJEfCEqdM17wUiSA" name="Wetterdaten_historisch_Staiger" dataPackage="_X7f2UXLJEfCEqdM17wUiSA" Server="Localhost 127.0.0.1" FilePath="C:/Talend/Wetterdaten_bis_30_06_2025.xlsx" Encoding="UTF-8" UseHeader="true" HeaderValue="2" FirstLineCaption="true" SheetName="Staiger" firstColumn="1" thousandSeparator="','" decimalSeparator="'.'" sheetList="Staiger:w&#xA;">
+    <sheetColumns>A</sheetColumns>
+    <sheetColumns>B</sheetColumns>
+    <sheetColumns>C</sheetColumns>
+    <sheetColumns>D</sheetColumns>
+    <sheetColumns>E</sheetColumns>
+    <sheetColumns>F</sheetColumns>
+    <sheetColumns>G</sheetColumns>
+    <sheetColumns>H</sheetColumns>
+    <sheetColumns>I</sheetColumns>
+    <sheetColumns>J</sheetColumns>
+    <sheetColumns>K</sheetColumns>
+    <sheetColumns>L</sheetColumns>
+    <sheetColumns>M</sheetColumns>
+    <sheetColumns>N</sheetColumns>
+    <sheetColumns>O</sheetColumns>
+    <sheetColumns>P</sheetColumns>
+    <sheetColumns>Q</sheetColumns>
+    <sheetColumns>R</sheetColumns>
+    <sheetColumns>S</sheetColumns>
+  </TalendMetadata:FileExcelConnection>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_X7f2UXLJEfCEqdM17wUiSA" name="default" dataManager="_X7f2UHLJEfCEqdM17wUiSA">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_X7f2UnLJEfCEqdM17wUiSA" id="_nbLXwHLGEfCEqdM17wUiSA" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQUHLKEfCEqdM17wUiSA" name="Station" label="Station" length="4" precision="-1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQUXLKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQUnLKEfCEqdM17wUiSA" name="Datum" label="Datum" length="8" precision="-1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQU3LKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQVHLKEfCEqdM17wUiSA" name="Qualitaetsniveau_1" label="Qualitaetsniveau_1" length="2" precision="-1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQVXLKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQVnLKEfCEqdM17wUiSA" name="Windspitze" label="Windspitze" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQV3LKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQWHLKEfCEqdM17wUiSA" name="Mittlere_Windgeschwindigkeit" label="Mittlere_Windgeschwindigkeit" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQWXLKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQWnLKEfCEqdM17wUiSA" name="Qualitaetsniveau_2" label="Qualitaetsniveau_2" length="1" precision="-1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQW3LKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQXHLKEfCEqdM17wUiSA" name="Niederschlagshoehe" label="Niederschlagshoehe" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQXXLKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQXnLKEfCEqdM17wUiSA" name="Niederschlag_Form" label="Niederschlag_Form" length="1" precision="-1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQX3LKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQYHLKEfCEqdM17wUiSA" name="Sonnenscheindauer" label="Sonnenscheindauer" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQYXLKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQYnLKEfCEqdM17wUiSA" name="Schneehoehe" label="Schneehoehe" length="1" precision="-1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQY3LKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQZHLKEfCEqdM17wUiSA" name="Bedeckung" label="Bedeckung" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQZXLKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQZnLKEfCEqdM17wUiSA" name="Wasserdampfdruck" label="Wasserdampfdruck" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQZ3LKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQaHLKEfCEqdM17wUiSA" name="Lufdruck" label="Lufdruck" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQaXLKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQanLKEfCEqdM17wUiSA" name="Tagesmittel_Lufttemparatur" label="Tagesmittel_Lufttemparatur" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQa3LKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQbHLKEfCEqdM17wUiSA" name="Relative_Luftfeuchtigkeit" label="Relative_Luftfeuchtigkeit" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQbXLKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQbnLKEfCEqdM17wUiSA" name="Tageshoechsttemperatur" label="Tageshoechsttemperatur" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQb3LKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQcHLKEfCEqdM17wUiSA" name="Tagestiefsttemperatur" label="Tagestiefsttemperatur" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQcXLKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQcnLKEfCEqdM17wUiSA" name="Tagestiefsttempeartur_5cm" label="Tagestiefsttempeartur_5cm" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQc3LKEfCEqdM17wUiSA"/>
+      </feature>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_8eIQdHLKEfCEqdM17wUiSA" name="End_of_Record" label="End_of_Record" length="255" precision="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;">
+        <initialValue xmi:id="_8eIQdXLKEfCEqdM17wUiSA"/>
+      </feature>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

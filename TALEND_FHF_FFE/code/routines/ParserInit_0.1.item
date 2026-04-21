@@ -1,0 +1,351 @@
+package routines;
+
+public class ParserInit {
+
+    /**
+     * Initialisiert alle globalMap-Einträge für den Artikel-Parser.
+     * Version: v1.3
+     * Aufrufen in tJava: ParserInit.init(globalMap);
+     *
+     * Changelog v1.3:
+     * - addKaliberEntry() ergänzt:
+     *   Beim Befüllen der KALIBER_MAP werden pro Eintrag sowohl der
+     *   lowercase-Original-Key als auch der normalize()-te Key eingetragen.
+     *   Damit werden z.B. "Cal.1X" (→ "cal.1x" original, → "cal 1x" normalisiert)
+     *   in beiden Varianten erkannt.
+     */
+    public static void init(java.util.Map<String, Object> globalMap) {
+
+        //=== ART_SORTE_MAP ===
+        if (globalMap.get("ART_SORTE_MAP") == null) {
+            globalMap.put("ART_SORTE_MAP",
+                new java.util.HashMap<String, java.util.List<java.util.Map<String,String>>>());
+        }
+
+        //=== FESTE_GROESSE_MAP ===
+        if (globalMap.get("FESTE_GROESSE_MAP") == null) {
+            globalMap.put("FESTE_GROESSE_MAP", new java.util.HashMap<String,String>());
+        }
+
+        //=== SCHNITTART_1D_MAP ===
+        if (globalMap.get("SCHNITTART_1D_MAP") == null) {
+            globalMap.put("SCHNITTART_1D_MAP", new java.util.HashMap<String,String>());
+        }
+
+        //=== SCHNITTART_2D_MAP ===
+        if (globalMap.get("SCHNITTART_2D_MAP") == null) {
+            globalMap.put("SCHNITTART_2D_MAP", new java.util.HashMap<String,String>());
+        }
+
+        //=== KORREKTUR_SCHNITTART_LISTE ===
+        if (globalMap.get("KORREKTUR_SCHNITTART_LISTE") == null) {
+            globalMap.put("KORREKTUR_SCHNITTART_LISTE",
+                new java.util.ArrayList<java.util.Map<String,String>>());
+        }
+
+        //=== MANUELLE KORREKTUREN ===
+        if (globalMap.get("MANUELL_ART") == null) {
+            globalMap.put("MANUELL_ART", new java.util.HashMap<String,String>());
+        }
+        if (globalMap.get("MANUELL_SORTE") == null) {
+            globalMap.put("MANUELL_SORTE", new java.util.HashMap<String,String>());
+        }
+        if (globalMap.get("MANUELL_SCHNITTART") == null) {
+            globalMap.put("MANUELL_SCHNITTART", new java.util.HashMap<String,String>());
+        }
+        if (globalMap.get("MANUELL_SCHNITTGROESSE") == null) {
+            globalMap.put("MANUELL_SCHNITTGROESSE", new java.util.HashMap<String,String>());
+        }
+
+        //=== KALIBER_MAP ===
+        // Struktur: art (lowercase) → Map<kaliber_rohwert (lowercase), gr_kaliber>
+        // Wird vom Joblet/tMap befüllt. Hier nur Fallback-Initialisierung.
+        if (globalMap.get("KALIBER_MAP") == null) {
+            globalMap.put("KALIBER_MAP",
+                new java.util.HashMap<String, java.util.Map<String,String>>());
+        }
+
+        //=== REFERENZ-SETS (Fallback-Initialisierung) ===
+        if (globalMap.get("ART") == null) {
+            globalMap.put("ART", new java.util.HashSet<String>());
+        }
+        if (globalMap.get("SORTE") == null) {
+            globalMap.put("SORTE", new java.util.HashSet<String>());
+        }
+        if (globalMap.get("MERKMAL") == null) {
+            globalMap.put("MERKMAL", new java.util.HashSet<String>());
+        }
+        if (globalMap.get("SCHNITTART") == null) {
+            globalMap.put("SCHNITTART", new java.util.HashSet<String>());
+        }
+        if (globalMap.get("FARBEN") == null) {
+            globalMap.put("FARBEN", new java.util.HashSet<String>());
+        }
+        if (globalMap.get("ZUSTAND") == null) {
+            globalMap.put("ZUSTAND", new java.util.HashSet<String>());
+        }
+        if (globalMap.get("VERBAENDE") == null) {
+            globalMap.put("VERBAENDE", new java.util.HashSet<String>());
+        }
+
+        //=== REFERENZ-MAPS (Fallback-Initialisierung) ===
+        if (globalMap.get("KORREKTUR") == null) {
+            globalMap.put("KORREKTUR", new java.util.HashMap<String,String>());
+        }
+        if (globalMap.get("PLURAL") == null) {
+            globalMap.put("PLURAL", new java.util.HashMap<String,String>());
+        }
+        if (globalMap.get("LAND") == null) {
+            globalMap.put("LAND", new java.util.HashMap<String,String>());
+        }
+        if (globalMap.get("SIEGEL") == null) {
+            globalMap.put("SIEGEL", new java.util.HashMap<String,String>());
+        }
+    }
+
+
+    //=========================================================================
+    // v1.3: KALIBER-EINTRAG MIT DOPPELTER NORMALISIERUNG
+    //=========================================================================
+
+    /**
+     * Trägt einen Kaliber-Eintrag in die art-spezifische kaliberMap ein –
+     * und zwar in ZWEI Varianten:
+     *
+     *   1. Original-Key (lowercase):
+     *      z.B. "Cal.1X" → "cal.1x"
+     *
+     *   2. Normalisierter Key (via tmp_parser.normalize()):
+     *      z.B. "cal.1x" → "cal 1x"  (Punkt → Leerzeichen)
+     *
+     * Damit wird sichergestellt, dass der Kaliber-Scan sowohl gegen den
+     * korrigierten restText als auch gegen den nur-normalisierten Text
+     * einen Treffer liefert – unabhängig davon, welche Variante nach der
+     * Pipeline vorliegt.
+     *
+     * Aufruf im tJavaRow (Kaliber-Ladeloop):
+     *   ParserInit.addKaliberEntry(globalMap, art, kaliber_rohwert, gr_kaliber);
+     *
+     * @param globalMap      Talend globalMap
+     * @param art            Art (wird lowercase gespeichert), z.B. "clementinen"
+     * @param kaliberRoh     Rohwert aus CSV, z.B. "Cal.1X", "cal 2/3", "120-128er"
+     * @param grKaliber      Normierter Ausgabewert, z.B. "75er", "90er"
+     */
+    @SuppressWarnings("unchecked")
+    public static void addKaliberEntry(
+            java.util.Map<String, Object> globalMap,
+            String art,
+            String kaliberRoh,
+            String grKaliber) {
+
+        if (art == null || kaliberRoh == null || grKaliber == null) return;
+
+        String artKey = art.trim().toLowerCase();
+        String grKaliberTrimmed = grKaliber.trim();
+
+        // art-spezifische Map holen oder anlegen
+        java.util.Map<String, java.util.Map<String,String>> kaliberMap =
+            (java.util.Map<String, java.util.Map<String,String>>) globalMap.get("KALIBER_MAP");
+        if (kaliberMap == null) {
+            kaliberMap = new java.util.HashMap<>();
+            globalMap.put("KALIBER_MAP", kaliberMap);
+        }
+
+        java.util.Map<String,String> artMap = kaliberMap.get(artKey);
+        if (artMap == null) {
+            artMap = new java.util.HashMap<>();
+            kaliberMap.put(artKey, artMap);
+        }
+
+        // --- KEY 1: Original lowercase ---
+        String keyOriginal = kaliberRoh.trim().toLowerCase();
+        artMap.put(keyOriginal, grKaliberTrimmed);
+
+        // --- KEY 2: Normalisiert (via tmp_parser.normalize()) ---
+        String keyNormalisiert = tmp_parser.normalize(kaliberRoh.trim());
+        if (!keyNormalisiert.equals(keyOriginal)) {
+            artMap.put(keyNormalisiert, grKaliberTrimmed);
+        }
+    }
+
+
+    //=========================================================================
+    // v1.1: KALIBER-EXTRAKTION MIT BIGRAM+UNIGRAM-SCAN
+    //=========================================================================
+
+    /**
+     * Sucht einen Kaliber-Treffer im restText gegen die art-spezifische kaliberMap.
+     *
+     * Strategie (Priorität absteigend):
+     *   1. Bigram-Scan:  je zwei aufeinanderfolgende Tokens als Key prüfen
+     *                    → erkennt "cal 1", "cal 3/4", "cal 2/3", "cal 1/2" etc.
+     *   2. Unigram-Scan: jeden einzelnen Token als Key prüfen
+     *                    → erkennt "1", "3/4", "60+", "55/60" etc.
+     *
+     * @param restText    Eingabe-String (bereits normalisiert, lowercase)
+     * @param kaliberMap  art-spezifische Map: kaliber_rohwert (lowercase) → gr_kaliber
+     * @return String[2]: [0] = gr_kaliber (oder Rohwert wenn kein Mapping, "" wenn nichts gefunden)
+     *                    [1] = restText ohne den gefundenen Kaliber-Token(s)
+     */
+    public static String[] extrahiereKaliberMehrtoken(
+            String restText,
+            java.util.Map<String, String> kaliberMap) {
+
+        if (restText == null || restText.trim().isEmpty()
+                || kaliberMap == null || kaliberMap.isEmpty()) {
+            return new String[]{"", restText == null ? "" : restText};
+        }
+
+        String[] tokens = restText.trim().split("\\s+");
+
+        // -----------------------------------------------------------------
+        // PHASE 1: Bigram-Scan (2 aufeinanderfolgende Tokens)
+        // Beispiel: ["blatt", "cal", "1/2", "halbiert"]
+        //           Bigram-Kandidaten: "blatt cal", "cal 1/2", "1/2 halbiert"
+        //           Treffer: "cal 1/2" → gr_kaliber aus Map
+        // -----------------------------------------------------------------
+        for (int i = 0; i < tokens.length - 1; i++) {
+            String bigram = tokens[i].toLowerCase() + " " + tokens[i + 1].toLowerCase();
+            if (kaliberMap.containsKey(bigram)) {
+                String grKaliber = kaliberMap.get(bigram);
+                String rest = buildRestWithout(tokens, i, i + 1);
+                String result = (grKaliber != null && !grKaliber.isEmpty())
+                    ? grKaliber : bigram;
+                return new String[]{result, rest};
+            }
+        }
+
+        // -----------------------------------------------------------------
+        // PHASE 2: Unigram-Scan (einzelne Tokens)
+        // Beispiel: ["tacle", "speciale", "1"]
+        //           Treffer: "1" → gr_kaliber "63/74"
+        // -----------------------------------------------------------------
+        for (int i = 0; i < tokens.length; i++) {
+            String tok = tokens[i].toLowerCase();
+            if (kaliberMap.containsKey(tok)) {
+                String grKaliber = kaliberMap.get(tok);
+                String rest = buildRestWithout(tokens, i, i);
+                String result = (grKaliber != null && !grKaliber.isEmpty())
+                    ? grKaliber : tok;
+                return new String[]{result, rest};
+            }
+        }
+
+        // Kein Treffer
+        return new String[]{"", restText.trim()};
+    }
+
+
+    //=========================================================================
+    // v1.2: DEBUG – SCHREIBWEISE-VERGLEICH
+    //=========================================================================
+
+    /**
+     * Vergleicht die normalisierte Original-Bezeichnung mit der korrigierten
+     * Bezeichnung (nach Schreibweise-Korrektur + Plural) token-für-token.
+     *
+     * Gibt einen lesbaren String zurück mit allen Tokens die verändert,
+     * hinzugekommen oder verschwunden sind. Format:
+     *   "1/2→halbiert | sizil→[neu:sizilianisch]"
+     *
+     * Verwendung im ArtikelParser / tJavaRow:
+     *   String _debug = ParserInit.debugSchreibweiseVergleich(
+     *       input_row.Bezeichnung1,
+     *       output_row.parsed_bezeichnung_korrigiert);
+     *   // _debug in parsed_rest oder eigenem Feld ausgeben
+     *
+     * @param bezeichnung1              Original-Bezeichnung (Rohtext)
+     * @param bezeichnungKorrigiert     Nach normalize() + Schreibweise-Korrektur
+     * @return                          Lesbare Diff-Beschreibung, "" wenn identisch
+     */
+    public static String debugSchreibweiseVergleich(
+            String bezeichnung1,
+            String bezeichnungKorrigiert) {
+
+        if (bezeichnung1 == null || bezeichnungKorrigiert == null) {
+            return "[DEBUG] null-Eingabe";
+        }
+
+        // Original normalisieren (gleiche Schritte wie im Parser:
+        // lowercase, Sonderzeichen, Klammern, Punkte, Leerzeichen)
+        String normOriginal = bezeichnung1.toLowerCase().trim();
+        normOriginal = normOriginal.replaceAll("[\\r\\n]+", " ");
+        normOriginal = normOriginal.replaceAll("(\\d)\\s*/\\s*(\\d)", "$1/$2");
+        normOriginal = normOriginal.replaceAll("(\\d)\\s*-\\s*(\\d)", "$1-$2");
+        normOriginal = normOriginal.replaceAll("[()]", " ");
+        normOriginal = normOriginal.replace("'", " ").replace("\"", " ")
+            .replace("\u201C", " ").replace("\u201D", " ")
+            .replace("\u2018", " ").replace("\u2019", " ");
+        normOriginal = normOriginal.replaceAll("\\.", " ");
+        normOriginal = normOriginal.replaceAll("(?<!\\d)-(?!\\d)", " ");
+        normOriginal = normOriginal.replaceAll("(?<!\\d)/(?!\\d)", " ");
+        normOriginal = normOriginal.replace("*", " ").replace("`", " ");
+        normOriginal = normOriginal.replaceAll("\\s{2,}", " ").trim();
+
+        String[] tokensOriginal   = normOriginal.split("\\s+");
+        String[] tokensKorrigiert = bezeichnungKorrigiert.trim().split("\\s+");
+
+        java.util.List<String> origList = new java.util.ArrayList<>();
+        for (String t : tokensOriginal) {
+            if (!t.isEmpty()) origList.add(t);
+        }
+
+        java.util.List<String> korrList = new java.util.ArrayList<>();
+        for (String t : tokensKorrigiert) {
+            if (!t.isEmpty()) korrList.add(t);
+        }
+
+        java.util.List<String> korrWork = new java.util.ArrayList<>(korrList);
+        java.util.List<String> diffParts = new java.util.ArrayList<>();
+
+        for (String orig : origList) {
+            if (korrWork.contains(orig)) {
+                korrWork.remove(orig);
+            } else {
+                String kandidat = null;
+                for (String k : korrWork) {
+                    if (k.length() >= 2 && orig.length() >= 2
+                            && k.startsWith(orig.substring(0, Math.min(2, orig.length())))) {
+                        kandidat = k;
+                        break;
+                    }
+                }
+                if (kandidat != null) {
+                    diffParts.add("[" + orig + "→" + kandidat + "]");
+                    korrWork.remove(kandidat);
+                } else {
+                    diffParts.add("[" + orig + "→ENTFERNT]");
+                }
+            }
+        }
+
+        for (String k : korrWork) {
+            diffParts.add("[NEU:" + k + "]");
+        }
+
+        if (diffParts.isEmpty()) {
+            return "";
+        }
+
+        return String.join(" | ", diffParts);
+    }
+
+
+    //=========================================================================
+    // PRIVATE HILFSMETHODEN
+    //=========================================================================
+
+    /**
+     * Baut den Rest-String aus tokens,
+     * wobei die Indizes von skipFrom bis skipTo (inklusiv) ausgelassen werden.
+     */
+    private static String buildRestWithout(String[] tokens, int skipFrom, int skipTo) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tokens.length; i++) {
+            if (i >= skipFrom && i <= skipTo) continue;
+            if (sb.length() > 0) sb.append(" ");
+            sb.append(tokens[i]);
+        }
+        return sb.toString().trim();
+    }
+}

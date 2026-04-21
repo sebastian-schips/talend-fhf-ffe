@@ -1,0 +1,77 @@
+{
+  "itemId" : "_-iIeoPeAEfCmltDu3cCfOw",
+  "contextList" : [ {
+    "contextName" : "Default",
+    "repoId" : "_qq0_MHFIEfCtQ81OGVhTIg",
+    "parameterList" : [ {
+      "id" : "_qrBMcXFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Server"
+    }, {
+      "id" : "_qrBMcnFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Login"
+    }, {
+      "id" : "_qrBMc3FIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Schema"
+    }, {
+      "id" : "_qrBMdHFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Port"
+    }, {
+      "id" : "_qrBMdXFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Password"
+    }, {
+      "id" : "_qrBMdnFIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_AdditionalParams"
+    }, {
+      "id" : "_qrBMd3FIEfCtQ81OGVhTIg",
+      "name" : "GR_Master_Database"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_Ba-v8ADVEfGADNLVznPntw",
+    "parameterList" : [ {
+      "id" : "_lwXBQPtpEfC2zcvz01DSew",
+      "name" : "Silver_Insert_Batches"
+    }, {
+      "id" : "_lwXBQftpEfC2zcvz01DSew",
+      "name" : "Silver_Insert_Batch_Size"
+    }, {
+      "id" : "_lwXBQvtpEfC2zcvz01DSew",
+      "name" : "Silver_CDC_Insert_Current_Update_SQL"
+    }, {
+      "id" : "_dBfvgPtwEfC2zcvz01DSew",
+      "name" : "Silver_Processed_At"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_zK5_wADYEfGADNLVznPntw",
+    "parameterList" : [ {
+      "id" : "_lwXBQPtpEfC2zcvz01DSew",
+      "name" : "Silver_Update_Batches"
+    }, {
+      "id" : "_lwXBQftpEfC2zcvz01DSew",
+      "name" : "Silver_Update_Batch_Size"
+    }, {
+      "id" : "_lwXBQvtpEfC2zcvz01DSew",
+      "name" : "Silver_CDC_Update_Current_Update_SQL"
+    }, {
+      "id" : "_dBfvgPtwEfC2zcvz01DSew",
+      "name" : "Silver_Update_Processed_At"
+    } ]
+  }, {
+    "contextName" : "Default",
+    "repoId" : "_9N2kAADbEfGADNLVznPntw",
+    "parameterList" : [ {
+      "id" : "_lwXBQPtpEfC2zcvz01DSew",
+      "name" : "Silver_Delete_Batches"
+    }, {
+      "id" : "_lwXBQftpEfC2zcvz01DSew",
+      "name" : "Silver_Delete_Batch_Size"
+    }, {
+      "id" : "_lwXBQvtpEfC2zcvz01DSew",
+      "name" : "Silver_CDC_Update_Delete_Update_SQL"
+    }, {
+      "id" : "_dBfvgPtwEfC2zcvz01DSew",
+      "name" : "Silver_Delete_Processed_At"
+    } ]
+  } ]
+}
