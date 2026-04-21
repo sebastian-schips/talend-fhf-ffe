@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<talendfile:ContextType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" xmi:id="_1k9KcHFIEfCtQ81OGVhTIg" confirmationNeeded="false" hide="false" name="Default">
+  <contextParameter xmi:id="_1k9KcXFIEfCtQ81OGVhTIg" comment="" name="FFE_Live_jdbcClass" prompt="FFE_Live_jdbcClass?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="sybase.jdbc4.sqlanywhere.IDriver"/>
+  <contextParameter xmi:id="_1k9KcnFIEfCtQ81OGVhTIg" comment="" name="FFE_Live_jdbcUrl" prompt="FFE_Live_jdbcUrl?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=fferfurt;links=tcpip(host=192.168.7.5;port=2638)"/>
+  <contextParameter xmi:id="_1k9Kc3FIEfCtQ81OGVhTIg" comment="" name="FFE_Live_password" prompt="FFE_Live_password?" promptNeeded="false" repositoryContextId="built-in" type="id_Password" value="enc:system.encryption.key.v1:d1uOYxLNTdkAJCsc+QtoOyNElYN+8rF+WC9R//LWYR8BgWbp"/>
+  <contextParameter xmi:id="_1k9KdHFIEfCtQ81OGVhTIg" comment="" name="FFE_Live_userId" prompt="FFE_Live_userId?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="grdigitranslesen"/>
+</talendfile:ContextType>
