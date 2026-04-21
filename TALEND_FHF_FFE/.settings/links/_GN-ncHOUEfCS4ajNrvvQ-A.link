@@ -30,16 +30,16 @@
     "repoId" : "_1kqPgHFIEfCtQ81OGVhTIg",
     "parameterList" : [ {
       "id" : "_1k9KcXFIEfCtQ81OGVhTIg",
-      "name" : "Staiger_Live_jdbcClass"
+      "name" : "FHF_Live_jdbcClass"
     }, {
       "id" : "_1k9Kc3FIEfCtQ81OGVhTIg",
-      "name" : "Staiger_Live_password"
+      "name" : "FHF_Live_password"
     }, {
       "id" : "_1k9KdHFIEfCtQ81OGVhTIg",
-      "name" : "Staiger_Live_userId"
+      "name" : "FHF_Live_userId"
     }, {
       "id" : "_1k9KcnFIEfCtQ81OGVhTIg",
-      "name" : "Staiger_Live_jdbcUrl"
+      "name" : "FHF_Live_jdbcUrl"
     } ]
   } ]
 }

@@ -8,10 +8,10 @@
     <contextParameter comment="" name="GR_Master_Password" prompt="GR_Master_Password?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_Password" value="enc:system.encryption.key.v1:IRiO1xOm0HS901goU0wwoqdZruaA8P6goXmsDFbEzVxXRDSbMv5TQ/XK5B6sGBMRzqEbqrIxZ8/pCm5kmcmWBXfNbKEjqQKfvpxoTfS8e7D+dfD7m5E6LKbq7XQ=" internalId="_tSD1FHOWEfCS4ajNrvvQ-A"/>
     <contextParameter comment="" name="GR_Master_AdditionalParams" prompt="GR_Master_AdditionalParams?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="" internalId="_tSD1FXOWEfCS4ajNrvvQ-A"/>
     <contextParameter comment="" name="GR_Master_Database" prompt="GR_Master_Database?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="gr_master" internalId="_tSD1FnOWEfCS4ajNrvvQ-A"/>
-    <contextParameter comment="" name="Staiger_Live_jdbcClass" prompt="Staiger_Live_jdbcClass?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="sybase.jdbc4.sqlanywhere.IDriver" internalId="_R3GagNp9EfCSbOfajqSiYA"/>
-    <contextParameter comment="" name="Staiger_Live_password" prompt="Staiger_Live_password?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_Password" value="enc:system.encryption.key.v1:pJpV1cIEE/yhIjKVSXHwRPmbM92wxY/qXVtroF4jmnCgTZXI" internalId="_R3Gagdp9EfCSbOfajqSiYA"/>
-    <contextParameter comment="" name="Staiger_Live_userId" prompt="Staiger_Live_userId?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="Qlik" internalId="_R3Gagtp9EfCSbOfajqSiYA"/>
-    <contextParameter comment="" name="Staiger_Live_jdbcUrl" prompt="Staiger_Live_jdbcUrl?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="jdbc:sqlanywhere:uid=Qlik;pwd=Kliq21#!;eng=Staiger;database=Staiger;links=tcpip(host=172.20.1.15;port=2638)" internalId="_R3Gag9p9EfCSbOfajqSiYA"/>
+    <contextParameter comment="" name="FHF_Live_jdbcClass" prompt="FHF_Live_jdbcClass?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="sybase.jdbc4.sqlanywhere.IDriver" internalId="_R3GagNp9EfCSbOfajqSiYA"/>
+    <contextParameter comment="" name="FHF_Live_password" prompt="FHF_Live_password?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_Password" value="enc:system.encryption.key.v1:pJpV1cIEE/yhIjKVSXHwRPmbM92wxY/qXVtroF4jmnCgTZXI" internalId="_R3Gagdp9EfCSbOfajqSiYA"/>
+    <contextParameter comment="" name="FHF_Live_userId" prompt="FHF_Live_userId?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="grdigitranslesen" internalId="_R3Gagtp9EfCSbOfajqSiYA"/>
+    <contextParameter comment="" name="FHF_Live_jdbcUrl" prompt="FHF_Live_jdbcUrl?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)" internalId="_R3Gag9p9EfCSbOfajqSiYA"/>
   </context>
   <parameters>
     <elementParameter field="CLOSED_LIST" name="LOG4J_RUN_LEVEL" value="Info" show="false"/>
@@ -56,7 +56,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:saBaoRtLe+vqnIxc+OjhAlE/msJ38Eygm8B+Czy3" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:zw2EnS0MUidcgPf51bZcib3i0e9PrDnEJ1EulNKp" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -91,7 +91,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:NaGkCMEMiPdhr6aiAMOHhJaBAgXHPrYx8nsixV8S" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:TFFe3oCjVRnlGI8ycLholJPyY45wBakuM/4hu/rb" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -110,7 +110,6 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" value="" show="false"/>
     <elementParameter field="TEXT" name="FOOTER_CODE" value="" show="false"/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" value="" show="false"/>
-    <routinesParameter id="_uDi24CvPEemn7J3ssWShHg" name="r"/>
   </parameters>
   <node componentName="JDBCInput" componentVersion="2" offsetLabelX="0" offsetLabelY="0" posX="120" posY="120">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_1" show="false"/>
@@ -127,16 +126,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:I410tPQxAJcrk3q29mEMpUtS0l+Eksipqh2tEySNyESF9fSzvxc="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>

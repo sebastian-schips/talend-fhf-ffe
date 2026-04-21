@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMapper="http://www.talend.org/mapper" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
   <context confirmationNeeded="false" hide="false" name="Default">
-    <contextParameter comment="" name="Staiger_Live_jdbcClass" prompt="Staiger_Live_jdbcClass?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="sybase.jdbc4.sqlanywhere.IDriver" internalId="_VmChQPrFEfCjkdZe86W4fQ"/>
-    <contextParameter comment="" name="Staiger_Live_jdbcUrl" prompt="Staiger_Live_jdbcUrl?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="jdbc:sqlanywhere:uid=Qlik;pwd=Kliq21#!;eng=Staiger;database=Staiger;links=tcpip(host=172.20.1.15;port=2638)" internalId="_VmDIUPrFEfCjkdZe86W4fQ"/>
-    <contextParameter comment="" name="Staiger_Live_password" prompt="Staiger_Live_password?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_Password" value="enc:system.encryption.key.v1:HPuTjePhgbA/q6iHnHdsfkq21CmZ/83tlfd2MC6iHPbXthXn" internalId="_VmDIUfrFEfCjkdZe86W4fQ"/>
-    <contextParameter comment="" name="Staiger_Live_userId" prompt="Staiger_Live_userId?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="Qlik" internalId="_VmDIUvrFEfCjkdZe86W4fQ"/>
+    <contextParameter comment="" name="FHF_Live_jdbcClass" prompt="FHF_Live_jdbcClass?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="sybase.jdbc4.sqlanywhere.IDriver" internalId="_VmChQPrFEfCjkdZe86W4fQ"/>
+    <contextParameter comment="" name="FHF_Live_jdbcUrl" prompt="FHF_Live_jdbcUrl?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)" internalId="_VmDIUPrFEfCjkdZe86W4fQ"/>
+    <contextParameter comment="" name="FHF_Live_password" prompt="FHF_Live_password?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_Password" value="enc:system.encryption.key.v1:HPuTjePhgbA/q6iHnHdsfkq21CmZ/83tlfd2MC6iHPbXthXn" internalId="_VmDIUfrFEfCjkdZe86W4fQ"/>
+    <contextParameter comment="" name="FHF_Live_userId" prompt="FHF_Live_userId?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="grdigitranslesen" internalId="_VmDIUvrFEfCjkdZe86W4fQ"/>
     <contextParameter comment="" name="GR_Master_Port" prompt="GR_Master_Port?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="1433" internalId="_av9BYPrFEfCjkdZe86W4fQ"/>
     <contextParameter comment="" name="GR_Master_Login" prompt="GR_Master_Login?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="gr-master-admin" internalId="_av9BYfrFEfCjkdZe86W4fQ"/>
     <contextParameter comment="" name="GR_Master_Schema" prompt="GR_Master_Schema?" promptNeeded="false" repositoryContextId="_qq0_MHFIEfCtQ81OGVhTIg" type="id_String" value="dbo" internalId="_av9BYvrFEfCjkdZe86W4fQ"/>
@@ -56,7 +56,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:saBaoRtLe+vqnIxc+OjhAlE/msJ38Eygm8B+Czy3" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:zw2EnS0MUidcgPf51bZcib3i0e9PrDnEJ1EulNKp" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -91,7 +91,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:NaGkCMEMiPdhr6aiAMOHhJaBAgXHPrYx8nsixV8S" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:TFFe3oCjVRnlGI8ycLholJPyY45wBakuM/4hu/rb" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -113,19 +113,10 @@
   </parameters>
   <node componentName="JDBCInput" componentVersion="2" offsetLabelX="0" offsetLabelY="0" posX="160" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBInput_2" show="false"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" value="Input" show="false"/>
     <elementParameter field="TECHNICAL" name="TACOKIT_COMPONENT_ID" value="bmV3amRiYyNKREJDI0lucHV0" show="false"/>
-    <elementParameter field="TEXT" name="VERSION" value="2" show="false"/>
-    <elementParameter field="TEXT" name="FAMILY" value="JDBC" show="false"/>
-    <elementParameter field="CHECK" name="START" value="true" show="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" value="true" show="false"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" value="true" show="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" value="false" show="false"/>
-    <elementParameter field="TEXT" name="HELP" value="HELP" show="false"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_wFJ-UGvAEfCwG-yRFy-8Hg"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value=""/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="TEXT" name="LABEL" value="__configuration.dataSet.tableName__"/>
@@ -135,16 +126,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:G2Ro0AHpUyUbVIYG5RgjD38p751FfJL2RQ3WnnlITfSNZxg3uHM="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>
@@ -167,16 +158,22 @@
       <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="3"/>
       <elementValue elementRef="configuration.config.columnTrims[].column" value="Kar_Bezeichnung" id="4"/>
       <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="5"/>
-      <elementValue elementRef="configuration.config.columnTrims[].column" value="Sort" id="6"/>
+      <elementValue elementRef="configuration.config.columnTrims[].column" value="Kar_Lidl_Gesellschaft" id="6"/>
       <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="7"/>
-      <elementValue elementRef="configuration.config.columnTrims[].column" value="User_Anlage" id="8"/>
+      <elementValue elementRef="configuration.config.columnTrims[].column" value="Kar_Lidl_EMail_Empfaenger" id="8"/>
       <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="9"/>
-      <elementValue elementRef="configuration.config.columnTrims[].column" value="Datum_Anlage" id="10"/>
+      <elementValue elementRef="configuration.config.columnTrims[].column" value="Kar_Lidl_Lieferant" id="10"/>
       <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="11"/>
-      <elementValue elementRef="configuration.config.columnTrims[].column" value="User_Aenderung" id="12"/>
+      <elementValue elementRef="configuration.config.columnTrims[].column" value="Sort" id="12"/>
       <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="13"/>
-      <elementValue elementRef="configuration.config.columnTrims[].column" value="Datum_Aenderung" id="14"/>
+      <elementValue elementRef="configuration.config.columnTrims[].column" value="User_Anlage" id="14"/>
       <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="15"/>
+      <elementValue elementRef="configuration.config.columnTrims[].column" value="Datum_Anlage" id="16"/>
+      <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="17"/>
+      <elementValue elementRef="configuration.config.columnTrims[].column" value="User_Aenderung" id="18"/>
+      <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="19"/>
+      <elementValue elementRef="configuration.config.columnTrims[].column" value="Datum_Aenderung" id="20"/>
+      <elementValue elementRef="configuration.config.columnTrims[].trim" value="false" id="21"/>
     </elementParameter>
     <elementParameter field="CHECK" name="configuration.config.enableMapping" value="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.config.mapping" value="MYSQL" show="false"/>
@@ -188,7 +185,6 @@
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="configuration.dataSet.__version" value="-1" show="false"/>
     <elementParameter field="TECHNICAL" name="configuration.dataSet.dataStore.__version" value="-1" show="false"/>
-    <elementParameter field="TEXT" name="DATASTORE_PATH" value="configuration.dataSet.dataStore" show="false"/>
     <metadata connector="FLOW" label="Kundenart" name="tDBInput_2">
       <column comment="" defaultValue="autoincrement" key="true" length="10" name="Kar_Nummer" nullable="false" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value=""/>
@@ -196,8 +192,17 @@
       <column comment="" defaultValue="NULL" key="false" length="12" name="Kar_Sortierung" nullable="true" pattern="" precision="0" sourceType="NUMERIC" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="" defaultValue="NULL" key="false" length="50" name="Kar_Bezeichnung" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
-        <additionalField key="Comment" value=""/>
+      <column comment="Bezeichnung" defaultValue="NULL" key="false" length="50" name="Kar_Bezeichnung" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Bezeichnung"/>
+      </column>
+      <column comment="Lidl - Nummer der Gesellschaft" defaultValue="NULL" key="false" length="5" name="Kar_Lidl_Gesellschaft" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Lidl - Nummer der Gesellschaft"/>
+      </column>
+      <column comment="Email-Empfänger für die Bestellungen und Lieferscheine" defaultValue="NULL" key="false" length="250" name="Kar_Lidl_EMail_Empfaenger" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="Email-Empfänger für die Bestellungen und Lieferscheine"/>
+      </column>
+      <column comment="eigene Lieferantennummer bei Lidl" defaultValue="NULL" key="false" length="7" name="Kar_Lidl_Lieferant" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+        <additionalField key="Comment" value="eigene Lieferantennummer bei Lidl"/>
       </column>
       <column comment="" defaultValue="NULL" key="false" length="10" name="Sort" nullable="true" pattern="" precision="0" sourceType="INTEGER" type="id_Integer" usefulColumn="true">
         <additionalField key="Comment" value=""/>
@@ -279,6 +284,9 @@
         <mapperTableEntries name="Kar_Nummer" type="id_Integer"/>
         <mapperTableEntries name="Kar_Sortierung" type="id_String" nullable="true"/>
         <mapperTableEntries name="Kar_Bezeichnung" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kar_Lidl_Gesellschaft" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kar_Lidl_EMail_Empfaenger" type="id_String" nullable="true"/>
+        <mapperTableEntries name="Kar_Lidl_Lieferant" type="id_String" nullable="true"/>
         <mapperTableEntries name="Sort" type="id_Integer" nullable="true"/>
         <mapperTableEntries name="User_Anlage" type="id_String" nullable="true"/>
         <mapperTableEntries name="Datum_Anlage" type="id_Date" nullable="true"/>
@@ -289,15 +297,6 @@
   </node>
   <node componentName="tMSSqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="480" posY="80">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBOutput_2" show="false"/>
-    <elementParameter field="TEXT" name="COMPONENT_NAME" value="tMSSqlOutput" show="false"/>
-    <elementParameter field="TEXT" name="VERSION" value="0.102 (ALPHA)" show="false"/>
-    <elementParameter field="TEXT" name="FAMILY" value="Databases/DB Specifics/MS_SQL_Server" show="false"/>
-    <elementParameter field="CHECK" name="STARTABLE" value="false" show="false"/>
-    <elementParameter field="CHECK" name="SUBTREE_START" value="false" show="false"/>
-    <elementParameter field="CHECK" name="END_OF_FLOW" value="true" show="false"/>
-    <elementParameter field="TEXT" name="HELP" value="org.talend.help.tMSSqlOutput" show="false"/>
-    <elementParameter field="DIRECTORY" name="IREPORT_PATH" value="" show="false"/>
-    <elementParameter field="DIRECTORY" name="JAVA_LIBRARY_PATH" value="C:\Program Files (x86)\Talend-Studio\studio\configuration\lib\java" show="false"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_dm714GvIEfCaypKZ6raWlg" show="false"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>

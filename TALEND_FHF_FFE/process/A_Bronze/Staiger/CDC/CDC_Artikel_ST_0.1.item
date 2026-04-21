@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <talendfile:ProcessType xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:talendfile="platform:/resource/org.talend.model/model/TalendFile.xsd" defaultContext="Default" jobType="Standard">
   <context confirmationNeeded="false" hide="false" name="Default">
-    <contextParameter comment="" name="Staiger_Live_jdbcClass" prompt="Staiger_Live_jdbcClass?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="sybase.jdbc4.sqlanywhere.IDriver" internalId="_Y7zj4NUNEfC8weR_wc6ufw"/>
-    <contextParameter comment="" name="Staiger_Live_jdbcUrl" prompt="Staiger_Live_jdbcUrl?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="jdbc:sqlanywhere:uid=Qlik;pwd=Kliq21#!;eng=Staiger;database=Staiger;links=tcpip(host=172.20.1.15;port=2638)" internalId="_Y7zj4dUNEfC8weR_wc6ufw"/>
-    <contextParameter comment="" name="Staiger_Live_password" prompt="Staiger_Live_password?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_Password" value="enc:system.encryption.key.v1:QaJ8YufzSssovgilnItZGiIw8v526wgWZ/AVbb0KFr0hGQWJ" internalId="_Y70K8NUNEfC8weR_wc6ufw"/>
-    <contextParameter comment="" name="Staiger_Live_userId" prompt="Staiger_Live_userId?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="Qlik" internalId="_Y70K8dUNEfC8weR_wc6ufw"/>
+    <contextParameter comment="" name="FHF_Live_jdbcClass" prompt="FHF_Live_jdbcClass?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="sybase.jdbc4.sqlanywhere.IDriver" internalId="_Y7zj4NUNEfC8weR_wc6ufw"/>
+    <contextParameter comment="" name="FHF_Live_jdbcUrl" prompt="FHF_Live_jdbcUrl?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)" internalId="_Y7zj4dUNEfC8weR_wc6ufw"/>
+    <contextParameter comment="" name="FHF_Live_password" prompt="FHF_Live_password?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_Password" value="enc:system.encryption.key.v1:QaJ8YufzSssovgilnItZGiIw8v526wgWZ/AVbb0KFr0hGQWJ" internalId="_Y70K8NUNEfC8weR_wc6ufw"/>
+    <contextParameter comment="" name="FHF_Live_userId" prompt="FHF_Live_userId?" promptNeeded="false" repositoryContextId="_1kqPgHFIEfCtQ81OGVhTIg" type="id_String" value="grdigitranslesen" internalId="_Y70K8dUNEfC8weR_wc6ufw"/>
     <contextParameter comment="" name="Artikel_D_where_clause" prompt="Artikel_D_where_clause?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_a3_BsNdHEfCm9IDv-_MzqQ"/>
     <contextParameter comment="" name="Artikel_D_change_id_in_clause" prompt="Artikel_D_change_id_in_clause?" promptNeeded="false" repositoryContextId="built-in" type="id_String" value="" internalId="_a3_BsddHEfCm9IDv-_MzqQ"/>
     <contextParameter comment="" name="Artikel_D_id_count" prompt="Artikel_D_id_count?" promptNeeded="false" repositoryContextId="built-in" type="id_Integer" value="0" internalId="_a3_BstdHEfCm9IDv-_MzqQ"/>
@@ -77,7 +77,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:saBaoRtLe+vqnIxc+OjhAlE/msJ38Eygm8B+Czy3" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:zw2EnS0MUidcgPf51bZcib3i0e9PrDnEJ1EulNKp" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -112,7 +112,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:NaGkCMEMiPdhr6aiAMOHhJaBAgXHPrYx8nsixV8S" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:TFFe3oCjVRnlGI8ycLholJPyY45wBakuM/4hu/rb" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -131,7 +131,6 @@
     <elementParameter field="TEXT" name="FOOTER_LIBRARY" value="" show="false"/>
     <elementParameter field="TEXT" name="FOOTER_CODE" value="" show="false"/>
     <elementParameter field="TEXT" name="FOOTER_IMPORT" value="" show="false"/>
-    <routinesParameter id="_uDi24CvPEemn7J3ssWShHg" name="r"/>
   </parameters>
   <node componentName="tJava" componentVersion="0.101" offsetLabelX="0" offsetLabelY="0" posX="560" posY="680">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tJava_1" show="false"/>
@@ -180,16 +179,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:qbu4aHZFLXrycHfozUSjTVyDyNLSy057CxS1hxBMEAZI3zh8GRk="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>
@@ -234,16 +233,16 @@
     <elementParameter field="TECHNICAL" name="configuration.dataSet.__version" value="-1" show="false"/>
     <elementParameter field="TECHNICAL" name="configuration.dataSet.dataStore.__version" value="-1" show="false"/>
     <metadata connector="FLOW" label="CDC_Changes" name="tDBInput_2">
-      <column comment="" defaultValue="autoincrement" key="true" length="8" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="" defaultValue="autoincrement" key="true" length="19" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="null" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="NULL" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Tabellenname (Aufrag, Auftragposition, EKKopf....)"/>
       </column>
-      <column comment="Insert, Update, Delete" defaultValue="null" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Insert, Update, Delete" defaultValue="NULL" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Insert, Update, Delete"/>
       </column>
-      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="8" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="19" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value="Primary der Tabelle"/>
       </column>
       <column comment="Timestamp" defaultValue="'current timestamp'" key="false" length="26" name="Changed_At" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -252,7 +251,7 @@
       <column comment="0 = neu" defaultValue="NULL" key="false" length="1" name="Processed" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
         <additionalField key="Comment" value="0 = neu"/>
       </column>
-      <column comment="Fehlertext" defaultValue="null" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Fehlertext" defaultValue="NULL" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Fehlertext"/>
       </column>
       <column comment="immer 0" defaultValue="NULL" key="false" length="1" name="Retry_Count" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
@@ -315,16 +314,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:IlszTDdDKQ4j3t1I1A34WekcPNQltMFkAtnoEIPMtxGH6CCFB6I="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>
@@ -369,16 +368,16 @@
     <elementParameter field="TECHNICAL" name="configuration.dataSet.__version" value="-1" show="false"/>
     <elementParameter field="TECHNICAL" name="configuration.dataSet.dataStore.__version" value="-1" show="false"/>
     <metadata connector="FLOW" label="CDC_Changes" name="tDBInput_1">
-      <column comment="" defaultValue="autoincrement" key="true" length="8" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="" defaultValue="autoincrement" key="true" length="19" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="null" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="NULL" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Tabellenname (Aufrag, Auftragposition, EKKopf....)"/>
       </column>
-      <column comment="Insert, Update, Delete" defaultValue="null" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Insert, Update, Delete" defaultValue="NULL" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Insert, Update, Delete"/>
       </column>
-      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="8" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="19" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value="Primary der Tabelle"/>
       </column>
       <column comment="Timestamp" defaultValue="'current timestamp'" key="false" length="26" name="Changed_At" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -387,7 +386,7 @@
       <column comment="0 = neu" defaultValue="NULL" key="false" length="1" name="Processed" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
         <additionalField key="Comment" value="0 = neu"/>
       </column>
-      <column comment="Fehlertext" defaultValue="null" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Fehlertext" defaultValue="NULL" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Fehlertext"/>
       </column>
       <column comment="immer 0" defaultValue="NULL" key="false" length="1" name="Retry_Count" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
@@ -472,7 +471,7 @@
     <elementParameter field="TECHNICAL" name="TACOKIT_COMPONENT_ID" value="bmV3amRiYyNKREJDI0lucHV0" show="false"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:PROPERTY_TYPE" value="REPOSITORY"/>
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_wFJ-UGvAEfCwG-yRFy-8Hg"/>
-    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value=""/>
+    <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:QUERYSTORE_TYPE" value="BUILT_IN"/>
     <elementParameter field="TEXT" name="LABEL" value="__configuration.dataSet.tableName__"/>
@@ -482,16 +481,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:7SCFNBpjX60TXs3uWagG1wTkW2AUZWwvRd2MuIBwcJS4fv6uuiQ="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>
@@ -536,16 +535,16 @@
     <elementParameter field="TECHNICAL" name="configuration.dataSet.__version" value="-1" show="false"/>
     <elementParameter field="TECHNICAL" name="configuration.dataSet.dataStore.__version" value="-1" show="false"/>
     <metadata connector="FLOW" label="CDC_Changes" name="tDBInput_3">
-      <column comment="" defaultValue="autoincrement" key="true" length="8" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="" defaultValue="autoincrement" key="true" length="19" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="null" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="NULL" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Tabellenname (Aufrag, Auftragposition, EKKopf....)"/>
       </column>
-      <column comment="Insert, Update, Delete" defaultValue="null" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Insert, Update, Delete" defaultValue="NULL" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Insert, Update, Delete"/>
       </column>
-      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="8" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="19" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value="Primary der Tabelle"/>
       </column>
       <column comment="Timestamp" defaultValue="'current timestamp'" key="false" length="26" name="Changed_At" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -554,7 +553,7 @@
       <column comment="0 = neu" defaultValue="NULL" key="false" length="1" name="Processed" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
         <additionalField key="Comment" value="0 = neu"/>
       </column>
-      <column comment="Fehlertext" defaultValue="null" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Fehlertext" defaultValue="NULL" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Fehlertext"/>
       </column>
       <column comment="immer 0" defaultValue="NULL" key="false" length="1" name="Retry_Count" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
@@ -646,16 +645,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:ercnggn0JSAj7jF01RxOgJNcHzzAj2zPde9sUM2zN//zgSil4E8="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>
@@ -1815,16 +1814,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:y9ww5kY6hzkX79bixnxkRhQjm9uxEg8qMfCLpSHwhQOGapgW9bk="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>
@@ -2986,16 +2985,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:nzdM+z8xlf/uxkMghD/m8hC7rWx7xeK9BWK4vZu95BjdML7pXw0="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>
@@ -3021,16 +3020,16 @@
     <elementParameter field="TECHNICAL" name="configuration.dataSet.__version" value="-1" show="false"/>
     <elementParameter field="TECHNICAL" name="configuration.dataSet.dataStore.__version" value="-1" show="false"/>
     <metadata connector="FLOW" label="CDC_Changes" name="tDBRow_3">
-      <column comment="" defaultValue="autoincrement" key="true" length="8" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="" defaultValue="autoincrement" key="true" length="19" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="null" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="NULL" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Tabellenname (Aufrag, Auftragposition, EKKopf....)"/>
       </column>
-      <column comment="Insert, Update, Delete" defaultValue="null" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Insert, Update, Delete" defaultValue="NULL" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Insert, Update, Delete"/>
       </column>
-      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="8" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="19" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value="Primary der Tabelle"/>
       </column>
       <column comment="Timestamp" defaultValue="'current timestamp'" key="false" length="26" name="Changed_At" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -3039,7 +3038,7 @@
       <column comment="0 = neu" defaultValue="NULL" key="false" length="1" name="Processed" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
         <additionalField key="Comment" value="0 = neu"/>
       </column>
-      <column comment="Fehlertext" defaultValue="null" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Fehlertext" defaultValue="NULL" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Fehlertext"/>
       </column>
       <column comment="immer 0" defaultValue="NULL" key="false" length="1" name="Retry_Count" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
@@ -3050,16 +3049,16 @@
     <metadata connector="LOOKUP" name="LOOKUP"/>
     <metadata connector="MERGE" name="MERGE"/>
     <metadata connector="reject" label="CDC_Changes" name="reject">
-      <column comment="" defaultValue="autoincrement" key="true" length="8" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="" defaultValue="autoincrement" key="true" length="19" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="null" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="NULL" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Tabellenname (Aufrag, Auftragposition, EKKopf....)"/>
       </column>
-      <column comment="Insert, Update, Delete" defaultValue="null" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Insert, Update, Delete" defaultValue="NULL" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Insert, Update, Delete"/>
       </column>
-      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="8" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="19" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value="Primary der Tabelle"/>
       </column>
       <column comment="Timestamp" defaultValue="'current timestamp'" key="false" length="26" name="Changed_At" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -3068,7 +3067,7 @@
       <column comment="0 = neu" defaultValue="NULL" key="false" length="1" name="Processed" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
         <additionalField key="Comment" value="0 = neu"/>
       </column>
-      <column comment="Fehlertext" defaultValue="null" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Fehlertext" defaultValue="NULL" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Fehlertext"/>
       </column>
       <column comment="immer 0" defaultValue="NULL" key="false" length="1" name="Retry_Count" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
@@ -3093,16 +3092,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:/csOzg7GszPSOvtKfvRjeGgzbmM3LYiwA8PY7oy+HAjspWZ+5bE="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>
@@ -3128,16 +3127,16 @@
     <elementParameter field="TECHNICAL" name="configuration.dataSet.__version" value="-1" show="false"/>
     <elementParameter field="TECHNICAL" name="configuration.dataSet.dataStore.__version" value="-1" show="false"/>
     <metadata connector="FLOW" label="CDC_Changes" name="tDBRow_4">
-      <column comment="" defaultValue="autoincrement" key="true" length="8" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="" defaultValue="autoincrement" key="true" length="19" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="null" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="NULL" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Tabellenname (Aufrag, Auftragposition, EKKopf....)"/>
       </column>
-      <column comment="Insert, Update, Delete" defaultValue="null" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Insert, Update, Delete" defaultValue="NULL" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Insert, Update, Delete"/>
       </column>
-      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="8" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="19" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value="Primary der Tabelle"/>
       </column>
       <column comment="Timestamp" defaultValue="'current timestamp'" key="false" length="26" name="Changed_At" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -3146,7 +3145,7 @@
       <column comment="0 = neu" defaultValue="NULL" key="false" length="1" name="Processed" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
         <additionalField key="Comment" value="0 = neu"/>
       </column>
-      <column comment="Fehlertext" defaultValue="null" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Fehlertext" defaultValue="NULL" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Fehlertext"/>
       </column>
       <column comment="immer 0" defaultValue="NULL" key="false" length="1" name="Retry_Count" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
@@ -3157,16 +3156,16 @@
     <metadata connector="LOOKUP" name="LOOKUP"/>
     <metadata connector="MERGE" name="MERGE"/>
     <metadata connector="reject" label="CDC_Changes" name="reject">
-      <column comment="" defaultValue="autoincrement" key="true" length="8" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="" defaultValue="autoincrement" key="true" length="19" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="null" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="NULL" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Tabellenname (Aufrag, Auftragposition, EKKopf....)"/>
       </column>
-      <column comment="Insert, Update, Delete" defaultValue="null" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Insert, Update, Delete" defaultValue="NULL" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Insert, Update, Delete"/>
       </column>
-      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="8" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="19" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value="Primary der Tabelle"/>
       </column>
       <column comment="Timestamp" defaultValue="'current timestamp'" key="false" length="26" name="Changed_At" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -3175,7 +3174,7 @@
       <column comment="0 = neu" defaultValue="NULL" key="false" length="1" name="Processed" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
         <additionalField key="Comment" value="0 = neu"/>
       </column>
-      <column comment="Fehlertext" defaultValue="null" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Fehlertext" defaultValue="NULL" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Fehlertext"/>
       </column>
       <column comment="immer 0" defaultValue="NULL" key="false" length="1" name="Retry_Count" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
@@ -3200,16 +3199,16 @@
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.enableDBType" value="false" show="false"/>
     <elementParameter field="CLOSED_LIST" name="configuration.dataSet.dataStore.dbType" value="JDBC" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.setRawUrl" value="true" show="false"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="context.Staiger_Live_jdbcUrl"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.jdbcUrl" value="&quot;jdbc:sqlanywhere:uid=grdigitranslesen;pwd=Kliq21#!;eng=hartmann;database=hartmann;links=tcpip(host=192.168.7.5;port=2638)&quot;"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.host" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="configuration.dataSet.dataStore.port" value="&quot;80&quot;" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.parameters" show="false"/>
     <elementParameter field="TABLE" name="configuration.dataSet.dataStore.jdbcDriver">
       <elementValue elementRef="configuration.dataSet.dataStore.jdbcDriver[].path" value="mvn:org.talend.libraries/sajdbc4/6.0.0-SNAPSHOT/jar" id="0"/>
     </elementParameter>
-    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="context.Staiger_Live_jdbcClass"/>
-    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="context.Staiger_Live_userId"/>
-    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="context.Staiger_Live_password"/>
+    <elementParameter field="TACOKIT_VALUE_SELECTION" name="configuration.dataSet.dataStore.jdbcClass" value="&quot;sap.jdbc4.sqlanywhere.IDriver&quot;"/>
+    <elementParameter field="TEXT" name="configuration.dataSet.dataStore.userId" value="&quot;grdigitranslesen&quot;"/>
+    <elementParameter field="PASSWORD" name="configuration.dataSet.dataStore.password" value="enc:system.encryption.key.v1:sbIfqjkCqgQt6h4gjuRK+qC5TNI8AN6cw354XIUOmhePgjSmRpo="/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useSharedDBConnection" value="false" show="false"/>
     <elementParameter field="CHECK" name="configuration.dataSet.dataStore.useDataSource" value="false"/>
     <elementParameter field="MAPPING_TYPE" name="configuration.dataSet.dataStore.dbMapping" value="&quot;mysql_id&quot;" show="false"/>
@@ -3235,16 +3234,16 @@
     <elementParameter field="TECHNICAL" name="configuration.dataSet.__version" value="-1" show="false"/>
     <elementParameter field="TECHNICAL" name="configuration.dataSet.dataStore.__version" value="-1" show="false"/>
     <metadata connector="FLOW" label="CDC_Changes" name="tDBRow_5">
-      <column comment="" defaultValue="autoincrement" key="true" length="8" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="" defaultValue="autoincrement" key="true" length="19" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="null" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="NULL" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Tabellenname (Aufrag, Auftragposition, EKKopf....)"/>
       </column>
-      <column comment="Insert, Update, Delete" defaultValue="null" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Insert, Update, Delete" defaultValue="NULL" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Insert, Update, Delete"/>
       </column>
-      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="8" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="19" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value="Primary der Tabelle"/>
       </column>
       <column comment="Timestamp" defaultValue="'current timestamp'" key="false" length="26" name="Changed_At" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -3253,7 +3252,7 @@
       <column comment="0 = neu" defaultValue="NULL" key="false" length="1" name="Processed" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
         <additionalField key="Comment" value="0 = neu"/>
       </column>
-      <column comment="Fehlertext" defaultValue="null" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Fehlertext" defaultValue="NULL" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Fehlertext"/>
       </column>
       <column comment="immer 0" defaultValue="NULL" key="false" length="1" name="Retry_Count" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
@@ -3264,16 +3263,16 @@
     <metadata connector="LOOKUP" name="LOOKUP"/>
     <metadata connector="MERGE" name="MERGE"/>
     <metadata connector="reject" label="CDC_Changes" name="reject">
-      <column comment="" defaultValue="autoincrement" key="true" length="8" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="" defaultValue="autoincrement" key="true" length="19" name="Change_ID" nullable="false" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
-      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="null" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Tabellenname (Aufrag, Auftragposition, EKKopf....)" defaultValue="NULL" key="false" length="100" name="Table_Name" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Tabellenname (Aufrag, Auftragposition, EKKopf....)"/>
       </column>
-      <column comment="Insert, Update, Delete" defaultValue="null" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Insert, Update, Delete" defaultValue="NULL" key="false" length="10" name="Operation_Type" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Insert, Update, Delete"/>
       </column>
-      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="8" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
+      <column comment="Primary der Tabelle" defaultValue="NULL" key="false" length="19" name="Primary_Key_Value" nullable="true" pattern="" precision="0" sourceType="BIGINT" type="id_Long" usefulColumn="true">
         <additionalField key="Comment" value="Primary der Tabelle"/>
       </column>
       <column comment="Timestamp" defaultValue="'current timestamp'" key="false" length="26" name="Changed_At" nullable="true" pattern="&quot;dd-MM-yyyy&quot;" precision="6" sourceType="TIMESTAMP" type="id_Date" usefulColumn="true">
@@ -3282,7 +3281,7 @@
       <column comment="0 = neu" defaultValue="NULL" key="false" length="1" name="Processed" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
         <additionalField key="Comment" value="0 = neu"/>
       </column>
-      <column comment="Fehlertext" defaultValue="null" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
+      <column comment="Fehlertext" defaultValue="NULL" key="false" length="100" name="Error_Message" nullable="true" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value="Fehlertext"/>
       </column>
       <column comment="immer 0" defaultValue="NULL" key="false" length="1" name="Retry_Count" nullable="false" pattern="" precision="0" sourceType="BIT" type="id_Boolean" usefulColumn="true">
